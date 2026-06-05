@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local design/source exports
+BSoftware/
+BSoftware-AUDIOVISUALL.zip
+
+# Search Console download kept in public/ for deploy
+/google*.html

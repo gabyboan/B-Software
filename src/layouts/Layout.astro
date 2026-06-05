@@ -1,10 +1,14 @@
 ---
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
-import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
-import MobileStickyCTA from "../components/MobileStickyCTA.astro";
 
-const { title = "Hogar" } = Astro.props;
+const {
+  title = "B-Software | Desarrollo web, software empresarial y automatizaciones",
+  description = "B-Software crea sistemas internos, aplicaciones web, automatizaciones, QA tecnico, observabilidad y soporte para empresas e instituciones.",
+  canonical = "https://bsoftware.pages.dev/",
+} = Astro.props;
+
+const image = "https://bsoftware.pages.dev/b-software-hero.png";
 ---
 
 <!doctype html>
@@ -12,12 +16,38 @@ const { title = "Hogar" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="B-Software" />
+    <meta name="creator" content="B-Software" />
+    <meta name="publisher" content="B-Software" />
+    <meta name="google-site-verification" content="5XXAuKK8zHCTKb-elXLOMZ_nPPh1vvYtPUw-3oY1a_A" />
+    <meta name="keywords" content="B-Software, desarrollo web, software empresarial, aplicaciones web, sistemas internos, automatizaciones, QA tecnico, observabilidad, Cloudflare Pages, Supabase, PostgreSQL, Argentina" />
+    <meta name="theme-color" content="#111111" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="B-Software" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1693" />
+    <meta property="og:image:height" content="929" />
+    <meta property="og:image:alt" content="B-Software, desarrollo web y software empresarial con testing, seguridad y observabilidad" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="sitemap" href="/sitemap.xml" />
     <title>{title}</title>
   </head>
-  <body class="bg-white text-slate-900 antialiased">
+  <body>
     <NavBar />
     <slot />
-    <FloatingWhatsApp />
-    <MobileStickyCTA />
   </body>
 </html>

@@ -1,61 +1,33 @@
 ---
-const pathname = Astro.url.pathname;
-
 const items = [
-  { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/nuestro-hogar", label: "Nuestro hogar" },
-  { href: "/equipo", label: "Equipo" },
-  { href: "/novedades", label: "Novedades" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "#calidad", label: "Calidad" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#automatizaciones", label: "Automatizaciones" },
+  { href: "#github", label: "GitHub" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#contacto", label: "Contacto" },
 ];
-
-const isActive = (href: string) =>
-  href === "/" ? pathname === "/" : pathname.startsWith(href);
 ---
 
-<header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur">
-  <div class="container flex items-center justify-between gap-4 py-3">
-    <a href="/" class="flex items-center gap-2">
-      <span class="grid h-10 w-10 place-items-center rounded-xl bg-[#2F5D50] text-white font-bold shadow-sm">
-        H
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="B-Software inicio">
+      <span class="brand-mark">
+        <img src="/brand/logo-b.png" alt="" width="42" height="42" />
       </span>
-      <div class="leading-tight">
-        <p class="font-extrabold text-slate-900 tracking-tight">Hogar</p>
-        <p class="text-xs text-slate-500">Atención integral</p>
-      </div>
+      <span>
+        <strong>B-Software</strong>
+        <small>Soluciones digitales</small>
+      </span>
     </a>
 
-    <!-- Desktop nav -->
-    <nav class="hidden lg:flex items-center gap-1">
+    <nav class="nav-links" aria-label="Principal">
       {items.map((item) => (
-        <a
-          href={item.href}
-          class:list={["nav-link", isActive(item.href) && "nav-link-active"]}
-        >
-          {item.label}
-        </a>
+        <a href={item.href}>{item.label}</a>
       ))}
     </nav>
 
-    <div class="hidden sm:flex items-center gap-2">
-      <a
-        href="https://wa.me/549XXXXXXXXXX"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-outline"
-      >
-        WhatsApp
-      </a>
-      <a href="/contacto" class="btn btn-primary shadow-md">
-        Coordinar visita
-      </a>
-    </div>
-
-    <!-- Mobile simple CTA -->
-    <a href="/contacto" class="btn btn-primary sm:hidden">
-      Consultar
-    </a>
+    <a class="nav-cta" href="https://wa.me/5493434064408" target="_blank" rel="noreferrer">WhatsApp</a>
   </div>
 </header>

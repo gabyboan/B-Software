@@ -1,302 +1,494 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const projects = [
+  {
+    title: "Legajo Digital",
+    type: "Sistema interno",
+    description:
+      "Panel para consultar y administrar legajos, situacion de revista, carrera, asistencia y banco inicial de horas.",
+    stack: ["Next.js", "React", "TypeScript", "Supabase"],
+    href: "https://github.com/gabyboan/legajo-digital",
+  },
+  {
+    title: "HESM Gestion RRHH",
+    type: "Aplicacion de escritorio",
+    description:
+      "Sistema operativo para registrar, consultar y exportar horas, francos y novedades de recursos humanos.",
+    stack: ["Flutter", "Dart", "Riverpod", "Supabase"],
+    href: "https://github.com/gabyboan/hesm-gestion-rrhh",
+  },
+  {
+    title: "Consulta Horas",
+    type: "Portal publico",
+    description:
+      "Consulta publica de horas con despliegue moderno, proteccion anti-abuso y datos conectados a Supabase.",
+    stack: ["Cloudflare Pages", "Workers", "Turnstile", "Supabase"],
+    href: "https://github.com/gabyboan/consulta-horas",
+  },
+];
+
+const services = [
+  "Aplicaciones web empresariales a medida",
+  "Productos digitales con metricas y trazabilidad",
+  "Testing funcional, smoke testing y pruebas ad hoc",
+  "Observabilidad, monitoreo y analisis de errores",
+  "Hardening, revision de vulnerabilidades y control de acceso",
+  "Integracion con Supabase, PostgreSQL y Cloudflare",
+];
+
+const offers = [
+  {
+    title: "Sistema interno a medida",
+    description: "Paneles, roles, base de datos, auditoria de acciones y flujos hechos para la operacion diaria.",
+  },
+  {
+    title: "Web institucional profesional",
+    description: "Sitios rapidos, claros y listos para vender con SEO tecnico, OG Graph y despliegue en Cloudflare.",
+  },
+  {
+    title: "QA y auditoria tecnica",
+    description: "Smoke testing, pruebas ad hoc, revision de errores, vulnerabilidades y recomendaciones accionables.",
+  },
+  {
+    title: "Mantenimiento mensual",
+    description: "Monitoreo, cambios evolutivos, soporte, mejoras de performance y acompanamiento tecnico.",
+  },
+];
+
+const automations = [
+  {
+    title: "WhatsApp",
+    tag: "Atencion y respuestas",
+    description:
+      "Flujos para consultas frecuentes, derivacion de contactos, avisos operativos y respuestas guiadas para equipos comerciales o administrativos.",
+    className: "whatsapp",
+  },
+  {
+    title: "Telegram",
+    tag: "Alertas y operaciones",
+    description:
+      "Bots y notificaciones para seguimiento interno, avisos tecnicos, estados de sistemas, reportes y comandos rapidos para equipos de trabajo.",
+    className: "telegram",
+  },
+];
+
+const githubTour = [
+  "Repositorios publicos para mostrar criterio tecnico y capacidad de entrega.",
+  "Proyectos con stack moderno: Next.js, Flutter, Astro, Supabase, PostgreSQL, Cloudflare y Workers.",
+  "Codigo orientado a productos reales: autenticacion, roles, formularios, paneles, escritorio, despliegues y documentacion.",
+];
+
+const faqs = [
+  {
+    question: "Que tipo de productos puede desarrollar B-Software?",
+    answer:
+      "Sistemas internos, webs institucionales, portales publicos, automatizaciones, integraciones con base de datos y herramientas para equipos operativos.",
+  },
+  {
+    question: "Se entregan pruebas antes de publicar?",
+    answer:
+      "Si. Se trabaja con pruebas funcionales, smoke testing, escenarios ad hoc, revision de errores y validacion de flujos criticos antes del despliegue.",
+  },
+  {
+    question: "Pueden automatizar WhatsApp o Telegram?",
+    answer:
+      "Si. Se pueden crear flujos de atencion, bots, alertas, respuestas guiadas, reportes y derivaciones para mejorar la operacion diaria.",
+  },
+  {
+    question: "Tambien hacen mantenimiento y soporte?",
+    answer:
+      "Si. Se puede contratar mantenimiento mensual, monitoreo, correcciones, mejoras evolutivas, soporte tecnico y acompanamiento de infraestructura.",
+  },
+];
+
+const quality = [
+  {
+    value: "QA",
+    label: "Pruebas funcionales, smoke testing, regresion y escenarios ad hoc antes de entregar.",
+  },
+  {
+    value: "OBS",
+    label: "Metricas, logs, monitoreo y lectura de fallos para operar productos reales.",
+  },
+  {
+    value: "SEC",
+    label: "Revision de vulnerabilidades, roles, permisos y superficies expuestas.",
+  },
+  {
+    value: "Cisco",
+    label: "Formacion y certificaciones Cisco aplicadas a redes, infraestructura y soporte.",
+  },
+];
+
+const brandPieces = [
+  {
+    src: "/brand/servicio-pc-lenta.png",
+    alt: "Pieza grafica de soporte para PC lenta e internet",
+    title: "Soporte tecnico",
+  },
+  {
+    src: "/brand/asesoramiento-componentes.png",
+    alt: "Pieza grafica de asesoramiento personalizado para componentes",
+    title: "Asesoramiento",
+  },
+  {
+    src: "/brand/redes-wifi.png",
+    alt: "Pieza grafica de configuracion de WiFi y routers",
+    title: "Redes y conectividad",
+  },
+];
+
+const profiles = [
+  {
+    name: "GitHub",
+    href: "https://github.com/gabyboan",
+    label: "Codigo, repositorios y proyectos publicados",
+  },
+  {
+    name: "Email",
+    href: "mailto:gabrielboan14@gmail.com",
+    label: "Contacto directo para presupuestos y soporte",
+  },
+  {
+    name: "WhatsApp",
+    href: "https://wa.me/5493434064408",
+    label: "Consultas comerciales y seguimiento de proyectos",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "B-Software",
+  url: "https://bsoftware.pages.dev/",
+  logo: "https://bsoftware.pages.dev/brand/logo-b.png",
+  image: "https://bsoftware.pages.dev/b-software-hero.png",
+  email: "gabrielboan14@gmail.com",
+  telephone: "+54 9 343 406 4408",
+  areaServed: ["Argentina", "Entre Rios", "Parana", "Remote"],
+  description:
+    "Desarrollo de software empresarial, aplicaciones web, QA, observabilidad, seguridad, testing y soporte tecnico.",
+  sameAs: ["https://github.com/gabyboan"],
+  knowsAbout: [
+    "Software empresarial",
+    "Aplicaciones web",
+    "Testing funcional",
+    "Smoke testing",
+    "Observabilidad",
+    "Metricas",
+    "Revision de vulnerabilidades",
+    "Supabase",
+    "PostgreSQL",
+    "Cloudflare",
+    "Cisco",
+    "Automatizaciones WhatsApp",
+    "Bots Telegram",
+  ],
+  makesOffer: offers.map((offer) => ({
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: offer.title,
+      description: offer.description,
+    },
+  })),
+};
+
+const organizationStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "B-Software",
+  alternateName: "B Software",
+  url: "https://bsoftware.pages.dev/",
+  logo: "https://bsoftware.pages.dev/brand/logo-b.png",
+  image: "https://bsoftware.pages.dev/b-software-hero.png",
+  email: "gabrielboan14@gmail.com",
+  telephone: "+54 9 343 406 4408",
+  sameAs: ["https://github.com/gabyboan"],
+  founder: {
+    "@type": "Person",
+    name: "Gabriel Boan",
+    email: "gabrielboan14@gmail.com",
+    url: "https://github.com/gabyboan",
+  },
+};
+
+const websiteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "B-Software",
+  alternateName: "B Software",
+  url: "https://bsoftware.pages.dev/",
+  inLanguage: "es-AR",
+  description:
+    "Sitio oficial de B-Software: desarrollo web, software empresarial, automatizaciones, QA tecnico, observabilidad y soporte.",
+  publisher: {
+    "@type": "Organization",
+    name: "B-Software",
+  },
+};
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
-<Layout title="Hogar de Ancianos | Atención y cuidado integral en Paraná">
+<Layout>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationStructuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteStructuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqStructuredData)} />
   <main>
-    <!-- HERO -->
-    <section class="section-lg section-alt">
-      <div class="section-inner">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <!-- Columna izquierda -->
-          <div class="max-w-xl mx-auto lg:mx-0">
-            <p class="eyebrow">
-              Atención integral • Acompañamiento humano • Paraná
-            </p>
-
-            <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-[#1E293B]">
-              Un hogar seguro y humano para quienes más querés
-            </h1>
-
-            <p class="lead">
-              Brindamos cuidado profesional, acompañamiento permanente y un entorno cálido donde cada residente se siente contenido y respetado.
-            </p>
-
-            <div class="mt-8 flex flex-wrap gap-3 items-center justify-center lg:justify-start">
-              <a href="/contacto" class="btn btn-primary">
-                Coordinar una visita
-              </a>
-
-              <a
-                href="https://wa.me/549XXXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline"
-              >
-                WhatsApp directo
-              </a>
-            </div>
-
-            <!-- Métricas -->
-            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto lg:mx-0">
-              <!-- Card 1 -->
-              <div class="card-strong metric-card">
-                <div class="flex items-end gap-2">
-                  <p class="text-3xl font-extrabold text-[#2F5D50] leading-none">9</p>
-                  <p class="text-lg font-semibold text-slate-500 leading-none">/10</p>
-                </div>
-
-                <p class="mt-2 text-sm text-slate-700 font-medium">Acompañamiento humano</p>
-                <p class="mt-1 text-xs text-slate-500">Calidez y contención diaria</p>
-
-                <div class="mt-4 h-2 w-full rounded-full bg-slate-200 overflow-hidden">
-                  <div class="metric-fill w-[90%]"></div>
-                </div>
-              </div>
-
-              <!-- Card 2 -->
-              <div class="card-strong metric-card">
-                <div class="flex items-end gap-2">
-                  <p class="text-3xl font-extrabold text-[#2F5D50] leading-none">10</p>
-                  <p class="text-lg font-semibold text-slate-500 leading-none">/10</p>
-                </div>
-
-                <p class="mt-2 text-sm text-slate-700 font-medium">Atención permanente</p>
-                <p class="mt-1 text-xs text-slate-500">Supervisión y asistencia 24 hs</p>
-
-                <div class="mt-4 h-2 w-full rounded-full bg-slate-200 overflow-hidden">
-                  <div class="metric-fill w-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Columna derecha (imagen) -->
-          <div class="card-strong p-2 max-w-xl mx-auto lg:max-w-none">
-            <img
-              src="/hogar-ancianos-parana.webp"
-              alt="Residencia geriátrica en Paraná"
-              class="w-full h-[420px] md:h-[460px] object-cover rounded-2xl"
-              loading="lazy"
-            />
-            <p class="mt-2 px-2 text-xs text-slate-500">
-              *Imagen ilustrativa. Reemplazar por fotos reales del hogar.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOQUE EMOCIONAL -->
-    <section class="section bg-white">
-      <div class="section-inner max-w-3xl text-center">
-        <h2 class="section-title text-[#1E293B]">
-          Sabemos que no es una decisión fácil
-        </h2>
-        <p class="section-sub mt-4 text-base leading-relaxed">
-          Elegir un hogar para un ser querido implica confianza, seguridad y tranquilidad.
-          Nuestro compromiso es acompañar tanto a residentes como a sus familias en cada etapa, con calidez humana y atención profesional.
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Software empresarial con calidad de entrega</p>
+        <h1>B-Software</h1>
+        <p class="hero-lead">
+          Construimos productos digitales serios: sistemas web, paneles internos, portales publicos e integraciones listas para operar con metricas, observabilidad, testing y seguridad desde el primer despliegue.
         </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#contacto">Contacte con nosotros</a>
+          <a class="button secondary" href="#calidad">Ver calidad</a>
+        </div>
       </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section class="section section-alt">
-      <div class="section-inner">
-        <h2 class="section-title text-center text-[#1E293B]">Servicios integrales</h2>
-        <p class="section-sub text-center">
-          Atención completa adaptada a cada necesidad.
-        </p>
-
-        <div class="mt-12 grid-4">
-          <div class="card-strong">
-            <h3 class="font-semibold text-slate-900">Atención permanente</h3>
-            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-              Supervisión y asistencia diaria las 24 horas.
-            </p>
-          </div>
-
-          <div class="card-strong">
-            <h3 class="font-semibold text-slate-900">Seguimiento médico</h3>
-            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-              Control profesional y coordinación de cuidados.
-            </p>
-          </div>
-
-          <div class="card-strong">
-            <h3 class="font-semibold text-slate-900">Actividades recreativas</h3>
-            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-              Talleres y dinámicas para el bienestar físico y emocional.
-            </p>
-          </div>
-
-          <div class="card-strong">
-            <h3 class="font-semibold text-slate-900">Alimentación supervisada</h3>
-            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-              Menús adaptados a las necesidades de cada residente.
-            </p>
-          </div>
+      <div class="hero-media">
+        <img class="hero-logo" src="/brand/logo-b.png" alt="Logo B-Software" width="1120" height="1120" />
+        <div class="hero-panel">
+          <p>Testing y control de errores</p>
+          <p>Metricas y observabilidad</p>
+          <p>Seguridad y buenas practicas</p>
         </div>
       </div>
     </section>
 
-    <!-- POR QUÉ ELEGIRNOS -->
-    <section class="section bg-white">
-      <div class="section-inner">
-        <h2 class="section-title text-center text-[#1E293B]">Por qué elegirnos</h2>
-        <p class="section-sub text-center">
-          Priorizamos la seguridad, la atención personalizada y la tranquilidad de las familias.
-        </p>
-
-        <div class="mt-12 grid-2">
-          <div class="card-strong">
-            <ul class="space-y-4 text-slate-700">
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#E8F2EE] text-[#2F5D50] text-xs font-bold">✓</span>
-                <span>Atención personalizada según las necesidades de cada residente.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#E8F2EE] text-[#2F5D50] text-xs font-bold">✓</span>
-                <span>Personal capacitado y acompañamiento profesional permanente.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="card-strong">
-            <ul class="space-y-4 text-slate-700">
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#E8F2EE] text-[#2F5D50] text-xs font-bold">✓</span>
-                <span>Ambiente familiar, cálido y respetuoso.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#E8F2EE] text-[#2F5D50] text-xs font-bold">✓</span>
-                <span>Comunicación y acompañamiento continuo con las familias.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <section class="section intro-band" aria-label="Resumen">
+      <div>
+        <span class="metric">4+</span>
+        <p>productos institucionales y operativos desarrollados</p>
+      </div>
+      <div>
+        <span class="metric">24/7</span>
+        <p>deploys, monitoreo y disponibilidad pensados para uso real</p>
+      </div>
+      <div>
+        <span class="metric">QA</span>
+        <p>pruebas de humo, escenarios ad hoc y validacion antes de publicar</p>
       </div>
     </section>
 
-    <!-- TESTIMONIOS -->
-    <section class="section section-alt">
-      <div class="section-inner">
-        <h2 class="section-title text-center text-[#1E293B]">Lo que dicen las familias</h2>
-        <p class="section-sub text-center">
-          Testimonios de confianza y acompañamiento real.
-        </p>
-
-        <div class="mt-12 grid-3">
-          <div class="card-strong">
-            <p class="text-amber-500 text-sm tracking-wide">★★★★★</p>
-            <p class="mt-3 text-slate-700 text-sm leading-relaxed">
-              “Desde el primer día sentimos tranquilidad. El trato es humano y respetuoso.”
-            </p>
-            <p class="mt-4 font-semibold text-sm text-slate-900">— Familia Martínez</p>
-          </div>
-
-          <div class="card-strong">
-            <p class="text-amber-500 text-sm tracking-wide">★★★★★</p>
-            <p class="mt-3 text-slate-700 text-sm leading-relaxed">
-              “El acompañamiento es constante y profesional. Estamos muy agradecidos.”
-            </p>
-            <p class="mt-4 font-semibold text-sm text-slate-900">— Familia Gómez</p>
-          </div>
-
-          <div class="card-strong">
-            <p class="text-amber-500 text-sm tracking-wide">★★★★★</p>
-            <p class="mt-3 text-slate-700 text-sm leading-relaxed">
-              “Un ambiente cálido donde realmente se preocupan por cada persona.”
-            </p>
-            <p class="mt-4 font-semibold text-sm text-slate-900">— Familia Ruiz</p>
-          </div>
-        </div>
+    <section id="calidad" class="section quality-section">
+      <div class="section-heading">
+        <p class="eyebrow">Calidad de producto</p>
+        <h2>Software medible, probado y preparado para crecer</h2>
+      </div>
+      <div class="quality-grid">
+        {quality.map((item) => (
+          <article class="quality-card">
+            <span>{item.value}</span>
+            <p>{item.label}</p>
+          </article>
+        ))}
       </div>
     </section>
 
-    <!-- CONTACTO RÁPIDO -->
-    <section class="section bg-white">
-      <div class="section-inner">
-        <div class="grid-2">
-          <div class="card-strong">
-            <h2 class="section-title text-[#1E293B]">Contacto rápido</h2>
-            <p class="section-sub">
-              Respondemos consultas y coordinamos visitas.
-            </p>
-
-            <div class="mt-6 space-y-4 text-slate-700">
-              <div>
-                <p class="text-sm text-slate-500">Teléfono</p>
-                <p class="font-semibold">(343) XXX-XXXX</p>
-              </div>
-
-              <div>
-                <p class="text-sm text-slate-500">WhatsApp</p>
-                <p class="font-semibold">+54 9 343 XXX-XXXX</p>
-              </div>
-
-              <div>
-                <p class="text-sm text-slate-500">Dirección</p>
-                <p class="font-semibold">Paraná, Entre Ríos</p>
-              </div>
-
-              <div>
-                <p class="text-sm text-slate-500">Horario de atención</p>
-                <p class="font-semibold">Lunes a viernes • 8:00 a 20:00</p>
-              </div>
+    <section id="automatizaciones" class="section automation-section">
+      <div class="section-heading">
+        <p class="eyebrow">Automatizaciones</p>
+        <h2>Canales que trabajan junto al negocio</h2>
+      </div>
+      <div class="automation-grid">
+        {automations.map((item) => (
+          <article class:list={["automation-card", item.className]}>
+            <div class="automation-icon" aria-hidden="true">
+              {item.title === "WhatsApp" ? (
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="M12 3.2a8.6 8.6 0 0 0-7.4 13l-.9 4.1 4.2-1a8.6 8.6 0 1 0 4.1-16.1Zm0 1.8a6.8 6.8 0 1 1-3.5 12.6l-.3-.2-2.2.5.5-2.1-.2-.4A6.8 6.8 0 0 1 12 5Zm-2.5 3.5c-.2 0-.5.1-.7.4-.3.3-.8.8-.8 1.9 0 1.1.8 2.2.9 2.3.1.2 1.6 2.7 4 3.6 2 .8 2.4.5 2.9.5.4 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.2l-.7.8c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.8-.7-1.3-1.6-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2.1-.3 0-.5l-.7-1.7c-.2-.5-.4-.5-.6-.5h-.2Z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" role="img">
+                  <path d="M20.8 4.1 3.8 10.7c-1.1.4-1.1 1.1-.2 1.4l4.4 1.4 1.7 5.2c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.1-2.1 4.4 3.2c.8.4 1.3.2 1.5-.8L22 5.5c.3-1.2-.5-1.7-1.2-1.4Zm-2.2 3.2-8.5 7.6-.3 3.1-1.4-4.7 10.2-6Z" />
+                </svg>
+              )}
             </div>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="/contacto" class="btn btn-primary">Ir a contacto</a>
-              <a
-                href="https://wa.me/549XXXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline"
-              >
-                Escribir por WhatsApp
-              </a>
-            </div>
-          </div>
-
-          <div class="card-strong p-2">
-            <!-- Reemplazar con iframe de Google Maps cuando tengas ubicación exacta -->
-            <div class="rounded-2xl bg-slate-100 h-[320px] grid place-items-center text-slate-500 text-sm border border-slate-200">
-              Mapa / ubicación del hogar (pendiente de integrar)
-            </div>
-          </div>
-        </div>
+            <p class="automation-tag">{item.tag}</p>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
       </div>
     </section>
 
-    <!-- CTA FINAL -->
-    <section class="section-lg section-alt">
-      <div class="section-inner">
-        <div class="rounded-3xl bg-[#2F5D50] text-white text-center py-16 px-6 shadow-lg">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-            Coordiná una visita y conocé nuestras instalaciones
-          </h2>
+    <section id="proyectos" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Portfolio</p>
+        <h2>Proyectos realizados</h2>
+      </div>
 
-          <p class="mt-4 text-white/85 max-w-2xl mx-auto">
-            Respondemos consultas rápidamente y acompañamos todo el proceso para que tomes una decisión con tranquilidad.
-          </p>
-
-          <div class="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="/contacto" class="btn btn-white font-bold">
-              Contactar ahora
+      <div class="project-grid">
+        {projects.map((project) => (
+          <article class="project-card">
+            <p class="project-type">{project.type}</p>
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <div class="stack-list">
+              {project.stack.map((item) => <span>{item}</span>)}
+            </div>
+            <a href={project.href} target={project.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+              Ver detalle
             </a>
+          </article>
+        ))}
+      </div>
+    </section>
 
-            <a
-              href="https://wa.me/549XXXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn border border-white/70 text-white hover:bg-white/10"
-            >
-              WhatsApp directo
-            </a>
+    <section id="github" class="section github-section">
+      <div class="github-copy">
+        <p class="eyebrow">Paseo por GitHub</p>
+        <h2>Codigo, repositorios y evidencia tecnica</h2>
+        <p>
+          El perfil de GitHub permite ver proyectos publicados, decisiones de stack y avances reales. Es una vidriera tecnica para evaluar forma de trabajo, documentacion y capacidad de despliegue.
+        </p>
+        <a class="button github-button" href="https://github.com/gabyboan" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.3-.3-4.7-1.2-4.7-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.9-.3 2.8 1a9.7 9.7 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.8-4.7 5 .4.3.7.9.7 1.8V21c0 .3.2.6.8.5A10 10 0 0 0 12 2Z" />
+          </svg>
+          Ver GitHub
+        </a>
+      </div>
+      <div class="github-list">
+        {githubTour.map((item) => (
+          <div>
+            <span aria-hidden="true">GH</span>
+            <p>{item}</p>
           </div>
-        </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="servicios" class="section split-section">
+      <div class="section-heading">
+        <p class="eyebrow">Que vendemos</p>
+        <h2>Productos digitales de calidad para empresas y equipos</h2>
+      </div>
+      <div class="service-list">
+        {services.map((service) => (
+          <div class="service-item">
+            <span aria-hidden="true">+</span>
+            <p>{service}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section offers-section">
+      <div class="section-heading">
+        <p class="eyebrow">Paquetes</p>
+        <h2>Servicios listos para presupuestar</h2>
+      </div>
+      <div class="offers-grid">
+        {offers.map((offer) => (
+          <article class="offer-card">
+            <h3>{offer.title}</h3>
+            <p>{offer.description}</p>
+            <a href="#contacto">Pedir presupuesto</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section brand-section">
+      <div class="section-heading">
+        <p class="eyebrow">Identidad</p>
+        <h2>Marca y contenido visual</h2>
+      </div>
+      <div class="brand-grid">
+        {brandPieces.map((piece) => (
+          <article class="brand-card">
+            <img src={piece.src} alt={piece.alt} width="1080" height="1080" loading="lazy" />
+            <h3>{piece.title}</h3>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section discover-section">
+      <div class="section-heading">
+        <p class="eyebrow">Presencia profesional</p>
+        <h2>Preparado para compartir en Google, LinkedIn, GitHub y plataformas freelance</h2>
+        <p>
+          La pagina publica de B-Software incluye contenido descriptivo, Open Graph, sitemap, robots.txt, llms.txt y datos estructurados para que buscadores, asistentes de IA y redes profesionales comprendan que servicios ofrece la marca.
+        </p>
+      </div>
+      <div class="profile-grid">
+        {profiles.map((profile) => (
+          <a href={profile.href} target={profile.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+            <strong>{profile.name}</strong>
+            <span>{profile.label}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="faq" class="section faq-section">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+      <div>
+        <p class="eyebrow">Contacto</p>
+        <h2>Contacte con nosotros</h2>
+        <p>
+          Contacte con nosotros para presupuestar sistemas internos, automatizaciones, portales publicos, soporte tecnico, revisiones de calidad o despliegues con observabilidad.
+        </p>
+      </div>
+      <div class="contact-actions">
+        <a class="button primary" href="mailto:gabrielboan14@gmail.com">gabrielboan14@gmail.com</a>
+        <a class="button secondary" href="https://wa.me/5493434064408" target="_blank" rel="noreferrer">WhatsApp 343 406-4408</a>
       </div>
     </section>
   </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-brand" href="/" aria-label="B-Software inicio">
+        <svg class="footer-logo" viewBox="0 0 300 300" role="img" aria-label="Logo B-Software">
+          <path class="footer-logo-fill" d="M150 25 L255 90 L255 210 L150 275 L45 210 L45 90 Z" />
+          <path class="footer-logo-line" d="M150 68 L214 107 L214 192 L150 232 L86 192 L86 107 Z" />
+          <path class="footer-logo-line" d="M128 195 L152 144 L118 144 L174 78 L150 130 L184 130 Z" />
+        </svg>
+        <span>
+          <strong>B Software</strong>
+          <small>Desarrollo web, sistemas internos y automatizaciones</small>
+        </span>
+      </a>
+
+      <nav class="footer-links" aria-label="Enlaces secundarios">
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#faq">FAQ</a>
+        <a href="/sitemap.xml">Sitemap</a>
+        <a href="/llms.txt">LLMS</a>
+      </nav>
+    </div>
+  </footer>
 </Layout>

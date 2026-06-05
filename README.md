@@ -1,46 +1,74 @@
-# Astro Starter Kit: Basics
+# B-Software
 
-```sh
-npm create astro@latest -- --template basics
+[![Astro](https://img.shields.io/badge/Astro-5-111111?logo=astro)](https://astro.build/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-publicado-f38020?logo=cloudflare&logoColor=white)](https://bsoftware.pages.dev/)
+[![SEO](https://img.shields.io/badge/SEO-sitemap_robots_llms-22c55e)](https://bsoftware.pages.dev/sitemap.xml)
+
+Sitio publico de B-Software para presentar servicios, proyectos reales y
+capacidad tecnica en desarrollo web, sistemas internos, automatizaciones,
+observabilidad y despliegues modernos.
+
+## Enlaces
+
+- Sitio publicado: https://bsoftware.pages.dev/
+- GitHub: https://github.com/gabyboan
+- Contacto: gabrielboan14@gmail.com
+
+## Que muestra
+
+- Servicios de desarrollo web y software empresarial.
+- Portfolio con proyectos institucionales y operativos.
+- Metadata para compartir en LinkedIn, GitHub, WhatsApp y plataformas freelance.
+- `robots.txt`, `sitemap.xml`, `llms.txt` y datos estructurados Schema.org.
+- Verificacion de Google Search Console por archivo HTML y meta tag.
+
+## Proyectos destacados
+
+| Proyecto | Tipo | Stack principal |
+| --- | --- | --- |
+| Legajo Digital | Sistema interno | Next.js, React, Supabase |
+| HESM Gestion RRHH | Escritorio operativo | Flutter, Riverpod, Supabase |
+| Consulta Horas | Portal publico + API | Cloudflare Pages, Worker, Turnstile |
+
+## Tecnologias
+
+- Astro 5
+- Tailwind CSS 4
+- Cloudflare Pages
+- Wrangler
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Compilacion
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+La salida estatica se genera en `dist/`.
 
-## 🧞 Commands
+## Despliegue
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name bsoftware --commit-dirty=true
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Configuracion recomendada en Cloudflare Pages:
 
-## 👀 Want to learn more?
+- Framework: Astro
+- Comando de compilacion: `npm run build`
+- Directorio de salida: `dist`
+- Node.js: 20 o superior
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Higiene
+
+No subir archivos de diseno fuente, zips exportados, credenciales ni tokens de
+servicios externos. El repositorio ignora esos artefactos locales desde
+`.gitignore`.

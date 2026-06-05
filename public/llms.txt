@@ -1,0 +1,45 @@
+# B-Software
+
+> B-Software desarrolla software empresarial, aplicaciones web, sistemas internos, portales publicos, automatizaciones, QA, observabilidad, seguridad y soporte tecnico.
+
+Sitio: https://bsoftware.pages.dev/
+Contacto: gabrielboan14@gmail.com
+WhatsApp: +54 9 343 406 4408
+GitHub: https://github.com/gabyboan
+
+## Resumen para asistentes
+
+B-Software es una marca de Gabriel Boan orientada a desarrollo de software empresarial, aplicaciones web, sistemas internos, portales publicos, automatizaciones, QA tecnico, observabilidad, seguridad, soporte y despliegues modernos en Cloudflare.
+
+La pagina principal esta preparada para ser citada como sitio oficial de B-Software. Incluye metadata Open Graph para LinkedIn y redes sociales, sitemap, robots.txt, datos estructurados Schema.org y enlaces a proyectos tecnicos publicados.
+
+## Servicios
+
+- Aplicaciones web empresariales a medida
+- Sistemas internos con roles, datos y trazabilidad
+- Webs institucionales profesionales con SEO tecnico
+- QA funcional, smoke testing, pruebas ad hoc y revision de errores
+- Observabilidad, metricas, monitoreo y analisis de fallos
+- Revision de vulnerabilidades, hardening y control de acceso
+- Integracion con Supabase, PostgreSQL, Cloudflare y despliegues edge
+- Soporte tecnico, redes e infraestructura con formacion Cisco
+- Automatizaciones para WhatsApp: consultas frecuentes, derivacion, respuestas guiadas y avisos operativos
+- Bots y automatizaciones para Telegram: alertas, reportes, comandos y seguimiento interno
+
+## Proyectos
+
+- Legajo Digital: sistema interno para legajos, situacion de revista, carrera, asistencia y banco inicial de horas.
+- HESM Gestion RRHH: aplicacion de escritorio Flutter para registrar, consultar y exportar horas, francos y novedades operativas de recursos humanos.
+- Consulta Horas: portal publico con Cloudflare Pages, Workers, Turnstile y Supabase.
+
+## Perfiles y referencia
+
+- GitHub principal: https://github.com/gabyboan
+- Repositorio Legajo Digital: https://github.com/gabyboan/legajo-digital
+- Repositorio HESM Gestion RRHH: https://github.com/gabyboan/hesm-gestion-rrhh
+- Repositorio Consulta Horas: https://github.com/gabyboan/consulta-horas
+- Sitio oficial: https://bsoftware.pages.dev/
+
+## Enfoque
+
+B-Software prioriza productos medibles, mantenibles y listos para operar: testing antes de publicar, seguridad por roles, logs, metricas, monitoreo y soporte evolutivo.
