@@ -466,28 +466,39 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   display: inline-flex;
   align-items: center;
   gap: 14px;
+  border-radius: 8px;
+  outline-offset: 6px;
+  transition: transform .18s ease, opacity .18s ease;
 }
 .footer-logo {
-  width: 64px;
-  height: 64px;
+  width: 58px;
+  height: 58px;
   flex: 0 0 auto;
-  overflow: visible;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  overflow: hidden;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
 }
-.footer-logo-fill {
-  fill: rgb(255 255 255 / 0.08);
-  stroke: rgb(255 255 255 / 0.42);
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+.footer-logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: transform .22s ease, filter .22s ease;
 }
-.footer-logo-line {
-  fill: transparent;
-  stroke: rgb(255 255 255 / 0.72);
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
+.footer-brand:hover {
+  transform: translateY(-1px);
+}
+.footer-brand:hover .footer-logo {
+  background: rgb(255 255 255 / 0.1);
+  border-color: rgb(255 255 255 / 0.28);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.28);
+}
+.footer-brand:hover .footer-logo img {
+  transform: scale(1.08) rotate(-2deg);
+  filter: drop-shadow(0 8px 12px rgb(255 255 255 / 0.16));
 }
 .footer-brand strong,
 .footer-brand small {
@@ -516,10 +527,13 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   color: rgb(255 255 255 / 0.7);
   font-weight: 800;
   font-size: .9rem;
+  outline-offset: 4px;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
 }
 .footer-links a:hover {
   background: rgb(255 255 255 / 0.08);
   color: white;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {
