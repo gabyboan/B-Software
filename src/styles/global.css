@@ -76,7 +76,13 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
   font-size: .93rem;
 }
-.nav-links a:hover { background: var(--soft); }
+.nav-links a, .nav-cta { transition: background .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease; }
+.nav-links a:hover,
+.nav-cta:hover {
+  background: var(--soft);
+  transform: translateY(-1px);
+}
+.nav-cta:hover { box-shadow: 0 10px 24px rgb(21 32 43 / 0.08); }
 .nav-cta { border: 1px solid var(--line); }
 
 .hero {
@@ -118,10 +124,11 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   padding: 0 18px;
   font-weight: 850;
   border: 1px solid transparent;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
 }
 .button.primary { background: linear-gradient(135deg, #111, #2b2f35); color: white; }
 .button.secondary { background: white; color: var(--deep); border-color: var(--line); }
-.button:hover { transform: translateY(-1px); }
+.button:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgb(21 32 43 / 0.16); }
 
 .hero-media {
   position: relative;
@@ -187,7 +194,9 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   border-radius: 8px;
   padding: 22px;
   background: linear-gradient(180deg, #fff, #f7f7f5);
+  transition: transform .18s ease, box-shadow .18s ease;
 }
+.quality-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgb(21 32 43 / 0.1); }
 .quality-card:nth-child(1) { border-top: 4px solid var(--green); }
 .quality-card:nth-child(2) { border-top: 4px solid var(--blue); }
 .quality-card:nth-child(3) { border-top: 4px solid var(--orange); }
@@ -205,7 +214,7 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   line-height: 1.65;
 }
 
-.project-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.project-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .project-card {
   min-height: 360px;
   display: flex;
@@ -214,6 +223,7 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   border-radius: 8px;
   padding: 22px;
   background: white;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
 }
 .project-type { color: var(--brand); font-weight: 850; font-size: .86rem; text-transform: uppercase; }
 .project-card h3 { margin-top: 12px; }
@@ -221,6 +231,12 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
 .stack-list { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
 .stack-list span { border-radius: 999px; background: var(--soft); padding: 6px 9px; color: var(--deep); font-size: .82rem; font-weight: 800; }
 .project-card a { margin-top: auto; color: var(--brand); font-weight: 900; }
+.project-card:hover {
+  border-color: #aeb9c3;
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgb(21 32 43 / 0.12);
+}
+.project-card:hover a { text-decoration: underline; text-underline-offset: 4px; }
 
 .automation-section { padding-top: 28px; }
 .automation-grid {
@@ -299,6 +315,7 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   padding: 22px;
   background: #111;
   color: white;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 .offer-card p {
   margin-top: 14px;
@@ -310,20 +327,31 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   color: white;
   font-weight: 900;
 }
+.offer-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(255 255 255 / 0.28);
+  box-shadow: 0 18px 42px rgb(21 32 43 / 0.2);
+}
+.offer-card:hover a { text-decoration: underline; text-underline-offset: 4px; }
 
 .github-section {
   display: grid;
   grid-template-columns: .92fr 1.08fr;
   gap: 30px;
   align-items: center;
-  background: linear-gradient(135deg, #111, #23272f);
+  background: linear-gradient(135deg, #0b0d10, #20242b);
   color: white;
   border-radius: 8px;
   padding: 44px;
 }
+.github-section .eyebrow {
+  color: white;
+  border-color: rgb(255 255 255 / 0.28);
+  background: rgb(255 255 255 / 0.12);
+}
 .github-copy p:not(.eyebrow) {
   margin-top: 16px;
-  color: rgb(255 255 255 / 0.74);
+  color: rgb(255 255 255 / 0.86);
   line-height: 1.75;
 }
 .github-button {
@@ -342,6 +370,12 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   border-radius: 8px;
   padding: 16px;
   background: rgb(255 255 255 / 0.08);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.github-list div:hover {
+  transform: translateX(4px);
+  border-color: rgb(255 255 255 / 0.34);
+  background: rgb(255 255 255 / 0.13);
 }
 .github-list span {
   min-width: 38px;
@@ -367,9 +401,15 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   border-radius: 8px;
   overflow: hidden;
   background: white;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 .brand-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
 .brand-card h3 { padding: 16px; font-size: 1.05rem; }
+.brand-card:hover {
+  border-color: #aeb9c3;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgb(21 32 43 / 0.1);
+}
 
 .discover-section { padding-top: 28px; }
 .discover-section .section-heading p:not(.eyebrow) {
@@ -456,11 +496,11 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
 .footer-inner {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 28px 20px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 18px;
 }
 .footer-brand {
   display: inline-flex;
@@ -471,8 +511,8 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   transition: transform .18s ease, opacity .18s ease;
 }
 .footer-logo {
-  width: 58px;
-  height: 58px;
+  width: 44px;
+  height: 44px;
   flex: 0 0 auto;
   display: grid;
   place-items: center;
@@ -483,8 +523,8 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
 }
 .footer-logo img {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
   transition: transform .22s ease, filter .22s ease;
 }
@@ -505,12 +545,13 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   display: block;
 }
 .footer-brand strong {
-  font-size: 1.35rem;
+  font-size: 1.05rem;
   line-height: 1;
 }
 .footer-brand small {
-  margin-top: 6px;
+  margin-top: 3px;
   color: rgb(255 255 255 / 0.58);
+  font-size: .82rem;
 }
 .footer-links {
   display: flex;

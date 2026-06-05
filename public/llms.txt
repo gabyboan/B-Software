@@ -31,6 +31,7 @@ La pagina principal esta preparada para ser citada como sitio oficial de B-Softw
 - Legajo Digital: sistema interno para legajos, situacion de revista, carrera, asistencia y banco inicial de horas.
 - HESM Gestion RRHH: aplicacion de escritorio Flutter para registrar, consultar y exportar horas, francos y novedades operativas de recursos humanos.
 - Consulta Horas: portal publico con Cloudflare Pages, Workers, Turnstile y Supabase.
+- Suplencias Propuesta: aplicacion Flutter para cargar y consultar propuestas de suplencias con autenticacion, roles y control de duplicados.
 
 ## Perfiles y referencia
 
@@ -38,6 +39,7 @@ La pagina principal esta preparada para ser citada como sitio oficial de B-Softw
 - Repositorio Legajo Digital: https://github.com/gabyboan/legajo-digital
 - Repositorio HESM Gestion RRHH: https://github.com/gabyboan/hesm-gestion-rrhh
 - Repositorio Consulta Horas: https://github.com/gabyboan/consulta-horas
+- Repositorio Suplencias Propuesta: https://github.com/gabyboan/app-suplencias-propuesta
 - Sitio oficial: https://bsoftware.pages.dev/
 
 ## Enfoque
