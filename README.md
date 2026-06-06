@@ -5,9 +5,9 @@
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-publicado-f38020?logo=cloudflare&logoColor=white)](https://bsoftware.pages.dev/)
 [![SEO](https://img.shields.io/badge/SEO-sitemap_robots_llms-22c55e)](https://bsoftware.pages.dev/sitemap.xml)
 
-Sitio publico de B-Software para presentar servicios, proyectos reales y
-capacidad tecnica en desarrollo web, sistemas internos, automatizaciones,
-observabilidad y despliegues modernos.
+Sitio publico de B-Software para presentar servicios, productos reales y
+capacidad tecnica en desarrollo web, sistemas internos, aplicaciones operativas,
+automatizaciones, observabilidad y despliegues modernos.
 
 ## Enlaces
 
@@ -18,18 +18,23 @@ observabilidad y despliegues modernos.
 ## Que muestra
 
 - Servicios de desarrollo web y software empresarial.
-- Portfolio con proyectos institucionales y operativos.
+- Portfolio con proyectos institucionales, operativos y portales publicos.
 - Metadata para compartir en LinkedIn, GitHub, WhatsApp y plataformas freelance.
 - `robots.txt`, `sitemap.xml`, `llms.txt` y datos estructurados Schema.org.
 - Verificacion de Google Search Console por archivo HTML y meta tag.
 
 ## Proyectos destacados
 
-| Proyecto | Tipo | Stack principal |
-| --- | --- | --- |
-| Legajo Digital | Sistema interno | Next.js, React, Supabase |
-| HESM Gestion RRHH | Escritorio operativo | Flutter, Riverpod, Supabase |
-| Consulta Horas | Portal publico + API | Cloudflare Pages, Worker, Turnstile |
+| Proyecto | Tipo | Stack principal | Repositorio |
+| --- | --- | --- | --- |
+| Legajo Digital | Sistema interno | Next.js, React, Supabase | [gabyboan/legajo-digital](https://github.com/gabyboan/legajo-digital) |
+| HESM Gestion RRHH | Escritorio operativo | Flutter, Riverpod, Supabase | [gabyboan/hesm-gestion-rrhh](https://github.com/gabyboan/hesm-gestion-rrhh) |
+| Consulta Horas | Portal publico + API | Cloudflare Pages, Worker, Turnstile | [gabyboan/consulta-horas](https://github.com/gabyboan/consulta-horas) |
+| Suplencias Propuesta | Aplicacion operativa | Flutter, Dart, Supabase, PostgreSQL | [gabyboan/app-suplencias-propuesta](https://github.com/gabyboan/app-suplencias-propuesta) |
+
+`Suplencias Propuesta` se incluye como producto en desarrollo activo: ya cuenta
+con autenticacion, roles, conexion con Supabase y documentacion publica sin
+credenciales ni datos reales.
 
 ## Tecnologias
 
