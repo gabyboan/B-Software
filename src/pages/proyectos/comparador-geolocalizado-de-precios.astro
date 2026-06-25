@@ -1,0 +1,200 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Comparador geolocalizado de precios | Caso de estudio B-Software";
+const description =
+  "Caso de estudio de una aplicación Flutter y Supabase para comparar productos, precios, sucursales y nivel de certeza de cada fuente.";
+const canonical = "https://bsoftware.pages.dev/proyectos/comparador-geolocalizado-de-precios/";
+
+const capabilities = [
+  "Búsqueda y comparación de productos.",
+  "Geolocalización y sucursales cercanas.",
+  "Favoritos y lista o carrito estimado.",
+  "Arquitectura Flutter + Supabase.",
+  "RPCs seguras y políticas RLS.",
+  "Pipeline NDJSON para ingestión.",
+  "Separación entre precio local verificable, precio online y precio observado.",
+  "Validación de una fuente local real con sucursal, precio, disponibilidad, evidencia y fecha.",
+  "Análisis de viabilidad de fuentes antes de publicar datos.",
+];
+
+const sourceLevels = [
+  {
+    title: "Precio local verificable",
+    description:
+      "La evidencia relaciona producto, precio y sucursal, con disponibilidad, fecha y origen suficientes para sostener el dato.",
+    level: "Mayor certeza",
+  },
+  {
+    title: "Precio online",
+    description:
+      "Es una referencia publicada para comercio electrónico, sin asumir que representa stock o precio de una sucursal cercana.",
+    level: "Referencia digital",
+  },
+  {
+    title: "Precio observado",
+    description:
+      "Registro con fuente y fecha que puede aportar contexto, pero requiere una lectura explícita de su alcance y vigencia.",
+    level: "Contexto temporal",
+  },
+];
+
+const caseStudyStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: "Comparador geolocalizado de precios",
+  headline: "Comparador geolocalizado de precios",
+  description,
+  url: canonical,
+  inLanguage: "es-AR",
+  creator: {
+    "@type": "Organization",
+    name: "B-Software",
+    url: "https://bsoftware.pages.dev/",
+  },
+  about: [
+    "Desarrollo Flutter",
+    "Supabase",
+    "PostgreSQL",
+    "Geolocalización",
+    "Comparación de precios",
+    "Seguridad RLS",
+    "Ingestión NDJSON",
+  ],
+};
+---
+
+<Layout {title} {description} {canonical} ogType="article">
+  <script type="application/ld+json" set:html={JSON.stringify(caseStudyStructuredData)} />
+
+  <main>
+    <article class="case-study">
+      <header class="case-study-hero">
+        <div>
+          <a class="back-link" href="/#proyectos">← Volver a proyectos</a>
+          <p class="eyebrow">Caso de estudio</p>
+          <h1>Comparador geolocalizado de precios</h1>
+          <p class="case-study-lead">
+            Aplicación mobile-first para comparar productos, precios, sucursales y nivel de certeza de cada fuente.
+          </p>
+          <div class="case-status">
+            <span>Estado del caso</span>
+            <strong>Proyecto de investigación y demostración técnica</strong>
+          </div>
+        </div>
+        <div class="case-visual" aria-label="Representación neutral de la aplicación mobile-first">
+          <div class="case-phone">
+            <span class="case-phone-bar"></span>
+            <div class="case-search">Producto o categoría</div>
+            <div class="case-product">
+              <span></span>
+              <div><strong>Comparación cercana</strong><small>Fuentes clasificadas</small></div>
+            </div>
+            <div class="certainty-row"><span>Sucursal y evidencia</span><strong>Verificable</strong></div>
+            <div class="certainty-row"><span>Precio online</span><strong>Referencia</strong></div>
+            <div class="certainty-row"><span>Observación fechada</span><strong>Contexto</strong></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="case-study-section case-summary">
+        <div>
+          <p class="eyebrow">Problema</p>
+          <h2>Comparar no alcanza si el dato pierde su contexto</h2>
+        </div>
+        <p>
+          Una misma cadena puede mostrar información distinta según canal, ubicación o momento. El desafío técnico es ofrecer una comparación útil sin transformar una referencia online en una afirmación de precio o disponibilidad local.
+        </p>
+      </section>
+
+      <section class="case-study-section">
+        <div class="section-heading">
+          <p class="eyebrow">Capacidades</p>
+          <h2>Producto, ubicación y evidencia en un mismo flujo</h2>
+        </div>
+        <div class="capability-grid">
+          {capabilities.map((capability, index) => (
+            <article>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{capability}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="case-study-section source-section">
+        <div class="section-heading">
+          <p class="eyebrow">Modelo de certeza</p>
+          <h2>Tres tipos de precio, tres alcances diferentes</h2>
+        </div>
+        <div class="source-grid">
+          {sourceLevels.map((source) => (
+            <article>
+              <p class="source-level">{source.level}</p>
+              <h3>{source.title}</h3>
+              <p>{source.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="case-study-section decision-block">
+        <p class="eyebrow">Decisión técnica</p>
+        <h2>La certeza forma parte del producto</h2>
+        <blockquote>
+          No todas las cadenas exponen precio y stock por sucursal de forma pública y reutilizable. Por eso el sistema clasifica las fuentes según su nivel de certeza y evita presentar datos online como disponibilidad local confirmada.
+        </blockquote>
+      </section>
+
+      <section class="case-study-section validation-section">
+        <div>
+          <p class="eyebrow">Validación de fuentes</p>
+          <h2>Publicar después de comprobar viabilidad</h2>
+        </div>
+        <div>
+          <p>
+            Antes de incorporar una fuente se analiza si permite sostener la relación entre sucursal, precio, disponibilidad, evidencia y fecha. La ingestión mediante NDJSON separa la recolección de la publicación y permite revisar estructura, trazabilidad y calidad.
+          </p>
+          <p>
+            El caso demuestra la validación técnica de una fuente local real sin identificar cadenas, clientes, URLs privadas ni mecanismos de extracción.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-study-section stack-block">
+        <div>
+          <p class="eyebrow">Stack</p>
+          <h2>Arquitectura del caso</h2>
+        </div>
+        <p>Flutter · Dart · Supabase · PostgreSQL · RPC · RLS · Cloudflare · NDJSON · Scraping responsable</p>
+      </section>
+
+      <section class="case-study-section case-cta">
+        <div>
+          <p class="eyebrow">¿Tenés un proceso para ordenar?</p>
+          <h2>Definamos una primera etapa verificable</h2>
+        </div>
+        <a class="button primary" href="/#contacto">Solicitar presupuesto</a>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-brand" href="/" aria-label="B-Software inicio">
+        <span class="footer-logo">
+          <img src="/brand/logo-b.png" alt="" width="64" height="64" loading="lazy" />
+        </span>
+        <span>
+          <strong>B Software</strong>
+          <small>Sistemas internos, Flutter e integraciones</small>
+        </span>
+      </a>
+      <nav class="footer-links" aria-label="Enlaces secundarios">
+        <a href="/#servicios">Servicios</a>
+        <a href="/#proyectos">Proyectos</a>
+        <a href="/#contacto">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+</Layout>

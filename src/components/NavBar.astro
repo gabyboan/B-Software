@@ -1,12 +1,11 @@
 ---
 const items = [
-  { href: "#calidad", label: "Calidad" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#automatizaciones", label: "Automatizaciones" },
-  { href: "#github", label: "GitHub" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#proyectos", label: "Proyectos" },
+  { href: "/#metodo", label: "Cómo trabajo" },
+  { href: "/#calidad", label: "Calidad" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 ---
 
@@ -29,5 +28,15 @@ const items = [
     </nav>
 
     <a class="nav-cta" href="https://wa.me/5493434064408" target="_blank" rel="noreferrer">WhatsApp</a>
+
+    <details class="mobile-nav">
+      <summary aria-label="Abrir menú de navegación">Menú</summary>
+      <nav aria-label="Principal móvil">
+        {items.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+        <a href="https://wa.me/5493434064408" target="_blank" rel="noreferrer">WhatsApp</a>
+      </nav>
+    </details>
   </div>
 </header>

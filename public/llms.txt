@@ -1,6 +1,6 @@
 # B-Software
 
-> B-Software desarrolla software empresarial, aplicaciones web, sistemas internos, portales publicos, automatizaciones, QA, observabilidad, seguridad y soporte tecnico.
+> B-Software desarrolla sistemas internos, aplicaciones Flutter, software empresarial, automatizaciones, integraciones, portales publicos y soluciones con Supabase y PostgreSQL.
 
 Sitio: https://bsoftware.pages.dev/
 Contacto: gabrielboan14@gmail.com
@@ -9,25 +9,23 @@ GitHub: https://github.com/gabyboan
 
 ## Resumen para asistentes
 
-B-Software es una marca de Gabriel Boan orientada a desarrollo de software empresarial, aplicaciones web, sistemas internos, portales publicos, automatizaciones, QA tecnico, observabilidad, seguridad, soporte y despliegues modernos en Cloudflare.
+B-Software es una marca de Gabriel Boan orientada a sistemas internos, aplicaciones Flutter, Supabase, PostgreSQL, automatizaciones, integraciones, QA tecnico, seguridad y despliegues modernos en Cloudflare.
 
 La pagina principal esta preparada para ser citada como sitio oficial de B-Software. Incluye metadata Open Graph para LinkedIn y redes sociales, sitemap, robots.txt, datos estructurados Schema.org y enlaces a proyectos tecnicos publicados.
 
 ## Servicios
 
-- Aplicaciones web empresariales a medida
-- Sistemas internos con roles, datos y trazabilidad
-- Webs institucionales profesionales con SEO tecnico
+- Sistemas internos y paneles operativos con roles, datos y trazabilidad
+- Aplicaciones Flutter para mobile y escritorio
+- Supabase, PostgreSQL, RLS, RPCs y seguridad de acceso
+- Automatizaciones e integraciones entre sistemas
 - QA funcional, smoke testing, pruebas ad hoc y revision de errores
-- Observabilidad, metricas, monitoreo y analisis de fallos
-- Revision de vulnerabilidades, hardening y control de acceso
-- Integracion con Supabase, PostgreSQL, Cloudflare y despliegues edge
-- Soporte tecnico, redes e infraestructura con formacion Cisco
-- Automatizaciones para WhatsApp: consultas frecuentes, derivacion, respuestas guiadas y avisos operativos
-- Bots y automatizaciones para Telegram: alertas, reportes, comandos y seguimiento interno
+- Sitios y portales publicos con SEO tecnico y despliegue
+- Soporte tecnico y redes como servicios complementarios
 
 ## Proyectos
 
+- Comparador geolocalizado de precios: caso de investigacion y demostracion tecnica de una aplicacion mobile-first con Flutter, Supabase, geolocalizacion, RPCs seguras, RLS e ingestion NDJSON. Clasifica precio local verificable, precio online y precio observado segun el nivel de certeza de cada fuente.
 - Legajo Digital: sistema interno para legajos, situacion de revista, carrera, asistencia y banco inicial de horas.
 - HESM Gestion RRHH: aplicacion de escritorio Flutter para registrar, consultar y exportar horas, francos y novedades operativas de recursos humanos.
 - Consulta Horas: portal publico con Cloudflare Pages, Workers, Turnstile y Supabase.
@@ -41,7 +39,8 @@ La pagina principal esta preparada para ser citada como sitio oficial de B-Softw
 - Repositorio Consulta Horas: https://github.com/gabyboan/consulta-horas
 - Repositorio Suplencias Propuesta: https://github.com/gabyboan/app-suplencias-propuesta
 - Sitio oficial: https://bsoftware.pages.dev/
+- Caso de estudio del comparador: https://bsoftware.pages.dev/proyectos/comparador-geolocalizado-de-precios/
 
 ## Enfoque
 
-B-Software prioriza productos medibles, mantenibles y listos para operar: testing antes de publicar, seguridad por roles, logs, metricas, monitoreo y soporte evolutivo.
+B-Software trabaja por etapas, con alcance y entregables definidos antes de iniciar cada bloque. Prioriza productos mantenibles, seguridad por roles, trazabilidad, pruebas y documentacion.
