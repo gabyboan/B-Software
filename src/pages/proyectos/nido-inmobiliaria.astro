@@ -1,0 +1,233 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Nido Inmobiliaria | Beta técnica de producto B-Software";
+const description =
+  "Nido Inmobiliaria es una aplicación Flutter en beta técnica para explorar propiedades, validar autenticación y preparar distribución web y Android.";
+const canonical = "https://bsoftware.pages.dev/proyectos/nido-inmobiliaria/";
+const demoUrl = "https://gabyboan.github.io/inmobiliaria-app/";
+const repositoryUrl = "https://github.com/gabyboan/inmobiliaria-app";
+
+const currentState = [
+  { state: "Disponible", title: "Web desplegada", text: "La beta Flutter Web se publica automáticamente en GitHub Pages." },
+  { state: "En validación", title: "Autenticación Google", text: "La integración OAuth existe y requiere completar la validación del flujo real por plataforma." },
+  { state: "En preparación", title: "APK Android beta", text: "La aplicación Android está configurada, pero todavía no se presenta como distribución pública terminada." },
+  { state: "En evolución", title: "Flujo inmobiliario", text: "Catálogo, intención del usuario y filtros básicos forman una base que todavía debe probarse como recorrido completo." },
+  { state: "Próximas etapas", title: "Producto operativo", text: "Consolidar propiedades y filtros, completar favoritos y contacto, y diseñar un futuro panel de gestión." },
+];
+
+const decisions = [
+  {
+    number: "01",
+    title: "Flutter para Web y Android",
+    text: "Una misma base de interfaz permite validar la experiencia web mientras se prepara el artefacto Android.",
+  },
+  {
+    number: "02",
+    title: "Supabase para catálogo e identidad",
+    text: "PostgreSQL, Storage, RLS y Supabase Auth sostienen propiedades publicadas, medios y sesiones.",
+  },
+  {
+    number: "03",
+    title: "OAuth según la plataforma",
+    text: "Web y Android necesitan redirects distintos; la implementación existe, pero el login real sigue en validación.",
+  },
+  {
+    number: "04",
+    title: "Validación antes de publicar",
+    text: "GitHub Actions ejecuta análisis, pruebas y build antes de desplegar automáticamente la versión web.",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${canonical}#software`,
+      name: "Nido Inmobiliaria",
+      description,
+      url: canonical,
+      sameAs: [demoUrl, repositoryUrl],
+      codeRepository: repositoryUrl,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web; Android beta en preparación",
+      softwareVersion: "0.1.0 beta técnica",
+      inLanguage: ["es", "en"],
+      isAccessibleForFree: true,
+      author: { "@id": "https://bsoftware.pages.dev/#organization" },
+      featureList: [
+        "Catálogo de propiedades en beta",
+        "Filtros básicos por operación",
+        "Interfaz adaptable a móvil y escritorio",
+        "Base de autenticación OAuth en validación",
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: "https://bsoftware.pages.dev/" },
+        { "@type": "ListItem", position: 2, name: "Proyectos", item: "https://bsoftware.pages.dev/#proyectos" },
+        { "@type": "ListItem", position: 3, name: "Nido Inmobiliaria", item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<Layout {title} {description} {canonical} ogType="article" navVariant="compact">
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <main class="nido-page">
+    <article>
+      <header class="nido-hero">
+        <a class="back-link" href="/#proyectos">← Volver a proyectos</a>
+        <p class="nido-label">Producto en desarrollo · Beta técnica</p>
+        <div class="nido-heading">
+          <h1>Una base digital para explorar y administrar propiedades.</h1>
+          <div class="nido-lead">
+            <p>
+              Nido es una aplicación inmobiliaria en Flutter orientada a navegación de propiedades, autenticación y experiencia móvil, con web pública y distribución Android en preparación.
+            </p>
+            <div class="nido-actions">
+              <a href={demoUrl} target="_blank" rel="noreferrer">Abrir beta web ↗</a>
+              <a href={repositoryUrl} target="_blank" rel="noreferrer">Ver código ↗</a>
+            </div>
+          </div>
+        </div>
+        <dl class="nido-facts" aria-label="Estado resumido de Nido Inmobiliaria">
+          <div><dt>Estado</dt><dd>Beta técnica</dd></div>
+          <div><dt>Plataformas</dt><dd>Web · Android en preparación</dd></div>
+          <div><dt>Interfaz</dt><dd>Flutter</dd></div>
+          <div><dt>Backend</dt><dd>Supabase</dd></div>
+        </dl>
+      </header>
+
+      <section class="nido-section solve-section" aria-labelledby="solve-title">
+        <div>
+          <p class="section-number">01 / Qué resuelve</p>
+          <h2 id="solve-title">Una primera experiencia para buscar, decidir y volver.</h2>
+        </div>
+        <div class="solve-list">
+          <article><span>Explorar</span><p>Catálogo de propiedades para alquiler o venta, con información estructurada y filtros básicos.</p></article>
+          <article><span>Adaptar</span><p>Interfaz responsive que conserva el recorrido principal en web, móvil y escritorio.</p></article>
+          <article><span>Identificar</span><p>Base de sesiones con Supabase Auth y proveedores OAuth todavía en validación real.</p></article>
+          <article><span>Evolucionar</span><p>Estructura preparada para completar favoritos, contacto y una futura gestión operativa.</p></article>
+          <article><span>Distribuir</span><p>Beta web desplegada y configuración Android sobre la que se prepara un APK de prueba.</p></article>
+        </div>
+      </section>
+
+      <section class="state-section" aria-labelledby="state-title">
+        <div class="state-inner">
+          <div class="state-heading">
+            <p class="section-number">02 / Estado actual</p>
+            <h2 id="state-title">Lo que existe y lo que todavía necesita validarse.</h2>
+            <p>La página separa evidencia funcional de próximos pasos para no presentar la beta como un producto comercial terminado.</p>
+          </div>
+          <div class="state-list">
+            {currentState.map((item, index) => (
+              <article>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div><small>{item.state}</small><h3>{item.title}</h3></div>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="nido-section decisions-section" aria-labelledby="decisions-title">
+        <div class="decisions-heading">
+          <p class="section-number">03 / Decisiones técnicas</p>
+          <h2 id="decisions-title">Una beta completa también necesita límites claros.</h2>
+        </div>
+        <div class="decisions-grid">
+          {decisions.map((decision) => (
+            <article><span>{decision.number}</span><h3>{decision.title}</h3><p>{decision.text}</p></article>
+          ))}
+        </div>
+      </section>
+
+      <section class="product-view" aria-labelledby="product-view-title">
+        <div class="product-view-copy">
+          <p class="section-number">04 / Vista del producto</p>
+          <h2 id="product-view-title">La navegación se diseña primero para la decisión.</h2>
+          <p>
+            Esta representación HTML/CSS toma la estructura funcional de la beta —intención, catálogo, filtros y navegación—. Es una vista conceptual, no una captura de producción.
+          </p>
+        </div>
+
+        <div class="nido-mockup" role="img" aria-label="Interfaz conceptual de Nido con filtros de alquiler y venta, y tarjetas de propiedades">
+          <div class="mockup-topbar">
+            <div class="mockup-brand"><span>N</span><strong>Nido</strong></div>
+            <div class="mockup-actions"><span>ES</span><span>Tema</span><span>Cuenta</span></div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-intro"><small>Explorar</small><strong>Encontrá un lugar para tu próxima etapa.</strong></div>
+            <div class="mockup-filters"><span class="active">Todas</span><span>Alquiler</span><span>Venta</span></div>
+            <div class="mockup-grid">
+              <article><div class="property-placeholder"><span>Disponible</span></div><small>Paraná · Entre Ríos</small><strong>Departamento luminoso</strong><p>2 dormitorios · 68 m²</p></article>
+              <article><div class="property-placeholder alternate"><span>En venta</span></div><small>Paraná · Entre Ríos</small><strong>Casa con patio</strong><p>3 dormitorios · 140 m²</p></article>
+            </div>
+          </div>
+          <div class="mockup-nav"><span class="active">Explorar</span><span>Favoritos</span><span>Alertas</span><span>Cuenta</span></div>
+        </div>
+      </section>
+
+      <section class="nido-section learning-section" aria-labelledby="learning-title">
+        <div>
+          <p class="section-number">05 / Aprendizajes de producto</p>
+          <h2 id="learning-title">Publicar una interfaz no completa el producto.</h2>
+        </div>
+        <div class="learning-list">
+          <article><span>Web y Android</span><p>Un mismo login necesita redirects, callbacks y configuración diferentes en cada plataforma.</p></article>
+          <article><span>OAuth</span><p>Los botones y el código son sólo una parte: proveedores, dominios y sesiones deben probarse extremo a extremo.</p></article>
+          <article><span>Flujo real</span><p>Catálogo, favoritos y contacto necesitan validarse juntos antes de considerar publicable la experiencia.</p></article>
+        </div>
+      </section>
+
+      <section class="nido-cta">
+        <div><p class="nido-label">Producto digital por etapas</p><h2>¿Tenés una idea que necesita convertirse en una primera versión usable?</h2></div>
+        <a class="button primary" href="/#contacto">Conversemos</a>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-brand" href="/" aria-label="B-Software inicio">
+        <span class="footer-logo"><img src="/brand/logo-b.png" alt="" width="64" height="64" loading="lazy" /></span>
+        <span><strong>B Software</strong><small>Sistemas internos, Flutter e integraciones</small></span>
+      </a>
+      <nav class="footer-links" aria-label="Enlaces secundarios">
+        <a href="/#proyectos">Proyectos</a><a href="/sobre-b-software/">Sobre B-Software</a><a href="/#contacto">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .nido-page { --nido: #566a5d; --nido-dark: #1b241e; --nido-soft: #e7ece8; color: #171815; background: #f5f4f0; }
+  .nido-hero, .nido-section, .nido-cta { max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
+  .nido-hero { padding-top: 64px; padding-bottom: 64px; }
+  .nido-label, .section-number { color: var(--nido); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+  .nido-heading { display: grid; grid-template-columns: 1.18fr .82fr; gap: 72px; align-items: end; }
+  .nido-heading h1 { max-width: 900px; font-size: clamp(3.4rem, 7vw, 7rem); line-height: .92; letter-spacing: -.06em; }
+  .nido-lead { padding-bottom: 8px; }.nido-lead > p { color: #62665f; font-size: 1.06rem; line-height: 1.8; }
+  .nido-actions { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 18px; }.nido-actions a { color: var(--nido); font-weight: 900; }.nido-actions a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .nido-facts { margin: 58px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #cbc9c2; border-bottom: 1px solid #cbc9c2; }.nido-facts div { padding: 18px 16px 18px 0; }.nido-facts div + div { border-left: 1px solid #cbc9c2; padding-left: 18px; }.nido-facts dt { color: #777b75; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }.nido-facts dd { margin: 7px 0 0; font-weight: 850; }
+  .nido-section { padding-top: 100px; padding-bottom: 100px; }.solve-section, .learning-section { display: grid; grid-template-columns: .82fr 1.18fr; gap: 86px; }.nido-section h2, .state-heading h2, .product-view-copy h2, .nido-cta h2 { font-size: clamp(2.35rem, 4.7vw, 4.6rem); letter-spacing: -.045em; }
+  .solve-list { border-top: 1px solid #c7c5be; }.solve-list article { display: grid; grid-template-columns: .36fr .64fr; gap: 24px; border-bottom: 1px solid #c7c5be; padding: 22px 0; }.solve-list span { color: var(--nido); font-size: .72rem; font-weight: 900; text-transform: uppercase; }.solve-list p { color: #62665f; line-height: 1.7; }
+  .state-section { color: #f4f4f1; background: var(--nido-dark); }.state-inner { max-width: 1180px; margin: 0 auto; padding: 100px 20px; display: grid; grid-template-columns: .78fr 1.22fr; gap: 86px; }.state-heading .section-number { color: #aec0b3; }.state-heading > p:last-child { margin-top: 22px; color: rgb(255 255 255 / .62); line-height: 1.75; }.state-list { border-top: 1px solid rgb(255 255 255 / .17); }.state-list article { display: grid; grid-template-columns: 42px .72fr 1.28fr; gap: 20px; border-bottom: 1px solid rgb(255 255 255 / .17); padding: 24px 0; }.state-list article > span { color: #aec0b3; font-size: .7rem; font-weight: 900; }.state-list small { color: #aec0b3; font-size: .64rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }.state-list h3 { margin-top: 6px; font-size: 1.1rem; }.state-list article > p { color: rgb(255 255 255 / .65); line-height: 1.65; }
+  .decisions-heading { display: grid; grid-template-columns: .32fr .68fr; gap: 48px; }.decisions-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #c7c5be; }.decisions-grid article { min-height: 270px; padding: 22px 22px 22px 0; }.decisions-grid article + article { border-left: 1px solid #c7c5be; padding-left: 22px; }.decisions-grid span { color: var(--nido); font-size: .7rem; font-weight: 900; }.decisions-grid h3 { margin-top: 46px; font-size: 1.2rem; }.decisions-grid p { margin-top: 13px; color: #62665f; line-height: 1.65; }
+  .product-view { max-width: 1260px; margin: 20px auto 0; display: grid; grid-template-columns: .72fr 1.28fr; overflow: hidden; border: 1px solid #c8cbc7; border-radius: 10px; background: #eef1ee; }.product-view-copy { display: flex; flex-direction: column; justify-content: flex-end; padding: 44px; }.product-view-copy > p:last-child { margin-top: 22px; color: #62665f; line-height: 1.8; }
+  .nido-mockup { min-height: 650px; margin: 22px; display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; border: 1px solid #bdc5bf; border-radius: 12px; background: #fafbf9; box-shadow: 0 20px 44px rgb(27 36 30 / .1); }.mockup-topbar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #d7dbd8; padding: 14px 18px; }.mockup-brand, .mockup-actions, .mockup-filters, .mockup-nav { display: flex; align-items: center; gap: 10px; }.mockup-brand > span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; color: #fff; background: var(--nido-dark); font-weight: 900; }.mockup-actions span { color: #70766f; font-size: .66rem; font-weight: 850; }.mockup-content { padding: 28px; }.mockup-intro small { color: var(--nido); font-weight: 900; text-transform: uppercase; }.mockup-intro strong { max-width: 510px; display: block; margin-top: 7px; font-size: 1.8rem; letter-spacing: -.03em; }.mockup-filters { margin-top: 22px; }.mockup-filters span { border: 1px solid #cbd0cb; border-radius: 999px; padding: 7px 10px; color: #697069; font-size: .68rem; font-weight: 850; }.mockup-filters .active { border-color: var(--nido); color: #fff; background: var(--nido); }.mockup-grid { margin-top: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }.mockup-grid article { overflow: hidden; border: 1px solid #d4d8d4; border-radius: 9px; background: #fff; }.property-placeholder { min-height: 180px; position: relative; background-color: #dfe6e1; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='180' viewBox='0 0 240 180'%3E%3Cpath d='M48 142V75l72-49 72 49v67M83 142V95h74v47M105 142v-30h30v30' fill='none' stroke='%23566a5d' stroke-width='2'/%3E%3C/svg%3E"); background-position: center; background-repeat: no-repeat; }.property-placeholder.alternate { background-color: #e7e2da; }.property-placeholder span { position: absolute; top: 12px; left: 12px; border-radius: 999px; padding: 6px 8px; color: #fff; background: var(--nido-dark); font-size: .62rem; font-weight: 850; }.mockup-grid article > small, .mockup-grid article > strong, .mockup-grid article > p { display: block; margin-inline: 14px; }.mockup-grid article > small { margin-top: 14px; color: #7b817b; }.mockup-grid article > strong { margin-top: 7px; }.mockup-grid article > p { margin-top: 6px; margin-bottom: 16px; color: #7b817b; font-size: .72rem; }.mockup-nav { justify-content: space-around; border-top: 1px solid #d7dbd8; padding: 14px; }.mockup-nav span { color: #858b85; font-size: .66rem; font-weight: 850; }.mockup-nav .active { color: var(--nido-dark); }
+  .learning-list { border-top: 1px solid #c7c5be; }.learning-list article { display: grid; grid-template-columns: .35fr .65fr; gap: 24px; border-bottom: 1px solid #c7c5be; padding: 24px 0; }.learning-list span { color: var(--nido); font-weight: 900; }.learning-list p { color: #62665f; line-height: 1.7; }
+  .nido-cta { margin-bottom: 70px; display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: end; border-radius: 10px; padding-top: 64px; padding-bottom: 64px; color: #fff; background: var(--nido-dark); }.nido-cta .nido-label { color: #aec0b3; }.nido-cta .button { background: #fff; color: var(--nido-dark); }
+  @media (max-width: 900px) {
+    .nido-heading, .solve-section, .state-inner, .decisions-heading, .product-view, .learning-section, .nido-cta { grid-template-columns: 1fr; }.nido-heading, .solve-section, .state-inner, .learning-section { gap: 44px; }.nido-facts, .decisions-grid { grid-template-columns: 1fr 1fr; }.nido-facts div:nth-child(3) { border-left: 0; border-top: 1px solid #cbc9c2; }.nido-facts div:nth-child(4) { border-top: 1px solid #cbc9c2; }.decisions-grid article:nth-child(3) { border-left: 0; }.decisions-grid article:nth-child(n+3) { border-top: 1px solid #c7c5be; }.product-view { margin-inline: 14px; }.nido-mockup { margin-top: 0; }.nido-cta { margin-inline: 14px; }.nido-cta .button { justify-self: stretch; }
+  }
+  @media (max-width: 560px) {
+    .nido-hero, .nido-section, .state-inner, .nido-cta { padding-inline: 14px; }.nido-heading h1 { font-size: clamp(3rem, 15vw, 4.2rem); }.nido-facts, .decisions-grid { grid-template-columns: 1fr; }.nido-facts div + div, .nido-facts div:nth-child(3) { border-left: 0; border-top: 1px solid #cbc9c2; padding-left: 0; }.state-list article { grid-template-columns: 34px 1fr; }.state-list article > p { grid-column: 2; }.decisions-grid article + article { border-left: 0; border-top: 1px solid #c7c5be; padding-left: 0; }.decisions-grid article { min-height: auto; }.product-view-copy { padding: 30px; }.nido-mockup { min-height: 720px; margin: 12px; }.mockup-content { padding: 18px; }.mockup-grid { grid-template-columns: 1fr; }.mockup-grid article:nth-child(2) { display: none; }.mockup-nav { gap: 8px; }.nido-cta { margin-bottom: 30px; padding: 42px 20px; }
+  }
+</style>

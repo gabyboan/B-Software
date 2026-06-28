@@ -38,12 +38,21 @@ Investigacion y demostracion tecnica de una aplicacion mobile-first con Flutter,
 
 Caso completo: https://bsoftware.pages.dev/proyectos/comparador-geolocalizado-de-precios/
 
+### Nido Inmobiliaria
+
+Producto Flutter en beta tecnica para explorar propiedades y validar una experiencia web y Android. La version web esta desplegada; la autenticacion OAuth se encuentra en validacion, el APK Android esta en preparacion y el flujo inmobiliario continua en evolucion.
+
+Caso y estado: https://bsoftware.pages.dev/proyectos/nido-inmobiliaria/
+Beta web: https://gabyboan.github.io/inmobiliaria-app/
+Repositorio: https://github.com/gabyboan/inmobiliaria-app
+
 ## Repositorios relacionados
 
 - Legajo Digital: https://github.com/gabyboan/legajo-digital
 - HESM Gestion RRHH: https://github.com/gabyboan/hesm-gestion-rrhh
 - Consulta Horas: https://github.com/gabyboan/consulta-horas
 - Suplencias Propuesta: https://github.com/gabyboan/app-suplencias-propuesta
+- Nido Inmobiliaria: https://github.com/gabyboan/inmobiliaria-app
 
 ## Forma de trabajo
 
