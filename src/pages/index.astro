@@ -260,11 +260,23 @@ const structuredData = {
             <p>Una base Flutter para explorar propiedades, validar autenticación y preparar una distribución web y Android.</p>
             <a class="case-link" href="/proyectos/nido-inmobiliaria/">Ver caso de producto <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="nido-preview" aria-hidden="true">
-            <div class="nido-preview-head"><strong>Nido</strong><span>Beta</span></div>
-            <div class="nido-preview-filters"><span>Alquiler</span><span>Venta</span></div>
-            <div class="nido-preview-grid"><span></span><span></span><span></span></div>
-          </div>
+          <a
+            class="nido-preview"
+            href="https://gabyboan.github.io/inmobiliaria-app/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Abrir la beta web real de Nido Inmobiliaria"
+          >
+            <img
+              src="/nido-inmobiliaria-beta.png"
+              alt="Pantalla real de Nido Inmobiliaria con las opciones Alquilar, Comprar, Vender y Publicar mi propiedad"
+              width="960"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>Vista real · Beta web <b aria-hidden="true">↗</b></span>
+          </a>
         </article>
       </div>
     </section>
@@ -467,7 +479,7 @@ const structuredData = {
   .price-label { position: absolute; border: 1px solid #c6daca; border-radius: 999px; padding: 8px 10px; color: #285c3b; background: rgb(255 255 255 / .9); font-size: .7rem; font-weight: 850; }.label-local { top: 13%; left: 12%; }.label-online { right: 8%; top: 34%; }.label-date { bottom: 12%; left: 18%; }
   .development-case { min-height: 310px; display: grid; grid-template-columns: 1.12fr .88fr; overflow: hidden; border: 1px solid #cbd0cb; border-radius: 10px; background: #eef1ee; }
   .development-copy { display: flex; flex-direction: column; padding: 34px; }.development-copy .case-kicker { color: #566a5d; }.development-copy h3 { margin-top: 14px; font-size: clamp(1.9rem, 3.2vw, 3rem); letter-spacing: -.04em; }.development-copy > p:not(.case-kicker) { max-width: 650px; margin-top: 14px; color: #62665f; line-height: 1.65; }.development-copy .case-link { margin-top: auto; color: #46594c; }
-  .nido-preview { margin: 18px; border: 1px solid #bdc5bf; border-radius: 8px; padding: 18px; background: #fafbf9; }.nido-preview-head { display: flex; justify-content: space-between; align-items: center; }.nido-preview-head strong { font-size: 1.1rem; }.nido-preview-head span { border-radius: 999px; padding: 5px 8px; color: #fff; background: #1b241e; font-size: .6rem; font-weight: 850; text-transform: uppercase; }.nido-preview-filters { margin-top: 32px; display: flex; gap: 7px; }.nido-preview-filters span { border: 1px solid #c6cec8; border-radius: 999px; padding: 6px 9px; color: #566a5d; font-size: .65rem; font-weight: 850; }.nido-preview-grid { margin-top: 16px; display: grid; grid-template-columns: 1.2fr .8fr; grid-template-rows: 72px 72px; gap: 8px; }.nido-preview-grid span { border-radius: 6px; background: #dfe6e1; }.nido-preview-grid span:first-child { grid-row: 1 / 3; background: #cfdad2; }
+  .nido-preview { position: relative; min-width: 0; margin: 18px; overflow: hidden; border: 1px solid #bdc5bf; border-radius: 8px; background: #f8f7f3; }.nido-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center; }.nido-preview > span { position: absolute; right: 12px; bottom: 12px; border: 1px solid rgb(27 36 30 / .16); border-radius: 999px; padding: 7px 10px; color: #1b241e; background: rgb(255 255 255 / .94); font-size: .66rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }.nido-preview:hover, .nido-preview:focus-visible { border-color: #566a5d; outline: none; }.nido-preview:focus-visible { box-shadow: 0 0 0 3px rgb(86 106 93 / .2); }
 
   .compact-heading { grid-template-columns: .35fr .65fr; }
   .services-list { margin-top: 52px; border-top: 1px solid #c9c7c0; }
