@@ -12,6 +12,7 @@ const compactItems = [
   { href: "/#proyectos", label: "Casos" },
   { href: "/#servicios", label: "Servicios" },
   { href: "/#metodo", label: "Proceso" },
+  { href: "/sobre-b-software/", label: "Sobre" },
 ];
 
 const { variant = "default" } = Astro.props;
@@ -38,21 +39,6 @@ const cta = compact
       {items.map((item) => (
         <a href={item.href}>{item.label}</a>
       ))}
-      {compact && (
-        <details class="nav-about">
-          <summary>Sobre</summary>
-          <div class="nav-about-popover">
-            <p class="nav-about-title">Sobre B-Software</p>
-            <p>Marca profesional independiente de Gabriel Boan, enfocada en software útil para operaciones reales.</p>
-            <ul>
-              <li>Sistemas internos y aplicaciones Flutter.</li>
-              <li>Procesos, datos y permisos bien definidos.</li>
-              <li>Trabajo directo, por etapas verificables.</li>
-            </ul>
-            <a href="/sobre-b-software/">Conocer más <span aria-hidden="true">→</span></a>
-          </div>
-        </details>
-      )}
     </nav>
 
     <a class="nav-cta" href={cta.href} target={cta.external ? "_blank" : undefined} rel={cta.external ? "noreferrer" : undefined}>{cta.label}</a>
@@ -63,38 +49,8 @@ const cta = compact
         {items.map((item) => (
           <a href={item.href}>{item.label}</a>
         ))}
-        {compact && (
-          <details class="mobile-about">
-            <summary>Sobre</summary>
-            <div>
-              <p>B-Software es la marca profesional independiente de Gabriel Boan.</p>
-              <ul>
-                <li>Sistemas internos y aplicaciones Flutter.</li>
-                <li>Procesos, datos y permisos claros.</li>
-                <li>Trabajo directo y por etapas.</li>
-              </ul>
-              <a href="/sobre-b-software/">Conocer más →</a>
-            </div>
-          </details>
-        )}
         <a href={cta.href} target={cta.external ? "_blank" : undefined} rel={cta.external ? "noreferrer" : undefined}>{cta.label}</a>
       </nav>
     </details>
   </div>
 </header>
-
-{compact && (
-  <script>
-    const closeAboutMenus = (event) => {
-      document.querySelectorAll(".nav-about[open], .mobile-about[open]").forEach((menu) => {
-        if (!(menu instanceof HTMLDetailsElement)) return;
-        if (event instanceof KeyboardEvent || !menu.contains(event.target)) menu.open = false;
-      });
-    };
-
-    document.addEventListener("pointerdown", closeAboutMenus);
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeAboutMenus(event);
-    });
-  </script>
-)}
