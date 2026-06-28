@@ -1,0 +1,525 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Gestión de Recursos Humanos | Caso de estudio B-Software";
+const description =
+  "Caso de estudio del ecosistema de Recursos Humanos de B-Software: aplicaciones operativas, portal de consulta y un núcleo Supabase con permisos y trazabilidad.";
+const canonical = "https://bsoftware.pages.dev/proyectos/gestion-recursos-humanos/";
+
+const systems = [
+  {
+    index: "01",
+    title: "Legajo Digital",
+    kind: "Sistema interno",
+    description:
+      "Centraliza situación de revista, carrera, asistencia y banco inicial de horas con acceso por roles.",
+    stack: "Next.js · React · TypeScript · Supabase",
+    href: "https://github.com/gabyboan/legajo-digital",
+  },
+  {
+    index: "02",
+    title: "HESM Gestión RRHH",
+    kind: "Operación de escritorio",
+    description:
+      "Ordena la carga cotidiana de horas, francos y novedades, además de consultas y exportaciones.",
+    stack: "Flutter · Dart · Riverpod · Supabase",
+    href: "https://github.com/gabyboan/hesm-gestion-rrhh",
+  },
+  {
+    index: "03",
+    title: "Consulta Horas",
+    kind: "Portal del agente",
+    description:
+      "Separa la consulta pública del backoffice y expone únicamente la información necesaria de cada agente.",
+    stack: "Cloudflare Pages · Workers · Turnstile",
+    href: "https://github.com/gabyboan/consulta-horas",
+  },
+  {
+    index: "04",
+    title: "Suplencias Propuesta",
+    kind: "Aplicación operativa",
+    description:
+      "Registra propuestas y coberturas con autenticación, permisos, validación de períodos y control de duplicados.",
+    stack: "Flutter · Dart · PostgreSQL · Supabase",
+    href: "https://github.com/gabyboan/app-suplencias-propuesta",
+  },
+];
+
+const caseStudyStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: "Ecosistema de Gestión de Recursos Humanos",
+  headline: "Un solo núcleo para los flujos de Recursos Humanos",
+  description,
+  url: canonical,
+  inLanguage: "es-AR",
+  creator: {
+    "@type": "Organization",
+    name: "B-Software",
+    url: "https://bsoftware.pages.dev/",
+  },
+  about: [
+    "Gestión de Recursos Humanos",
+    "Sistemas internos",
+    "Flutter",
+    "Supabase",
+    "PostgreSQL",
+    "Row Level Security",
+    "Cloudflare Workers",
+  ],
+};
+---
+
+<Layout {title} {description} {canonical} ogType="article" bodyClass="rrhh-page">
+  <script type="application/ld+json" set:html={JSON.stringify(caseStudyStructuredData)} />
+
+  <main class="rrhh-case">
+    <article>
+      <header class="rrhh-hero">
+        <a class="back-link" href="/#proyectos">← Volver a proyectos</a>
+        <div class="rrhh-heading">
+          <div>
+            <p class="eyebrow">Caso de estudio · Gestión RRHH</p>
+            <h1>Un solo núcleo para los flujos de Recursos Humanos.</h1>
+          </div>
+          <p class="rrhh-lead">
+            Las entradas operativas se normalizan en una misma arquitectura. Las aplicaciones consumen funciones y vistas controladas, no datos dispersos.
+          </p>
+        </div>
+        <dl class="rrhh-facts" aria-label="Resumen del proyecto">
+          <div><dt>Dominio</dt><dd>Recursos Humanos</dd></div>
+          <div><dt>Productos</dt><dd>Web · escritorio · portal</dd></div>
+          <div><dt>Núcleo</dt><dd>Supabase · PostgreSQL</dd></div>
+          <div><dt>Controles</dt><dd>Roles · RLS · RPCs</dd></div>
+        </dl>
+      </header>
+
+      <section class="flow-section" aria-labelledby="flow-title">
+        <div class="flow-intro">
+          <div>
+            <p class="flow-label">Arquitectura operativa</p>
+            <h2 id="flow-title">Ecosistema de gestión de Recursos Humanos</h2>
+          </div>
+          <p>Cada tarjeta representa una aplicación o un módulo conectado al núcleo de datos.</p>
+        </div>
+
+        <div class="rrhh-diagram">
+          <div class="diagram-toolbar">
+            <div class="diagram-legend" aria-label="Leyenda de conexiones">
+              <span class="diagram-legend-item"><i class="diagram-legend-line sync" aria-hidden="true"></i> consulta y actualización</span>
+              <span class="diagram-legend-item"><i class="diagram-legend-line read" aria-hidden="true"></i> consulta de solo lectura</span>
+              <span class="diagram-legend-item"><i class="diagram-legend-line module" aria-hidden="true"></i> módulo dependiente</span>
+            </div>
+            <button class="diagram-reset" id="resetLayout" type="button">Restablecer disposición</button>
+          </div>
+
+          <section class="diagram-viewport" aria-label="Diagrama interactivo de aplicaciones RRHH">
+            <div id="workspace" class="diagram-workspace">
+              <svg class="diagram-edges" aria-hidden="true">
+                <defs>
+                  <marker id="arrow-sync" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#a89bf7"></path></marker>
+                  <marker id="arrow-read" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#f0b36c"></path></marker>
+                </defs>
+                <g id="edgeLayer"></g><g id="labelLayer"></g>
+              </svg>
+
+              <article class="diagram-node" data-node="legajo" tabindex="0" style="left:72px; top:58px" aria-label="Legajo Digital. Aplicación web.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Legajo Digital</span><span class="diagram-node-kind">web</span></header>
+                <ul class="diagram-fields"><li>personas</li><li>datos personales</li><li>datos laborales</li><li>banco de horas inicial</li></ul>
+              </article>
+
+              <article class="diagram-node core" data-node="supabase" tabindex="0" style="left:475px; top:245px" aria-label="Supabase HESM. Núcleo de datos.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Supabase · HESM</span><span class="diagram-node-kind">core</span></header>
+                <ul class="diagram-fields"><li>Postgres</li><li>Auth y roles</li><li>RLS y RPC</li><li>migraciones</li></ul>
+                <p class="diagram-core-note">Núcleo compartido de datos y reglas de acceso.</p>
+              </article>
+
+              <article class="diagram-node" data-node="suplencias" tabindex="0" style="left:922px; top:82px" aria-label="App Suplencias. Aplicación Android.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">App Suplencias</span><span class="diagram-node-kind">apk</span></header>
+                <ul class="diagram-fields"><li>suplencias</li><li>personas suplentes</li><li>vistas por jefatura</li></ul>
+              </article>
+
+              <article class="diagram-node" data-node="gestion" tabindex="0" style="left:58px; top:386px" aria-label="Gestión RRHH. Aplicación Windows.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Gestión RRHH</span><span class="diagram-node-kind">windows</span></header>
+                <ul class="diagram-fields"><li>novedades administrativas</li><li>horas y permisos</li><li>consulta y exportación</li></ul>
+              </article>
+
+              <article class="diagram-node read-node" data-node="consulta" tabindex="0" style="left:905px; top:470px" aria-label="Consulta de Horas. Portal de lectura.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Consulta de Horas</span><span class="diagram-node-kind">portal</span></header>
+                <ul class="diagram-fields"><li>consulta individual</li><li>acceso acotado por RPC</li><li>sin escritura directa</li></ul>
+              </article>
+
+              <article class="diagram-node module-node" data-node="licencias" tabindex="0" style="left:58px; top:655px" aria-label="Módulo de licencias médicas.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Licencias médicas</span><span class="diagram-node-kind">módulo</span></header>
+              </article>
+              <article class="diagram-node module-node" data-node="imprevistos" tabindex="0" style="left:270px; top:655px" aria-label="Módulo artículo 8, imprevistos.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Artículo 8 · imprevistos</span><span class="diagram-node-kind">módulo</span></header>
+              </article>
+              <article class="diagram-node module-node" data-node="compensatorias" tabindex="0" style="left:58px; top:728px" aria-label="Módulo horas compensatorias.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Horas compensatorias</span><span class="diagram-node-kind">módulo</span></header>
+              </article>
+              <article class="diagram-node module-node" data-node="permisos" tabindex="0" style="left:270px; top:728px" aria-label="Módulo permisos de salida.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Permisos de salida</span><span class="diagram-node-kind">módulo</span></header>
+              </article>
+              <article class="diagram-node module-node" data-node="capacitacion" tabindex="0" style="left:164px; top:801px" aria-label="Módulo capacitación.">
+                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Capacitación</span><span class="diagram-node-kind">módulo</span></header>
+              </article>
+            </div>
+          </section>
+          <p class="diagram-tip"><strong>Interacción:</strong> arrastrá nodos para reorganizar el mapa. Al pasar el cursor sobre una aplicación o módulo, se resaltan únicamente sus conexiones.</p>
+        </div>
+      </section>
+
+      <section class="rrhh-summary">
+        <div>
+          <p class="section-number">01 / El problema</p>
+          <h2>El dato pierde valor cuando cada proceso trabaja por separado</h2>
+        </div>
+        <div class="summary-copy">
+          <p>
+            Asistencia, licencias, horas y suplencias afectan a la misma persona, pero suelen vivir en planillas, mensajes o aplicaciones aisladas. Eso multiplica la carga manual y vuelve difícil explicar de dónde salió un saldo o quién modificó un registro.
+          </p>
+          <p>
+            El objetivo no fue sumar otra pantalla: fue ordenar el recorrido completo de la información y mantener una referencia consistente entre los distintos productos.
+          </p>
+        </div>
+      </section>
+
+      <section class="principles-section">
+        <div class="principles-heading">
+          <p class="section-number">02 / Decisiones</p>
+          <h2>La arquitectura sigue al proceso real</h2>
+        </div>
+        <div class="principles-list">
+          <article><span>01</span><div><h3>Un núcleo compartido</h3><p>Los productos parten de entidades, validaciones y reglas comunes para evitar versiones contradictorias del mismo dato.</p></div></article>
+          <article><span>02</span><div><h3>Acceso mínimo por canal</h3><p>El backoffice, las aplicaciones operativas y el portal público no exponen la misma superficie ni los mismos permisos.</p></div></article>
+          <article><span>03</span><div><h3>Reglas cerca de los datos</h3><p>RLS, funciones y validaciones en PostgreSQL sostienen los límites aunque cambie la interfaz que consume la información.</p></div></article>
+          <article><span>04</span><div><h3>Trazabilidad operativa</h3><p>Estados, períodos e identidad permiten reconstruir qué ocurrió sin depender de conversaciones o archivos dispersos.</p></div></article>
+        </div>
+      </section>
+
+      <section class="systems-section" aria-labelledby="systems-title">
+        <div class="systems-heading">
+          <p class="section-number">03 / Productos</p>
+          <h2 id="systems-title">Cuatro productos, un mismo dominio</h2>
+          <p>El mapa resume cómo se relacionan. Cada implementación resuelve un momento distinto de la operación.</p>
+        </div>
+        <div class="systems-list">
+          {systems.map((system) => (
+            <article class="system-row">
+              <span>{system.index}</span>
+              <div><p>{system.kind}</p><h3>{system.title}</h3></div>
+              <p>{system.description}</p>
+              <div class="system-tech"><small>{system.stack}</small><a href={system.href} target="_blank" rel="noreferrer">Ver repositorio ↗</a></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="rrhh-outcome">
+        <p class="section-number">Resultado</p>
+        <blockquote>Una arquitectura capaz de sumar nuevas interfaces sin volver a inventar identidad, permisos y reglas para cada una.</blockquote>
+        <div class="outcome-tags" aria-label="Tecnologías principales">
+          <span>Flutter</span><span>Next.js</span><span>Supabase</span><span>PostgreSQL</span><span>RLS</span><span>Cloudflare</span>
+        </div>
+      </section>
+
+      <section class="rrhh-cta">
+        <div><p class="eyebrow">¿Tenés un proceso disperso?</p><h2>Podemos convertirlo en una primera etapa verificable.</h2></div>
+        <a class="button primary" href="/#contacto">Conversemos</a>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-brand" href="/" aria-label="B-Software inicio">
+        <span class="footer-logo"><img src="/brand/logo-b.png" alt="" width="64" height="64" loading="lazy" /></span>
+        <span><strong>B Software</strong><small>Sistemas internos, Flutter e integraciones</small></span>
+      </a>
+      <nav class="footer-links" aria-label="Enlaces secundarios">
+        <a href="/#servicios">Servicios</a><a href="/#proyectos">Proyectos</a><a href="/#contacto">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const workspace = document.querySelector<HTMLElement>("#workspace");
+    const edgeLayer = document.querySelector<SVGGElement>("#edgeLayer");
+    const labelLayer = document.querySelector<SVGGElement>("#labelLayer");
+    const resetButton = document.querySelector<HTMLButtonElement>("#resetLayout");
+
+    if (workspace && edgeLayer && labelLayer && resetButton) {
+      const nodes = Object.fromEntries(
+        [...workspace.querySelectorAll<HTMLElement>("[data-node]")].map((node) => [node.dataset.node ?? "", node]),
+      );
+      const originalPositions = Object.fromEntries(
+        Object.entries(nodes).map(([id, node]) => [id, { left: parseFloat(node.style.left), top: parseFloat(node.style.top) }]),
+      );
+      const edges = [
+        { id: "legajo-sync", source: "legajo", target: "supabase", type: "sync", label: "altas · actualización" },
+        { id: "gestion-sync", source: "gestion", target: "supabase", type: "sync", label: "registra · consulta" },
+        { id: "suplencias-sync", source: "suplencias", target: "supabase", type: "sync", label: "registra · consulta" },
+        { id: "consulta-read", source: "consulta", target: "supabase", type: "read", label: "consulta RPC" },
+        { id: "gestion-licencias", source: "gestion", target: "licencias", type: "module" },
+        { id: "gestion-imprevistos", source: "gestion", target: "imprevistos", type: "module", label: "módulos" },
+        { id: "gestion-compensatorias", source: "gestion", target: "compensatorias", type: "module" },
+        { id: "gestion-permisos", source: "gestion", target: "permisos", type: "module" },
+        { id: "gestion-capacitacion", source: "gestion", target: "capacitacion", type: "module" },
+      ];
+      const ns = "http://www.w3.org/2000/svg";
+      const createSvg = (name: string, attrs: Record<string, string | number> = {}) => {
+        const element = document.createElementNS(ns, name);
+        Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, String(value)));
+        return element;
+      };
+      const geometry = (node: HTMLElement) => {
+        const left = parseFloat(node.style.left) || 0;
+        const top = parseFloat(node.style.top) || 0;
+        return { left, top, width: node.offsetWidth, height: node.offsetHeight, cx: left + node.offsetWidth / 2, cy: top + node.offsetHeight / 2 };
+      };
+      const anchorBetween = (sourceNode: HTMLElement, targetNode: HTMLElement) => {
+        const a = geometry(sourceNode);
+        const b = geometry(targetNode);
+        const dx = b.cx - a.cx;
+        const dy = b.cy - a.cy;
+        if (Math.abs(dx) >= Math.abs(dy)) return dx >= 0 ? { x: a.left + a.width, y: a.cy, side: "right" } : { x: a.left, y: a.cy, side: "left" };
+        return dy >= 0 ? { x: a.cx, y: a.top + a.height, side: "bottom" } : { x: a.cx, y: a.top, side: "top" };
+      };
+      const pathFor = (from: { x: number; y: number; side: string }, to: { x: number; y: number; side: string }) => {
+        const horizontal = ["left", "right"].includes(from.side) && ["left", "right"].includes(to.side);
+        if (horizontal) {
+          const midX = Math.round((from.x + to.x) / 2);
+          return { d: `M ${from.x} ${from.y} H ${midX} V ${to.y} H ${to.x}`, labelX: midX, labelY: Math.round((from.y + to.y) / 2) - 8 };
+        }
+        const midY = Math.round((from.y + to.y) / 2);
+        return { d: `M ${from.x} ${from.y} V ${midY} H ${to.x} V ${to.y}`, labelX: Math.round((from.x + to.x) / 2), labelY: midY - 8 };
+      };
+      const renderEdges = () => {
+        edgeLayer.replaceChildren();
+        labelLayer.replaceChildren();
+        edges.forEach((edge) => {
+          const from = anchorBetween(nodes[edge.source], nodes[edge.target]);
+          const to = anchorBetween(nodes[edge.target], nodes[edge.source]);
+          const route = pathFor(from, to);
+          const path = createSvg("path", { d: route.d, class: `diagram-edge ${edge.type}`, "data-edge": edge.id });
+          if (edge.type === "sync") { path.setAttribute("marker-start", "url(#arrow-sync)"); path.setAttribute("marker-end", "url(#arrow-sync)"); }
+          if (edge.type === "read") path.setAttribute("marker-end", "url(#arrow-read)");
+          edgeLayer.append(path);
+          if (edge.label) {
+            const label = createSvg("text", { x: route.labelX, y: route.labelY, class: `diagram-edge-label ${edge.type}`, "text-anchor": "middle" });
+            label.textContent = edge.label;
+            labelLayer.append(label);
+          }
+        });
+      };
+      const edgeIdsFor = (nodeId: string) => edges.filter((edge) => edge.source === nodeId || edge.target === nodeId).map((edge) => edge.id);
+      const setFocus = (nodeId: string) => {
+        const ids = edgeIdsFor(nodeId);
+        workspace.classList.add("has-focus");
+        workspace.querySelectorAll<SVGPathElement>(".diagram-edge").forEach((edge) => edge.classList.toggle("is-highlighted", ids.includes(edge.dataset.edge ?? "")));
+        Object.entries(nodes).forEach(([id, node]) => node.classList.toggle("is-focused", id === nodeId));
+      };
+      const clearFocus = () => {
+        workspace.classList.remove("has-focus");
+        workspace.querySelectorAll(".diagram-edge").forEach((edge) => edge.classList.remove("is-highlighted"));
+        Object.values(nodes).forEach((node) => node.classList.remove("is-focused"));
+      };
+      let drag: { node: HTMLElement; offsetX: number; offsetY: number } | null = null;
+      let zIndex = 5;
+      const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+      Object.values(nodes).forEach((node) => {
+        node.addEventListener("pointerdown", (event) => {
+          if (event.button !== 0) return;
+          event.preventDefault();
+          const rect = workspace.getBoundingClientRect();
+          drag = { node, offsetX: event.clientX - rect.left - (parseFloat(node.style.left) || 0), offsetY: event.clientY - rect.top - (parseFloat(node.style.top) || 0) };
+          node.setPointerCapture(event.pointerId);
+          node.classList.add("is-dragging");
+          node.style.zIndex = String(++zIndex);
+          setFocus(node.dataset.node ?? "");
+        });
+        node.addEventListener("pointermove", (event) => {
+          if (!drag || drag.node !== node) return;
+          const rect = workspace.getBoundingClientRect();
+          node.style.left = `${Math.round(clamp(event.clientX - rect.left - drag.offsetX, 14, workspace.clientWidth - node.offsetWidth - 14))}px`;
+          node.style.top = `${Math.round(clamp(event.clientY - rect.top - drag.offsetY, 14, workspace.clientHeight - node.offsetHeight - 14))}px`;
+          renderEdges();
+        });
+        const endDrag = (event: PointerEvent) => {
+          if (!drag || drag.node !== node) return;
+          node.classList.remove("is-dragging");
+          try { node.releasePointerCapture(event.pointerId); } catch {}
+          drag = null;
+        };
+        node.addEventListener("pointerup", endDrag);
+        node.addEventListener("pointercancel", endDrag);
+        node.addEventListener("mouseenter", () => { if (!drag) setFocus(node.dataset.node ?? ""); });
+        node.addEventListener("mouseleave", () => { if (!drag) clearFocus(); });
+        node.addEventListener("focus", () => setFocus(node.dataset.node ?? ""));
+        node.addEventListener("blur", clearFocus);
+      });
+      resetButton.addEventListener("click", () => {
+        Object.entries(nodes).forEach(([id, node]) => {
+          node.style.left = `${originalPositions[id].left}px`;
+          node.style.top = `${originalPositions[id].top}px`;
+          node.style.zIndex = "2";
+        });
+        zIndex = 5;
+        clearFocus();
+        renderEdges();
+      });
+      window.addEventListener("resize", renderEdges);
+      renderEdges();
+    }
+  </script>
+</Layout>
+
+<style>
+  :global(body.rrhh-page) { background: #111214; color: #f4f4f6; }
+  :global(body.rrhh-page .site-header) { border-color: rgb(255 255 255 / .1); background: rgb(17 18 20 / .92); }
+  :global(body.rrhh-page .brand strong), :global(body.rrhh-page .nav-links a), :global(body.rrhh-page .nav-cta), :global(body.rrhh-page .mobile-nav summary) { color: #f4f4f6; }
+  :global(body.rrhh-page .brand small) { color: #9da1ad; }
+  :global(body.rrhh-page .brand-mark) { border-color: rgb(255 255 255 / .15); }
+  :global(body.rrhh-page .nav-links a:hover), :global(body.rrhh-page .nav-cta:hover), :global(body.rrhh-page .mobile-nav[open] summary) { background: #202229; }
+  :global(body.rrhh-page .nav-cta), :global(body.rrhh-page .mobile-nav summary) { border-color: rgb(255 255 255 / .18); }
+  :global(body.rrhh-page .mobile-nav nav) { border-color: rgb(255 255 255 / .14); background: #191b20; }
+  :global(body.rrhh-page .mobile-nav nav a) { color: #f4f4f6; }
+  :global(body.rrhh-page .mobile-nav nav a:hover) { background: #252832; }
+  .rrhh-case { --signal: #a89bf7; --signal-soft: rgb(168 155 247 / .15); background: #111214; color: #f4f4f6; }
+  .rrhh-case .back-link { color: #9da1ad; }
+  .rrhh-case .eyebrow { border-color: rgb(168 155 247 / .32); color: #d1ccff; background: rgb(168 155 247 / .1); }
+  .rrhh-hero { max-width: 1180px; margin: 0 auto; padding: 64px 20px 56px; }
+  .rrhh-heading { display: grid; grid-template-columns: 1.35fr .65fr; gap: 64px; align-items: end; }
+  .rrhh-heading h1 { max-width: 880px; font-size: clamp(3.2rem, 7.2vw, 7.2rem); line-height: .92; letter-spacing: -.055em; }
+  .rrhh-lead { padding-bottom: 8px; color: #9da1ad; font-size: 1.08rem; line-height: 1.75; }
+  .rrhh-facts { margin: 58px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgb(255 255 255 / .16); border-bottom: 1px solid rgb(255 255 255 / .16); }
+  .rrhh-facts div { padding: 18px 16px 18px 0; }
+  .rrhh-facts div + div { border-left: 1px solid rgb(255 255 255 / .16); padding-left: 20px; }
+  .rrhh-facts dt { color: #777b86; font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .rrhh-facts dd { margin: 6px 0 0; font-weight: 800; }
+
+  .flow-section { max-width: 1300px; margin: 0 auto; padding: 48px 20px 88px; }
+  .flow-intro { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; margin-bottom: 24px; }
+  .flow-intro h2 { max-width: 760px; font-size: clamp(2rem, 4vw, 3.7rem); }
+  .flow-intro > p { max-width: 330px; color: #9da1ad; font-size: .9rem; }
+  .flow-label, .section-number { color: var(--signal); font-size: .75rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+  .rrhh-diagram {
+    --diagram-page: #111214; --diagram-panel: #191b20; --diagram-text: #f4f4f6;
+    --diagram-muted: #9da1ad; --diagram-subtle: #666b77; --diagram-grid: rgb(255 255 255 / .035);
+    --sync: #a89bf7; --sync-soft: rgb(168 155 247 / .15); --read: #f0b36c;
+    --read-soft: rgb(240 179 108 / .16); --module: #7bb5d6; --module-soft: rgb(123 181 214 / .15);
+    overflow: hidden; border: 1px solid rgb(255 255 255 / .09); border-radius: 18px;
+    padding: 18px; color: var(--diagram-text); background: var(--diagram-page);
+    box-shadow: 0 18px 46px rgb(0 0 0 / .22);
+  }
+  .diagram-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 14px; flex-wrap: wrap; }
+  .diagram-legend { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--diagram-muted); font-size: 12px; }
+  .diagram-legend-item { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .diagram-legend-line { position: relative; width: 34px; height: 10px; display: inline-block; }
+  .diagram-legend-line::before { content: ""; position: absolute; left: 0; right: 0; top: 4px; border-top: 1.5px solid var(--sync); }
+  .diagram-legend-line.sync::after { content: "◀  ▶"; position: absolute; top: -5px; left: 2px; color: var(--sync); font-size: 9px; letter-spacing: 9px; }
+  .diagram-legend-line.read::before { border-color: var(--read); border-top-style: dashed; }
+  .diagram-legend-line.read::after { content: "›"; position: absolute; right: -1px; top: -9px; color: var(--read); font-size: 22px; }
+  .diagram-legend-line.module::before { border-color: var(--module); opacity: .82; }
+  .diagram-legend-line.module::after { content: "○"; position: absolute; right: -1px; top: -7px; color: var(--module); font-size: 13px; }
+  .diagram-reset { appearance: none; border: 1px solid rgb(255 255 255 / .16); border-radius: 7px; padding: 8px 11px; color: #d9d9df; background: rgb(255 255 255 / .03); font: inherit; font-size: 12px; cursor: pointer; transition: .18s ease; }
+  .diagram-reset:hover { border-color: rgb(168 155 247 / .7); color: #fff; background: var(--sync-soft); }
+  .diagram-viewport { overflow: auto; border: 1px solid rgb(255 255 255 / .09); border-radius: 12px; background: rgb(255 255 255 / .012); }
+  .diagram-workspace { position: relative; width: 1220px; min-height: 900px; isolation: isolate; overflow: hidden; background: linear-gradient(rgb(255 255 255 / .022) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .022) 1px, transparent 1px), radial-gradient(circle at 52% 40%, rgb(168 155 247 / .085), transparent 30rem); background-size: 24px 24px, 24px 24px, auto; }
+  .diagram-edges { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .diagram-workspace :global(.diagram-edge) { fill: none; stroke-width: 1.45; vector-effect: non-scaling-stroke; opacity: .76; transition: opacity .16s ease, stroke-width .16s ease; }
+  .diagram-workspace :global(.diagram-edge.sync) { stroke: var(--sync); }
+  .diagram-workspace :global(.diagram-edge.read) { stroke: var(--read); stroke-dasharray: 6 5; }
+  .diagram-workspace :global(.diagram-edge.module) { stroke: var(--module); opacity: .52; }
+  .diagram-workspace :global(.diagram-edge-label) { fill: var(--diagram-muted); font-size: 10.5px; font-weight: 570; letter-spacing: .02em; }
+  .diagram-workspace :global(.diagram-edge-label.read) { fill: var(--read); }
+  .diagram-workspace :global(.diagram-edge-label.module) { fill: var(--module); }
+  .diagram-workspace.has-focus :global(.diagram-edge) { opacity: .1; }
+  .diagram-workspace.has-focus :global(.diagram-edge.is-highlighted) { opacity: 1; stroke-width: 2.1; }
+  .diagram-node { position: absolute; z-index: 2; width: 228px; overflow: hidden; border: 1px solid rgb(255 255 255 / .18); border-radius: 9px; color: var(--diagram-text); background: rgb(26 28 33 / .97); box-shadow: 0 8px 24px rgb(0 0 0 / .22); user-select: none; touch-action: none; cursor: grab; transition: border-color .17s ease, box-shadow .17s ease, background .17s ease; }
+  .diagram-node:focus-visible { outline: 2px solid var(--sync); outline-offset: 3px; }
+  .diagram-node:hover, .diagram-node.is-focused { border-color: var(--sync); background: rgb(31 34 41 / .99); box-shadow: 0 15px 36px rgb(0 0 0 / .36), 0 0 0 3px var(--sync-soft); }
+  .diagram-node.is-dragging { cursor: grabbing; transition: none; box-shadow: 0 22px 48px rgb(0 0 0 / .5), 0 0 0 3px var(--sync-soft); }
+  .diagram-node.read-node:hover, .diagram-node.read-node.is-focused { border-color: var(--read); box-shadow: 0 15px 36px rgb(0 0 0 / .36), 0 0 0 3px var(--read-soft); }
+  .diagram-node.module-node { width: 190px; border-color: rgb(123 181 214 / .34); background: rgb(24 30 34 / .98); }
+  .diagram-node.module-node:hover, .diagram-node.module-node.is-focused { border-color: var(--module); box-shadow: 0 15px 36px rgb(0 0 0 / .36), 0 0 0 3px var(--module-soft); }
+  .diagram-node.core { width: 270px; border-color: rgb(168 155 247 / .72); background: linear-gradient(145deg, rgb(88 76 160 / .36), rgb(25 27 33 / .98) 68%); }
+  .diagram-node-header { min-height: 43px; display: flex; align-items: center; gap: 9px; border-bottom: 1px solid rgb(255 255 255 / .12); padding: 11px 13px; }
+  .diagram-badge { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 99px; background: var(--sync); box-shadow: 0 0 0 4px var(--sync-soft); }
+  .core .diagram-badge { width: 10px; height: 10px; background: #cac3ff; box-shadow: 0 0 0 5px var(--sync-soft); }
+  .read-node .diagram-badge { background: var(--read); box-shadow: 0 0 0 4px var(--read-soft); }
+  .module-node .diagram-badge { background: var(--module); box-shadow: 0 0 0 4px var(--module-soft); }
+  .diagram-node-title { font-size: 12px; line-height: 1.1; font-weight: 760; letter-spacing: .052em; text-transform: uppercase; }
+  .diagram-node-kind { margin-left: auto; color: var(--diagram-subtle); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 10px; }
+  .diagram-fields { margin: 0; padding: 8px 0 10px; list-style: none; }
+  .diagram-fields li { display: flex; align-items: center; gap: 8px; padding: 4px 13px; color: #d7d7dd; font-size: 12px; line-height: 1.25; }
+  .diagram-fields li::before { content: ""; width: 5px; height: 5px; flex: 0 0 auto; border: 1px solid #888b95; border-radius: 99px; }
+  .core .diagram-fields li::before { border-color: var(--sync); background: var(--sync); }
+  .read-node .diagram-fields li::before { border-color: var(--read); }
+  .module-node .diagram-node-header { min-height: 39px; border-bottom: 0; padding: 10px 12px; }
+  .module-node .diagram-node-title { font-size: 11px; letter-spacing: .04em; }
+  .module-node .diagram-node-kind { color: rgb(123 181 214 / .72); }
+  .diagram-core-note { margin: 0 13px 13px; border: 1px solid rgb(168 155 247 / .25); border-radius: 6px; padding: 8px 9px; color: #d1ccff; background: rgb(168 155 247 / .09); font-size: 10.5px; line-height: 1.35; }
+  .diagram-tip { margin: 13px 2px 0; color: var(--diagram-subtle); font-size: 11px; }
+  .diagram-tip strong { color: #c7c6ce; font-weight: 650; }
+
+  .rrhh-summary, .principles-section, .systems-section, .rrhh-cta { max-width: 1180px; margin: 0 auto; padding: 92px 20px; }
+  .rrhh-summary { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; border-top: 1px solid rgb(255 255 255 / .16); }
+  .rrhh-summary h2, .principles-heading h2, .systems-heading h2, .rrhh-cta h2 { font-size: clamp(2.1rem, 4.2vw, 4rem); }
+  .summary-copy { display: grid; gap: 24px; padding-top: 28px; color: #a9adb7; font-size: 1.08rem; line-height: 1.85; }
+  .principles-section { display: grid; grid-template-columns: .78fr 1.22fr; gap: 80px; background: #171815; color: #f6f5f1; max-width: none; padding-inline: max(20px, calc((100vw - 1140px) / 2)); }
+  .principles-heading { position: sticky; top: 110px; align-self: start; }
+  .principles-heading .section-number { color: #aeb8ff; }
+  .principles-list { display: grid; }
+  .principles-list article { display: grid; grid-template-columns: 54px 1fr; gap: 20px; border-top: 1px solid #3b3c38; padding: 26px 0; }
+  .principles-list article:last-child { border-bottom: 1px solid #3b3c38; }
+  .principles-list article > span { color: #90918a; font-size: .75rem; font-weight: 850; }
+  .principles-list h3 { font-size: 1.25rem; }
+  .principles-list p { margin-top: 9px; max-width: 600px; color: #aaaBa4; line-height: 1.75; }
+  .systems-heading { display: grid; grid-template-columns: .35fr .65fr; gap: 36px; align-items: end; }
+  .systems-heading .section-number { grid-column: 1 / -1; }
+  .systems-heading > p:last-child { color: #9da1ad; line-height: 1.7; }
+  .systems-list { margin-top: 54px; border-top: 1px solid rgb(255 255 255 / .16); }
+  .system-row { display: grid; grid-template-columns: 48px 1fr 1.25fr .75fr; gap: 24px; align-items: start; border-bottom: 1px solid rgb(255 255 255 / .16); padding: 26px 0; }
+  .system-row > span { color: var(--signal); font-size: .74rem; font-weight: 900; }
+  .system-row > div > p { color: #777b86; font-size: .68rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+  .system-row h3 { margin-top: 7px; font-size: 1.22rem; }
+  .system-row > p { color: #a9adb7; line-height: 1.65; }
+  .system-tech { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; text-align: right; }
+  .system-tech small { color: #858a96; line-height: 1.5; }
+  .system-tech a { color: var(--signal); font-size: .82rem; font-weight: 900; }
+  .rrhh-outcome { padding: 100px max(20px, calc((100vw - 1140px) / 2)); color: #fff; background: var(--signal); }
+  .rrhh-outcome .section-number { color: #cbd1ff; }
+  .rrhh-outcome blockquote { margin: 24px 0 0; max-width: 980px; font-size: clamp(2rem, 5vw, 4.8rem); font-weight: 750; letter-spacing: -.04em; line-height: 1.08; }
+  .outcome-tags { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .outcome-tags span { border: 1px solid rgb(255 255 255 / .4); border-radius: 999px; padding: 7px 11px; font-size: .78rem; font-weight: 800; }
+  .rrhh-cta { display: grid; grid-template-columns: 1fr auto; gap: 42px; align-items: end; }
+  .rrhh-cta .button { border: 1px solid rgb(255 255 255 / .2); background: #f4f4f6; color: #111214; }
+
+  @media (max-width: 900px) {
+    .rrhh-heading, .rrhh-summary, .principles-section, .systems-heading, .rrhh-cta { grid-template-columns: 1fr; }
+    .rrhh-heading { gap: 28px; }
+    .rrhh-facts { grid-template-columns: 1fr 1fr; }
+    .rrhh-facts div:nth-child(3) { border-left: 0; border-top: 1px solid rgb(255 255 255 / .16); }
+    .rrhh-facts div:nth-child(4) { border-top: 1px solid rgb(255 255 255 / .16); }
+    .flow-intro { grid-template-columns: 1fr; gap: 14px; }
+    .rrhh-diagram { padding: 12px; border-radius: 13px; }
+    .rrhh-summary, .principles-section { gap: 42px; }
+    .principles-heading { position: static; }
+    .systems-heading .section-number { grid-column: auto; }
+    .system-row { grid-template-columns: 36px 1fr; }
+    .system-row > p, .system-tech { grid-column: 2; }
+    .system-tech { align-items: flex-start; text-align: left; }
+    .rrhh-cta .button { justify-self: stretch; }
+  }
+
+  @media (max-width: 520px) {
+    .rrhh-hero, .flow-section, .rrhh-summary, .principles-section, .systems-section, .rrhh-cta { padding-inline: 14px; }
+    .rrhh-heading h1 { font-size: clamp(2.8rem, 15vw, 4rem); }
+    .rrhh-facts { grid-template-columns: 1fr; }
+    .rrhh-facts div + div, .rrhh-facts div:nth-child(3) { border-left: 0; border-top: 1px solid rgb(255 255 255 / .16); padding-left: 0; }
+    .system-row { gap: 16px; }
+  }
+</style>

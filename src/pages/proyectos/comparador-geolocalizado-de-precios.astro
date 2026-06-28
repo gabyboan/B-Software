@@ -1,180 +1,182 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-const title = "Comparador geolocalizado de precios | Caso de estudio B-Software";
+const title = "Comparador geolocalizado de precios | Caso B-Software";
 const description =
-  "Caso de estudio de una aplicación Flutter y Supabase para comparar productos, precios, sucursales y nivel de certeza de cada fuente.";
+  "Caso de estudio de una aplicación Flutter y Supabase para comparar productos, precios y sucursales sin perder la evidencia ni el alcance de cada fuente.";
 const canonical = "https://bsoftware.pages.dev/proyectos/comparador-geolocalizado-de-precios/";
-
-const capabilities = [
-  "Búsqueda y comparación de productos.",
-  "Geolocalización y sucursales cercanas.",
-  "Favoritos y lista o carrito estimado.",
-  "Arquitectura Flutter + Supabase.",
-  "RPCs seguras y políticas RLS.",
-  "Pipeline NDJSON para ingestión.",
-  "Separación entre precio local verificable, precio online y precio observado.",
-  "Validación de una fuente local real con sucursal, precio, disponibilidad, evidencia y fecha.",
-  "Análisis de viabilidad de fuentes antes de publicar datos.",
-];
 
 const sourceLevels = [
   {
+    number: "01",
+    level: "Mayor certeza",
     title: "Precio local verificable",
     description:
-      "La evidencia relaciona producto, precio y sucursal, con disponibilidad, fecha y origen suficientes para sostener el dato.",
-    level: "Mayor certeza",
+      "Relaciona producto, precio y sucursal con evidencia, disponibilidad y fecha suficientes para sostener el dato.",
   },
   {
+    number: "02",
+    level: "Referencia digital",
     title: "Precio online",
     description:
-      "Es una referencia publicada para comercio electrónico, sin asumir que representa stock o precio de una sucursal cercana.",
-    level: "Referencia digital",
+      "Informa lo publicado para comercio electrónico sin presentarlo como stock o precio confirmado de una sucursal cercana.",
   },
   {
+    number: "03",
+    level: "Contexto temporal",
     title: "Precio observado",
     description:
-      "Registro con fuente y fecha que puede aportar contexto, pero requiere una lectura explícita de su alcance y vigencia.",
-    level: "Contexto temporal",
+      "Conserva origen y fecha para aportar contexto, haciendo explícitos sus límites de vigencia y comprobación.",
   },
 ];
 
-const caseStudyStructuredData = {
+const flow = [
+  { title: "Buscar", text: "Producto o categoría desde una experiencia mobile-first." },
+  { title: "Ubicar", text: "Sucursales y referencias relevantes para la zona consultada." },
+  { title: "Clasificar", text: "Cada fuente se interpreta según evidencia, fecha y alcance." },
+  { title: "Comparar", text: "El usuario decide con más contexto y menos supuestos ocultos." },
+];
+
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  name: "Comparador geolocalizado de precios",
-  headline: "Comparador geolocalizado de precios",
-  description,
-  url: canonical,
-  inLanguage: "es-AR",
-  creator: {
-    "@type": "Organization",
-    name: "B-Software",
-    url: "https://bsoftware.pages.dev/",
-  },
-  about: [
-    "Desarrollo Flutter",
-    "Supabase",
-    "PostgreSQL",
-    "Geolocalización",
-    "Comparación de precios",
-    "Seguridad RLS",
-    "Ingestión NDJSON",
+  "@graph": [
+    {
+      "@type": "CreativeWork",
+      "@id": `${canonical}#case-study`,
+      name: "Comparador geolocalizado de precios",
+      headline: "Comparar precios también es comparar certeza",
+      description,
+      url: canonical,
+      inLanguage: "es-AR",
+      creator: { "@id": "https://bsoftware.pages.dev/#organization" },
+      about: [
+        "Desarrollo Flutter",
+        "Supabase",
+        "PostgreSQL",
+        "Geolocalización",
+        "Comparación de precios",
+        "Seguridad RLS",
+        "Ingestión de datos",
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: "https://bsoftware.pages.dev/" },
+        { "@type": "ListItem", position: 2, name: "Proyectos", item: "https://bsoftware.pages.dev/#proyectos" },
+        { "@type": "ListItem", position: 3, name: "Comparador geolocalizado de precios", item: canonical },
+      ],
+    },
   ],
 };
 ---
 
-<Layout {title} {description} {canonical} ogType="article">
-  <script type="application/ld+json" set:html={JSON.stringify(caseStudyStructuredData)} />
+<Layout {title} {description} {canonical} ogType="article" bodyClass="price-case-page" navVariant="compact">
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <main>
-    <article class="case-study">
-      <header class="case-study-hero">
-        <div>
-          <a class="back-link" href="/#proyectos">← Volver a proyectos</a>
-          <p class="eyebrow">Caso de estudio</p>
-          <h1>Comparador geolocalizado de precios</h1>
-          <p class="case-study-lead">
-            Aplicación mobile-first para comparar productos, precios, sucursales y nivel de certeza de cada fuente.
-          </p>
-          <div class="case-status">
-            <span>Estado del caso</span>
-            <strong>Proyecto de investigación y demostración técnica</strong>
+  <main class="price-case">
+    <article>
+      <header class="price-hero">
+        <a class="back-link" href="/#proyectos">← Volver a casos</a>
+        <p class="case-label">Caso de estudio · Producto mobile-first</p>
+        <div class="price-heading">
+          <h1>Comparar precios también es comparar certeza.</h1>
+          <div>
+            <p>
+              Una aplicación para explorar productos, precios y sucursales sin convertir una referencia online en una afirmación local.
+            </p>
+            <span>Investigación y demostración técnica</span>
           </div>
         </div>
-        <div class="case-visual" aria-label="Representación neutral de la aplicación mobile-first">
-          <div class="case-phone">
-            <span class="case-phone-bar"></span>
-            <div class="case-search">Producto o categoría</div>
-            <div class="case-product">
-              <span></span>
-              <div><strong>Comparación cercana</strong><small>Fuentes clasificadas</small></div>
-            </div>
-            <div class="certainty-row"><span>Sucursal y evidencia</span><strong>Verificable</strong></div>
-            <div class="certainty-row"><span>Precio online</span><strong>Referencia</strong></div>
-            <div class="certainty-row"><span>Observación fechada</span><strong>Contexto</strong></div>
-          </div>
-        </div>
+        <dl class="price-facts">
+          <div><dt>Interfaz</dt><dd>Flutter · mobile-first</dd></div>
+          <div><dt>Datos</dt><dd>Supabase · PostgreSQL</dd></div>
+          <div><dt>Acceso</dt><dd>RPCs · RLS</dd></div>
+          <div><dt>Criterio</dt><dd>Evidencia · fecha · alcance</dd></div>
+        </dl>
       </header>
 
-      <section class="case-study-section case-summary">
-        <div>
-          <p class="eyebrow">Problema</p>
-          <h2>Comparar no alcanza si el dato pierde su contexto</h2>
-        </div>
-        <p>
-          Una misma cadena puede mostrar información distinta según canal, ubicación o momento. El desafío técnico es ofrecer una comparación útil sin transformar una referencia online en una afirmación de precio o disponibilidad local.
-        </p>
-      </section>
-
-      <section class="case-study-section">
-        <div class="section-heading">
-          <p class="eyebrow">Capacidades</p>
-          <h2>Producto, ubicación y evidencia en un mismo flujo</h2>
-        </div>
-        <div class="capability-grid">
-          {capabilities.map((capability, index) => (
-            <article>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <p>{capability}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section class="case-study-section source-section">
-        <div class="section-heading">
-          <p class="eyebrow">Modelo de certeza</p>
-          <h2>Tres tipos de precio, tres alcances diferentes</h2>
-        </div>
-        <div class="source-grid">
-          {sourceLevels.map((source) => (
-            <article>
-              <p class="source-level">{source.level}</p>
-              <h3>{source.title}</h3>
-              <p>{source.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section class="case-study-section decision-block">
-        <p class="eyebrow">Decisión técnica</p>
-        <h2>La certeza forma parte del producto</h2>
-        <blockquote>
-          No todas las cadenas exponen precio y stock por sucursal de forma pública y reutilizable. Por eso el sistema clasifica las fuentes según su nivel de certeza y evita presentar datos online como disponibilidad local confirmada.
-        </blockquote>
-      </section>
-
-      <section class="case-study-section validation-section">
-        <div>
-          <p class="eyebrow">Validación de fuentes</p>
-          <h2>Publicar después de comprobar viabilidad</h2>
-        </div>
-        <div>
+      <section class="price-stage" aria-label="Representación conceptual del producto">
+        <div class="stage-copy">
+          <p class="case-label">La pregunta del producto</p>
+          <h2>¿Qué significa realmente ese precio?</h2>
           <p>
-            Antes de incorporar una fuente se analiza si permite sostener la relación entre sucursal, precio, disponibilidad, evidencia y fecha. La ingestión mediante NDJSON separa la recolección de la publicación y permite revisar estructura, trazabilidad y calidad.
+            La misma cadena puede publicar información distinta según canal, ubicación o momento. Por eso la certeza no aparece como una nota técnica: forma parte de la experiencia de comparación.
+          </p>
+        </div>
+        <div class="certainty-visual" aria-hidden="true">
+          <div class="visual-product"><small>Producto comparable</small><strong>3 fuentes evaluadas</strong></div>
+          <div class="visual-source source-local"><span>01</span><div><strong>Local verificable</strong><small>Sucursal + evidencia</small></div><i>Alta</i></div>
+          <div class="visual-source source-online"><span>02</span><div><strong>Precio online</strong><small>Referencia digital</small></div><i>Media</i></div>
+          <div class="visual-source source-observed"><span>03</span><div><strong>Observación</strong><small>Origen + fecha</small></div><i>Contexto</i></div>
+        </div>
+      </section>
+
+      <section class="case-section product-flow" aria-labelledby="flow-title">
+        <div class="section-heading">
+          <p class="section-number">01 / Recorrido</p>
+          <h2 id="flow-title">Del producto buscado a una decisión con contexto.</h2>
+        </div>
+        <ol class="flow-list">
+          {flow.map((step, index) => (
+            <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="source-section" aria-labelledby="sources-title">
+        <div class="source-inner">
+          <div class="source-heading">
+            <p class="section-number">02 / Modelo de certeza</p>
+            <h2 id="sources-title">Tres fuentes pueden mostrar un número. No significan lo mismo.</h2>
+          </div>
+          <div class="source-list">
+            {sourceLevels.map((source) => (
+              <article>
+                <span>{source.number}</span>
+                <div><p>{source.level}</p><h3>{source.title}</h3></div>
+                <p>{source.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section decision-section">
+        <div>
+          <p class="section-number">03 / Decisión técnica</p>
+          <h2>Publicar después de comprobar viabilidad.</h2>
+        </div>
+        <div class="decision-copy">
+          <p>
+            Antes de incorporar una fuente se analiza si permite sostener la relación entre sucursal, precio, disponibilidad, evidencia y fecha. Si esa relación no existe, el producto debe mostrar un alcance más limitado.
           </p>
           <p>
-            El caso demuestra la validación técnica de una fuente local real sin identificar cadenas, clientes, URLs privadas ni mecanismos de extracción.
+            La ingestión mediante NDJSON separa recolección y publicación. Así se puede revisar estructura, trazabilidad y calidad antes de que un registro llegue a la experiencia de consulta.
           </p>
         </div>
       </section>
 
-      <section class="case-study-section stack-block">
-        <div>
-          <p class="eyebrow">Stack</p>
-          <h2>Arquitectura del caso</h2>
+      <section class="architecture-section">
+        <div class="architecture-inner">
+          <p class="section-number">04 / Arquitectura</p>
+          <h2>Una interfaz simple sobre decisiones que no conviene ocultar.</h2>
+          <div class="architecture-grid">
+            <article><span>Aplicación</span><strong>Flutter · Dart</strong><p>Búsqueda, comparación, ubicación, favoritos y lista estimada.</p></article>
+            <article><span>Núcleo</span><strong>Supabase · PostgreSQL</strong><p>Datos estructurados, funciones controladas y políticas de acceso.</p></article>
+            <article><span>Pipeline</span><strong>NDJSON · validación</strong><p>Separación entre origen, revisión y publicación de cada fuente.</p></article>
+          </div>
         </div>
-        <p>Flutter · Dart · Supabase · PostgreSQL · RPC · RLS · Cloudflare · NDJSON · Scraping responsable</p>
       </section>
 
-      <section class="case-study-section case-cta">
-        <div>
-          <p class="eyebrow">¿Tenés un proceso para ordenar?</p>
-          <h2>Definamos una primera etapa verificable</h2>
-        </div>
-        <a class="button primary" href="/#contacto">Solicitar presupuesto</a>
+      <section class="case-outcome">
+        <p class="section-number">Resultado del caso</p>
+        <blockquote>Comparar mejor no es mostrar más números: es explicar cuáles pueden sostenerse.</blockquote>
+      </section>
+
+      <section class="case-contact">
+        <div><p class="case-label">¿Tenés datos difíciles de interpretar?</p><h2>Podemos definir una primera etapa verificable.</h2></div>
+        <a class="button primary" href="/#contacto">Conversemos</a>
       </section>
     </article>
   </main>
@@ -182,19 +184,47 @@ const caseStudyStructuredData = {
   <footer class="site-footer">
     <div class="footer-inner">
       <a class="footer-brand" href="/" aria-label="B-Software inicio">
-        <span class="footer-logo">
-          <img src="/brand/logo-b.png" alt="" width="64" height="64" loading="lazy" />
-        </span>
-        <span>
-          <strong>B Software</strong>
-          <small>Sistemas internos, Flutter e integraciones</small>
-        </span>
+        <span class="footer-logo"><img src="/brand/logo-b.png" alt="" width="64" height="64" loading="lazy" /></span>
+        <span><strong>B Software</strong><small>Sistemas internos, Flutter e integraciones</small></span>
       </a>
       <nav class="footer-links" aria-label="Enlaces secundarios">
-        <a href="/#servicios">Servicios</a>
-        <a href="/#proyectos">Proyectos</a>
-        <a href="/#contacto">Contacto</a>
+        <a href="/#proyectos">Casos</a><a href="/sobre-b-software/">Sobre B-Software</a><a href="/#contacto">Contacto</a>
       </nav>
     </div>
   </footer>
 </Layout>
+
+<style>
+  :global(body.price-case-page) { background: #101311; color: #f2f4ef; }
+  :global(body.price-case-page .site-header) { border-color: rgb(255 255 255 / .1); background: rgb(16 19 17 / .92); }
+  :global(body.price-case-page .brand strong), :global(body.price-case-page .nav-links a), :global(body.price-case-page .nav-cta), :global(body.price-case-page .mobile-nav summary) { color: #f2f4ef; }
+  :global(body.price-case-page .brand small) { color: #99a09a; }
+  :global(body.price-case-page .brand-mark), :global(body.price-case-page .nav-cta), :global(body.price-case-page .mobile-nav summary) { border-color: rgb(255 255 255 / .16); }
+  :global(body.price-case-page .nav-links a:hover), :global(body.price-case-page .nav-cta:hover), :global(body.price-case-page .mobile-nav[open] summary) { background: #202521; }
+  :global(body.price-case-page .mobile-nav nav) { border-color: rgb(255 255 255 / .14); background: #171c18; }
+  :global(body.price-case-page .mobile-nav nav a) { color: #f2f4ef; }
+  .price-case { --case-green: #66d89a; --case-green-soft: #dff6e8; color: #f2f4ef; background: #101311; }
+  .price-case .back-link { color: #99a09a; }
+  .price-hero, .case-section, .case-contact { max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
+  .price-hero { padding-top: 64px; padding-bottom: 62px; }
+  .case-label, .section-number { color: var(--case-green); font-size: .72rem; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+  .price-heading { display: grid; grid-template-columns: 1.25fr .75fr; gap: 76px; align-items: end; }
+  .price-heading h1 { max-width: 860px; font-size: clamp(3.5rem, 7.2vw, 7.2rem); line-height: .91; letter-spacing: -.06em; }
+  .price-heading > div { padding-bottom: 10px; }.price-heading > div p { color: #a7ada8; font-size: 1.06rem; line-height: 1.8; }.price-heading > div span { display: block; margin-top: 24px; border-left: 3px solid var(--case-green); padding-left: 13px; color: #d9ded9; font-size: .8rem; font-weight: 850; }
+  .price-facts { margin: 58px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgb(255 255 255 / .16); border-bottom: 1px solid rgb(255 255 255 / .16); }.price-facts div { padding: 18px 16px 18px 0; }.price-facts div + div { border-left: 1px solid rgb(255 255 255 / .16); padding-left: 18px; }.price-facts dt { color: #727a73; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }.price-facts dd { margin: 7px 0 0; font-weight: 800; }
+  .price-stage { max-width: 1260px; margin: 28px auto 0; min-height: 630px; display: grid; grid-template-columns: .75fr 1.25fr; overflow: hidden; border: 1px solid rgb(255 255 255 / .11); border-radius: 12px; background: #151a16; }.stage-copy { display: flex; flex-direction: column; justify-content: flex-end; padding: 44px; }.stage-copy h2 { max-width: 520px; font-size: clamp(2.5rem, 5vw, 5rem); letter-spacing: -.05em; }.stage-copy > p:last-child { margin-top: 24px; color: #9da49e; line-height: 1.8; }
+  .certainty-visual { position: relative; overflow: hidden; background-color: #111512; background-image: radial-gradient(rgb(102 216 154 / .14) 1px, transparent 1px); background-size: 24px 24px; }.visual-product { position: absolute; top: 50%; left: 50%; z-index: 2; width: 230px; height: 230px; display: grid; place-content: center; border: 1px solid var(--case-green); border-radius: 50%; padding: 28px; background: #18211b; text-align: center; transform: translate(-50%, -50%); }.visual-product small { color: var(--case-green); font-weight: 900; text-transform: uppercase; }.visual-product strong { margin-top: 10px; font-size: 1.15rem; }.visual-source { position: absolute; z-index: 2; min-width: 220px; display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; border: 1px solid rgb(255 255 255 / .16); border-radius: 8px; padding: 14px; background: #1b211c; }.visual-source > span { color: var(--case-green); font-size: .7rem; font-weight: 900; }.visual-source strong, .visual-source small { display: block; }.visual-source strong { font-size: .82rem; }.visual-source small { margin-top: 4px; color: #7f8780; }.visual-source i { color: var(--case-green); font-size: .64rem; font-style: normal; font-weight: 850; }.source-local { top: 13%; left: 8%; }.source-online { top: 20%; right: 7%; }.source-observed { right: 14%; bottom: 12%; }
+  .case-section { padding-top: 104px; padding-bottom: 104px; }.section-heading { display: grid; grid-template-columns: .32fr .68fr; gap: 50px; }.section-heading h2, .source-heading h2, .decision-section h2, .architecture-inner h2, .case-contact h2 { font-size: clamp(2.4rem, 4.8vw, 4.7rem); letter-spacing: -.045em; }
+  .flow-list { margin: 58px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; }.flow-list li { min-height: 230px; border-top: 1px solid rgb(255 255 255 / .2); padding: 20px 22px 20px 0; }.flow-list li + li { border-left: 1px solid rgb(255 255 255 / .14); padding-left: 22px; }.flow-list li > span { color: var(--case-green); font-size: .7rem; font-weight: 900; }.flow-list h3 { margin-top: 48px; font-size: 1.3rem; }.flow-list p { margin-top: 12px; color: #959c96; line-height: 1.65; }
+  .source-section { color: #172019; background: #e7f3e9; }.source-inner, .architecture-inner { max-width: 1180px; margin: 0 auto; padding: 100px 20px; }.source-heading { display: grid; grid-template-columns: .32fr .68fr; gap: 50px; }.source-heading .section-number { color: #147843; }.source-list { margin-top: 54px; border-top: 1px solid #afc7b5; }.source-list article { display: grid; grid-template-columns: 50px .8fr 1.2fr; gap: 24px; align-items: start; border-bottom: 1px solid #afc7b5; padding: 28px 0; }.source-list article > span { color: #147843; font-size: .72rem; font-weight: 900; }.source-list article div p { color: #147843; font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }.source-list h3 { margin-top: 8px; font-size: 1.3rem; }.source-list article > p { color: #516057; line-height: 1.75; }
+  .decision-section { display: grid; grid-template-columns: .85fr 1.15fr; gap: 86px; }.decision-copy { display: grid; gap: 24px; padding-top: 28px; color: #a1a8a2; font-size: 1.06rem; line-height: 1.85; }
+  .architecture-section { color: #172019; background: #f2f4ef; }.architecture-inner h2 { max-width: 940px; }.architecture-inner .section-number { color: #147843; }.architecture-grid { margin-top: 54px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #c5cac5; }.architecture-grid article { min-height: 240px; padding: 24px 24px 24px 0; }.architecture-grid article + article { border-left: 1px solid #c5cac5; padding-left: 24px; }.architecture-grid span { color: #147843; font-size: .7rem; font-weight: 900; text-transform: uppercase; }.architecture-grid strong { display: block; margin-top: 42px; font-size: 1.15rem; }.architecture-grid p { margin-top: 13px; color: #667067; line-height: 1.7; }
+  .case-outcome { padding: 110px max(20px, calc((100vw - 1140px) / 2)); background: #66d89a; color: #102016; }.case-outcome .section-number { color: #245e3b; }.case-outcome blockquote { margin: 26px 0 0; max-width: 1050px; font-size: clamp(2.4rem, 5.5vw, 5.5rem); font-weight: 780; letter-spacing: -.05em; line-height: 1.05; }
+  .case-contact { padding-top: 90px; padding-bottom: 90px; display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: end; }.case-contact .button { border: 1px solid rgb(255 255 255 / .2); background: #f2f4ef; color: #101311; }
+  @media (max-width: 900px) {
+    .price-heading, .price-stage, .section-heading, .source-heading, .decision-section, .case-contact { grid-template-columns: 1fr; }.price-heading { gap: 30px; }.price-facts { grid-template-columns: 1fr 1fr; }.price-facts div:nth-child(3) { border-left: 0; border-top: 1px solid rgb(255 255 255 / .16); }.price-facts div:nth-child(4) { border-top: 1px solid rgb(255 255 255 / .16); }.price-stage { margin-inline: 14px; }.stage-copy { min-height: 420px; }.certainty-visual { min-height: 560px; }.flow-list { grid-template-columns: 1fr 1fr; }.source-list article { grid-template-columns: 40px 1fr; }.source-list article > p { grid-column: 2; }.architecture-grid { grid-template-columns: 1fr; }.architecture-grid article + article { border-left: 0; border-top: 1px solid #c5cac5; padding-left: 0; }.architecture-grid article { min-height: auto; }.case-contact .button { justify-self: stretch; }
+  }
+  @media (max-width: 540px) {
+    .price-hero, .case-section, .source-inner, .architecture-inner, .case-contact { padding-inline: 14px; }.price-heading h1 { font-size: clamp(3rem, 15vw, 4.2rem); }.price-facts { grid-template-columns: 1fr; }.price-facts div + div, .price-facts div:nth-child(3) { border-left: 0; border-top: 1px solid rgb(255 255 255 / .16); padding-left: 0; }.price-stage { min-height: auto; }.stage-copy { min-height: 380px; padding: 28px; }.certainty-visual { min-height: 650px; }.visual-source { min-width: 190px; }.source-local { left: 4%; }.source-online { top: 27%; right: 4%; }.source-observed { right: 4%; }.flow-list { grid-template-columns: 1fr; }.flow-list li + li { border-left: 0; padding-left: 0; }.flow-list li { min-height: auto; }.flow-list h3 { margin-top: 20px; }
+  }
+</style>

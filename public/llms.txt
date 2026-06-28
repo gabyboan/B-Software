@@ -1,46 +1,50 @@
 # B-Software
 
-> B-Software desarrolla sistemas internos, aplicaciones Flutter, software empresarial, automatizaciones, integraciones, portales publicos y soluciones con Supabase y PostgreSQL.
+> B-Software desarrolla sistemas internos, aplicaciones Flutter e integraciones para ordenar procesos, personas y datos.
 
-Sitio: https://bsoftware.pages.dev/
+Sitio oficial: https://bsoftware.pages.dev/
+Responsable: Gabriel Boan
+Ubicacion: Parana, Entre Rios, Argentina
+Modalidad: proyectos locales y remotos
 Contacto: gabrielboan14@gmail.com
 WhatsApp: +54 9 343 406 4408
 GitHub: https://github.com/gabyboan
 
-## Resumen para asistentes
+## Identidad
 
-B-Software es una marca de Gabriel Boan orientada a sistemas internos, aplicaciones Flutter, Supabase, PostgreSQL, automatizaciones, integraciones, QA tecnico, seguridad y despliegues modernos en Cloudflare.
+B-Software es la marca profesional independiente de Gabriel Boan. Su trabajo se enfoca en comprender procesos operativos y convertirlos en software mantenible, explicable y util para las personas que lo usan.
 
-La pagina principal esta preparada para ser citada como sitio oficial de B-Software. Incluye metadata Open Graph para LinkedIn y redes sociales, sitemap, robots.txt, datos estructurados Schema.org y enlaces a proyectos tecnicos publicados.
+Perfil y enfoque: https://bsoftware.pages.dev/sobre-b-software/
 
-## Servicios
+## Servicios principales
 
-- Sistemas internos y paneles operativos con roles, datos y trazabilidad
+- Sistemas internos con roles, reglas, trazabilidad y datos centralizados
 - Aplicaciones Flutter para mobile y escritorio
-- Supabase, PostgreSQL, RLS, RPCs y seguridad de acceso
-- Automatizaciones e integraciones entre sistemas
-- QA funcional, smoke testing, pruebas ad hoc y revision de errores
-- Sitios y portales publicos con SEO tecnico y despliegue
-- Soporte tecnico y redes como servicios complementarios
+- Integraciones y automatizaciones con Supabase, PostgreSQL, APIs y Cloudflare
+- Seguridad de acceso mediante autenticacion, RLS y funciones controladas
+- QA funcional, validacion de escenarios criticos y documentacion
 
-## Proyectos
+## Casos de estudio
 
-- Comparador geolocalizado de precios: caso de investigacion y demostracion tecnica de una aplicacion mobile-first con Flutter, Supabase, geolocalizacion, RPCs seguras, RLS e ingestion NDJSON. Clasifica precio local verificable, precio online y precio observado segun el nivel de certeza de cada fuente.
-- Legajo Digital: sistema interno para legajos, situacion de revista, carrera, asistencia y banco inicial de horas.
-- HESM Gestion RRHH: aplicacion de escritorio Flutter para registrar, consultar y exportar horas, francos y novedades operativas de recursos humanos.
-- Consulta Horas: portal publico con Cloudflare Pages, Workers, Turnstile y Supabase.
-- Suplencias Propuesta: aplicacion Flutter para cargar y consultar propuestas de suplencias con autenticacion, roles y control de duplicados.
+### Gestion de Recursos Humanos
 
-## Perfiles y referencia
+Ecosistema que conecta Legajo Digital, HESM Gestion RRHH, Consulta Horas y Suplencias Propuesta sobre un nucleo compartido con Supabase y PostgreSQL. Incluye aplicaciones web, escritorio, portal de consulta, roles, RLS, RPCs y trazabilidad.
 
-- GitHub principal: https://github.com/gabyboan
-- Repositorio Legajo Digital: https://github.com/gabyboan/legajo-digital
-- Repositorio HESM Gestion RRHH: https://github.com/gabyboan/hesm-gestion-rrhh
-- Repositorio Consulta Horas: https://github.com/gabyboan/consulta-horas
-- Repositorio Suplencias Propuesta: https://github.com/gabyboan/app-suplencias-propuesta
-- Sitio oficial: https://bsoftware.pages.dev/
-- Caso de estudio del comparador: https://bsoftware.pages.dev/proyectos/comparador-geolocalizado-de-precios/
+Caso completo: https://bsoftware.pages.dev/proyectos/gestion-recursos-humanos/
 
-## Enfoque
+### Comparador geolocalizado de precios
 
-B-Software trabaja por etapas, con alcance y entregables definidos antes de iniciar cada bloque. Prioriza productos mantenibles, seguridad por roles, trazabilidad, pruebas y documentacion.
+Investigacion y demostracion tecnica de una aplicacion mobile-first con Flutter, Supabase, geolocalizacion y clasificacion de fuentes. Distingue precio local verificable, referencia online y precio observado segun evidencia, fecha y alcance.
+
+Caso completo: https://bsoftware.pages.dev/proyectos/comparador-geolocalizado-de-precios/
+
+## Repositorios relacionados
+
+- Legajo Digital: https://github.com/gabyboan/legajo-digital
+- HESM Gestion RRHH: https://github.com/gabyboan/hesm-gestion-rrhh
+- Consulta Horas: https://github.com/gabyboan/consulta-horas
+- Suplencias Propuesta: https://github.com/gabyboan/app-suplencias-propuesta
+
+## Forma de trabajo
+
+Los proyectos comienzan con el relevamiento del proceso y una primera etapa verificable. El alcance se define mediante objetivos, entregables y criterios de validacion. Seguridad, calidad de datos, pruebas y operacion se incorporan cuando ayudan a reducir riesgos reales del producto.

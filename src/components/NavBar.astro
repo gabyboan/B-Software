@@ -1,5 +1,5 @@
 ---
-const items = [
+const defaultItems = [
   { href: "/#servicios", label: "Servicios" },
   { href: "/#proyectos", label: "Proyectos" },
   { href: "/#metodo", label: "Cómo trabajo" },
@@ -7,6 +7,20 @@ const items = [
   { href: "/#faq", label: "FAQ" },
   { href: "/#contacto", label: "Contacto" },
 ];
+
+const compactItems = [
+  { href: "/#proyectos", label: "Casos" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#metodo", label: "Proceso" },
+  { href: "/sobre-b-software/", label: "Sobre" },
+];
+
+const { variant = "default" } = Astro.props;
+const compact = variant === "compact";
+const items = compact ? compactItems : defaultItems;
+const cta = compact
+  ? { href: "/#contacto", label: "Conversemos", external: false }
+  : { href: "https://wa.me/5493434064408", label: "WhatsApp", external: true };
 ---
 
 <header class="site-header">
@@ -27,7 +41,7 @@ const items = [
       ))}
     </nav>
 
-    <a class="nav-cta" href="https://wa.me/5493434064408" target="_blank" rel="noreferrer">WhatsApp</a>
+    <a class="nav-cta" href={cta.href} target={cta.external ? "_blank" : undefined} rel={cta.external ? "noreferrer" : undefined}>{cta.label}</a>
 
     <details class="mobile-nav">
       <summary aria-label="Abrir menú de navegación">Menú</summary>
@@ -35,7 +49,7 @@ const items = [
         {items.map((item) => (
           <a href={item.href}>{item.label}</a>
         ))}
-        <a href="https://wa.me/5493434064408" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a href={cta.href} target={cta.external ? "_blank" : undefined} rel={cta.external ? "noreferrer" : undefined}>{cta.label}</a>
       </nav>
     </details>
   </div>
