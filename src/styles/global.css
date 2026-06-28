@@ -606,28 +606,6 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
 }
 .github-list p { color: rgb(255 255 255 / 0.82); }
 
-.brand-section { padding-top: 28px; }
-.brand-grid {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.brand-card {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-  background: white;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.brand-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
-.brand-card h3 { padding: 16px; font-size: 1.05rem; }
-.brand-card:hover {
-  border-color: #aeb9c3;
-  transform: translateY(-3px);
-  box-shadow: 0 16px 34px rgb(21 32 43 / 0.1);
-}
-
 .discover-section { padding-top: 28px; }
 .discover-section .section-heading p:not(.eyebrow) {
   margin-top: 16px;
@@ -913,7 +891,7 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   .brand { min-width: auto; }
   .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 48px; }
   h1 { font-size: clamp(2.7rem, 11vw, 4.8rem); }
-  .intro-band, .project-grid, .split-section, .contact-section, .brand-grid, .quality-grid, .offers-grid, .automation-grid, .github-section, .profile-grid, .service-card-grid, .case-preview, .work-grid, .case-study-hero, .case-summary, .validation-section, .stack-block, .case-cta, .capability-grid, .source-grid { grid-template-columns: 1fr; }
+  .intro-band, .project-grid, .split-section, .contact-section, .quality-grid, .offers-grid, .automation-grid, .github-section, .profile-grid, .service-card-grid, .case-preview, .work-grid, .case-study-hero, .case-summary, .validation-section, .stack-block, .case-cta, .capability-grid, .source-grid { grid-template-columns: 1fr; }
   .project-card { min-height: auto; }
   .contact-actions { margin-top: 0; }
   .hero-media { min-height: 420px; }
@@ -932,6 +910,5 @@ h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: 0; }
   .hero, .section, .contact-section { padding-inline: 14px; }
   .hero { padding-top: 48px; }
   h1 { font-size: clamp(2.35rem, 12vw, 3.25rem); }
-  .secondary-services .brand-card img { aspect-ratio: 16 / 9; object-position: center; }
   .button { width: 100%; }
 }

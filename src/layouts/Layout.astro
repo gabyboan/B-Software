@@ -9,6 +9,8 @@ const {
   image = "https://bsoftware.pages.dev/b-software-hero.png",
   imageAlt = "B-Software, desarrollo de sistemas internos, aplicaciones móviles y automatizaciones",
   ogType = "website",
+  bodyClass = "",
+  navVariant = "default",
 } = Astro.props;
 ---
 
@@ -47,8 +49,8 @@ const {
     <link rel="sitemap" href="/sitemap.xml" />
     <title>{title}</title>
   </head>
-  <body>
-    <NavBar />
+  <body class={bodyClass}>
+    <NavBar variant={navVariant} />
     <slot />
   </body>
 </html>
