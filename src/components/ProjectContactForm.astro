@@ -1,0 +1,93 @@
+<form class="project-form" data-project-form novalidate>
+  <div class="form-grid">
+    <label>Nombre <input name="name" autocomplete="name" required maxlength="100" /></label>
+    <label>Empresa o actividad <span>(opcional)</span><input name="business" autocomplete="organization" maxlength="120" /></label>
+    <label class="form-wide">Email o WhatsApp <input name="contact" autocomplete="email" required maxlength="160" aria-describedby="contact-help" /></label>
+    <small id="contact-help" class="form-help form-wide">Usaré este dato únicamente para responder tu consulta.</small>
+    <label class="form-wide">Qué necesitás resolver <textarea name="need" rows="5" minlength="20" maxlength="2000" required placeholder="Contame cómo trabajan hoy, qué se complica y qué resultado esperás."></textarea></label>
+    <label>Tipo de proyecto
+      <select name="type">
+        <option value="Sin definir">Todavía no lo sé</option>
+        <option value="Sistema interno">Sistema interno</option><option value="Aplicación web">Aplicación web</option>
+        <option value="App móvil">App móvil</option><option value="Migración web">Migración web</option>
+        <option value="Automatización">Automatización</option><option value="MVP">MVP</option><option value="Otro">Otro</option>
+      </select>
+    </label>
+    <label>Presupuesto estimado <span>(opcional)</span><input name="budget" maxlength="120" placeholder="Rango o referencia" /></label>
+    <label class="form-wide">Plazo deseado <span>(opcional)</span><input name="timeline" maxlength="120" placeholder="Por ejemplo: este trimestre" /></label>
+  </div>
+  <p class="form-privacy">Al continuar se abre WhatsApp para que revises el mensaje antes de enviarlo. Más información en <a href="/privacidad/">Privacidad</a>, <a href="/terminos/">Términos</a> y <a href="/cookies/">Cookies</a>.</p>
+  <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+  <button class="button contact-submit" type="submit" disabled>Continuar en WhatsApp <span aria-hidden="true">↗</span></button>
+  <a data-whatsapp-fallback hidden target="_blank" rel="noopener noreferrer">Abrir el mensaje en WhatsApp ↗</a>
+  <noscript><p>Para consultar sin JavaScript, escribí a <a href="mailto:gabrielboan14@gmail.com">gabrielboan14@gmail.com</a> o <a href="https://wa.me/5493434064408" rel="noopener noreferrer" target="_blank">abrí WhatsApp</a>.</p></noscript>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("[data-project-form]").forEach((form) => {
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const status = form.querySelector<HTMLElement>("[data-form-status]");
+    const fallback = form.querySelector<HTMLAnchorElement>("[data-whatsapp-fallback]");
+    const english = () => document.documentElement.lang === "en";
+    const contact = form.elements.namedItem("contact") as HTMLInputElement;
+    const need = form.elements.namedItem("need") as HTMLTextAreaElement;
+    const name = form.elements.namedItem("name") as HTMLInputElement;
+    const validate = () => {
+      name.setCustomValidity(name.value.trim() ? "" : english() ? "Enter your name." : "Ingresá tu nombre.");
+      const value = contact.value.trim();
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      const isPhone = /^\+?[\d\s().-]+$/.test(value) && value.replace(/\D/g, "").length >= 7 && value.replace(/\D/g, "").length <= 15;
+      contact.setCustomValidity(isEmail || isPhone ? "" : english() ? "Enter a valid email or phone number." : "Ingresá un email o número de teléfono válido.");
+      need.setCustomValidity(need.value.trim().length >= 20 ? "" : english() ? "Describe your project in at least 20 characters." : "Describí tu proyecto en al menos 20 caracteres.");
+    };
+    form.addEventListener("input", () => {
+      validate();
+      if (status) status.textContent = "";
+      if (fallback) { fallback.hidden = true; fallback.removeAttribute("href"); }
+    });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      validate();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        if (status) status.textContent = english() ? "Review the required fields before continuing." : "Revisá los campos obligatorios antes de continuar.";
+        return;
+      }
+      const values = new FormData(form);
+      const value = (key: string) => {
+        if (key === "type" && english()) {
+          if (values.get(key) === "Sin definir") return "Not defined";
+          return (form.elements.namedItem("type") as HTMLSelectElement).selectedOptions[0]?.textContent?.trim() || "Not defined";
+        }
+        return String(values.get(key) || "").trim() || (english() ? "Not defined" : "Sin definir");
+      };
+      const labels = english()
+        ? ["Name", "Company or activity", "Contact", "Project type", "What I need to solve", "Estimated budget", "Desired timeline"]
+        : ["Nombre", "Empresa o actividad", "Contacto", "Tipo de proyecto", "Qué necesito resolver", "Presupuesto estimado", "Plazo deseado"];
+      const keys = ["name", "business", "contact", "type", "need", "budget", "timeline"];
+      const message = [english() ? "Hi Gabriel, I'd like to discuss a project." : "Hola Gabriel, quiero conversar sobre un proyecto.", "", ...keys.map((key, index) => `${labels[index]}: ${value(key)}`)].join("\n");
+      const url = `https://wa.me/5493434064408?text=${encodeURIComponent(message)}`;
+      if (fallback) { fallback.href = url; fallback.hidden = false; }
+      if (status) status.textContent = english() ? "Your message is ready. Review it in WhatsApp before sending." : "Tu mensaje está listo. Revisalo en WhatsApp antes de enviarlo.";
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+    if (submit) submit.disabled = false;
+  });
+</script>
+
+<style>
+  .project-form { min-width:0; border:1px solid #ffffff40; border-radius:12px; padding:28px; color:#15202b; background:white; }
+  .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 16px; }
+  label { display:flex; flex-wrap:wrap; gap:6px; align-content:start; font-size:.83rem; font-weight:750; }
+  label > span { font-weight:400; color:#5f6c7b; }
+  input, textarea, select { width:100%; min-height:46px; border:1px solid #aab4bf; border-radius:6px; padding:11px 12px; color:#15202b; background:#fff; font:inherit; font-size:1rem; }
+  textarea { resize:vertical; }
+  .form-wide { grid-column:1/-1; }
+  .form-help { margin-top:-12px; color:#5f6c7b; font-size:.78rem; }
+  .form-privacy { margin-top:24px; color:#5f6c7b; font-size:.78rem; line-height:1.7; }
+  .form-privacy a, [data-whatsapp-fallback], noscript a { text-decoration:underline; text-underline-offset:3px; }
+  .form-status { min-height:1.6em; margin:14px 0; color:#263fbd; font-size:.85rem; }
+  .contact-submit { width:100%; gap:10px; color:#fff; background:#15202b; cursor:pointer; font:inherit; font-weight:750; }
+  [data-whatsapp-fallback]:not([hidden]) { display:block; margin-top:16px; color:#263fbd; font-size:.88rem; }
+  @media(max-width:560px) { .project-form { padding:22px 18px; } .form-grid { grid-template-columns:1fr; } }
+</style>

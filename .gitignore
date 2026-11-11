@@ -29,3 +29,9 @@ BSoftware-AUDIOVISUALL.zip
 
 # Search Console download kept in public/ for deploy
 /google*.html
+
+# Local review artifacts and production backups
+.review/
+.wrangler/
+playwright-report/
+test-results/
