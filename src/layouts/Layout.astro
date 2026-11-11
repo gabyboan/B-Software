@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
-import { englishTranslations } from "../i18n/translations";
+import Footer from "../components/Footer.astro";
+import "../styles/refresh.css";
 
 const {
   title = "B-Software | Sistemas internos, Flutter y automatizaciones",
@@ -13,7 +14,8 @@ const {
   imageHeight = 929,
   ogType = "website",
   bodyClass = "",
-  navVariant = "default",
+  navVariant = "compact",
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -23,7 +25,7 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
     <meta name="author" content="B-Software" />
     <meta name="creator" content="B-Software" />
     <meta name="publisher" content="B-Software" />
@@ -56,11 +58,11 @@ const {
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="sitemap" href="/sitemap.xml" />
     <title>{title}</title>
-    <script is:inline id="bsoftware-translations" type="application/json" set:html={JSON.stringify(englishTranslations)}></script>
     <script is:inline>
       (() => {
         const requested = new URLSearchParams(location.search).get("lang");
-        const saved = localStorage.getItem("bsoftware-language");
+        let saved;
+        try { saved = localStorage.getItem("bsoftware-language"); } catch {}
         const preferred = navigator.languages?.[0] || navigator.language || "es";
         const language = requested === "en" || requested === "es"
           ? requested
@@ -77,111 +79,9 @@ const {
     <a class="skip-link" href="#main-content">Saltar al contenido</a>
     <NavBar variant={navVariant} />
     <div id="main-content" tabindex="-1"><slot /></div>
-    <script is:inline>
-      (() => {
-        const data = document.getElementById("bsoftware-translations");
-        if (!data) return;
-
-        const translations = JSON.parse(data.textContent || "{}");
-        const textOrigins = new WeakMap();
-        const attributeOrigins = new WeakMap();
-        const translatedAttributes = [
-          "alt",
-          "aria-label",
-          "placeholder",
-          "title",
-          "data-tech-role",
-          "data-tech-description",
-        ];
-
-        const translatedText = (value, language) => {
-          const normalized = value.trim();
-          if (!normalized) return value;
-          const replacement = language === "en" ? translations[normalized] : normalized;
-          return replacement ? value.replace(normalized, replacement) : value;
-        };
-
-        const applyTextNode = (node, language) => {
-          const current = node.nodeValue || "";
-          const normalized = current.trim();
-          if (!textOrigins.has(node) || (language === "en" && translations[normalized])) {
-            textOrigins.set(node, current);
-          }
-          const source = textOrigins.get(node) || current;
-          node.nodeValue = language === "en" ? translatedText(source, language) : source;
-        };
-
-        const applyAttributes = (element, language) => {
-          const attributes = element.matches("meta")
-            ? [...translatedAttributes, "content"]
-            : translatedAttributes;
-          let origins = attributeOrigins.get(element);
-          if (!origins) {
-            origins = {};
-            attributeOrigins.set(element, origins);
-          }
-          for (const attribute of attributes) {
-            if (!element.hasAttribute(attribute)) continue;
-            const current = element.getAttribute(attribute) || "";
-            if (!(attribute in origins) || (language === "en" && translations[current.trim()])) {
-              origins[attribute] = current;
-            }
-            const source = origins[attribute];
-            element.setAttribute(attribute, language === "en" ? translatedText(source, language) : source);
-          }
-        };
-
-        const applyLanguage = (language) => {
-          document.documentElement.lang = language === "en" ? "en" : "es-AR";
-          document.documentElement.dataset.language = language;
-
-          const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT, {
-            acceptNode(node) {
-              return node.parentElement?.closest("script, style, noscript")
-                ? NodeFilter.FILTER_REJECT
-                : NodeFilter.FILTER_ACCEPT;
-            },
-          });
-          while (walker.nextNode()) applyTextNode(walker.currentNode, language);
-          document.querySelectorAll("*").forEach((element) => applyAttributes(element, language));
-
-          document.querySelectorAll("[data-language-option]").forEach((button) => {
-            const active = button.dataset.languageOption === language;
-            button.setAttribute("aria-pressed", active ? "true" : "false");
-            button.classList.toggle("active", active);
-          });
-        };
-
-        const setLanguage = (language, persist = true) => {
-          if (language !== "es" && language !== "en") return;
-          window.__bsoftwareLanguage = language;
-          if (persist) localStorage.setItem("bsoftware-language", language);
-          applyLanguage(language);
-        };
-
-        document.addEventListener("click", (event) => {
-          const button = event.target.closest("[data-language-option]");
-          if (!button) return;
-          setLanguage(button.dataset.languageOption);
-        });
-
-        const observer = new MutationObserver((mutations) => {
-          if (window.__bsoftwareLanguage !== "en") return;
-          for (const mutation of mutations) {
-            mutation.addedNodes.forEach((node) => {
-              if (node.nodeType === Node.TEXT_NODE) applyTextNode(node, "en");
-              if (node.nodeType === Node.ELEMENT_NODE) {
-                applyAttributes(node, "en");
-                const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
-                while (walker.nextNode()) applyTextNode(walker.currentNode, "en");
-              }
-            });
-          }
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        setLanguage(window.__bsoftwareLanguage || "es", false);
-      })();
+    <Footer />
+    <script>
+      import "../scripts/language";
     </script>
   </body>
 </html>

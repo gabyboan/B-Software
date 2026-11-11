@@ -8,6 +8,7 @@ Ubicacion: Parana, Entre Rios, Argentina
 Modalidad: proyectos locales y remotos
 Contacto: gabrielboan14@gmail.com
 WhatsApp: +54 9 343 406 4408
+Pagina de contacto: https://bsoftware.pages.dev/contacto/
 GitHub: https://github.com/gabyboan
 
 ## Identidad
@@ -50,8 +51,37 @@ Beta web: https://inmobiliaria-app.pages.dev/
 - Legajo Digital: https://github.com/gabyboan/legajo-digital
 - HESM Gestion RRHH: https://github.com/gabyboan/hesm-gestion-rrhh
 - Consulta Horas: https://github.com/gabyboan/consulta-horas
-- Suplencias Propuesta: https://github.com/gabyboan/app-suplencias-propuesta
 
 ## Forma de trabajo
 
 Los proyectos comienzan con el relevamiento del proceso y una primera etapa verificable. El alcance se define mediante objetivos, entregables y criterios de validacion. Seguridad, calidad de datos, pruebas y operacion se incorporan cuando ayudan a reducir riesgos reales del producto.
+
+## Formas de empezar
+
+- Diagnostico operativo para ordenar problema, flujo, riesgos y primera etapa.
+- MVP funcional para validar una idea con una version usable y desplegada.
+- Modernizacion web para renovar sitio, base tecnica, formularios y SEO inicial.
+- Primer modulo interno para reemplazar una parte critica del circuito con usuarios, roles, datos e historial.
+
+## Privacidad y condiciones
+
+El formulario del sitio prepara un mensaje de WhatsApp y no guarda la consulta en una base propia antes de que la persona revise y envie el mensaje. El sitio usa almacenamiento local para recordar la preferencia de idioma. El sitio queda preparado para Cloudflare Web Analytics si hay un token configurado en produccion; esa medicion es agregada y no se usa para publicidad segmentada. No se usan cookies publicitarias ni remarketing.
+
+Politica de privacidad: https://bsoftware.pages.dev/privacidad/
+Terminos y condiciones: https://bsoftware.pages.dev/terminos/
+Politica de cookies: https://bsoftware.pages.dev/cookies/
+
+
+## Estado revisado el 11 de noviembre de 2026
+
+HESM Gestión RRHH documenta siete módulos: Horas, Francos, Imprevistos, Médicos,
+Suplencias, Licencias y Ficha. La distribución operativa documentada es 1.0.6.7,
+del 2 de noviembre de 2026. Ficha y Licencias pertenecen al desarrollo posterior;
+su presencia en el código no acredita instalación en puestos de trabajo.
+Galería y demo Windows: https://github.com/gabyboan/hesm-gestion-rrhh#probar-la-demo
+
+Tiago Market ofrece una demo web sin registro con ocho productos y dos comercios
+ficticios. No consulta producción ni realiza compras. No representa cobertura
+comercial ni disponibilidad de precios en tiempo real.
+Demo pública: https://gabyboan.github.io/tiago-market/
+Código y estado: https://github.com/gabyboan/tiago-market

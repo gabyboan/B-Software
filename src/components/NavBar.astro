@@ -16,7 +16,7 @@ const compactItems = [
   { href: "/sobre-b-software/", label: "Sobre" },
 ];
 
-const { variant = "default" } = Astro.props;
+const { variant = "compact" } = Astro.props;
 const compact = variant === "compact";
 const items = compact ? compactItems : defaultItems;
 const cta = compact
@@ -60,3 +60,16 @@ const cta = compact
     </details>
   </div>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLDetailsElement>(".mobile-nav").forEach((menu) => {
+    const close = () => { menu.open = false; };
+    menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+    document.addEventListener("click", (event) => {
+      if (event.target instanceof Node && !menu.contains(event.target)) close();
+    });
+    menu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") { close(); menu.querySelector("summary")?.focus(); }
+    });
+  });
+</script>

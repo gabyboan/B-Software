@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectContactForm from "../components/ProjectContactForm.astro";
+---
+<Layout title="Contacto y propuesta de proyecto | B-Software" description="Contale a Gabriel Boan qué necesitás resolver: sistemas de gestión, aplicaciones Flutter, sitios web e integraciones desde Paraná, Argentina." canonical="https://bsoftware.pages.dev/contacto/" navVariant="compact">
+  <main class="contact-page">
+    <a class="back-link" href="/">← Volver al inicio</a>
+    <div class="contact-layout">
+      <div class="contact-copy"><p class="eyebrow">Contacto directo</p><h1>Contame qué necesitás resolver.</h1><p>Podés empezar con una idea, un proceso que se complica o un sistema que necesita mejorar. Definimos juntos el primer paso.</p><div class="direct-links"><a href="mailto:gabrielboan14@gmail.com">gabrielboan14@gmail.com</a><a href="https://wa.me/5493434064408" target="_blank" rel="noopener noreferrer">WhatsApp directo ↗</a></div><p class="contact-note">El formulario prepara un mensaje para WhatsApp. Podés revisarlo antes de enviarlo; este sitio no guarda los datos de tu consulta.</p></div>
+      <ProjectContactForm />
+    </div>
+  </main>
+</Layout>
+<style>
+  .contact-page { background:#f5f4f0; padding:48px max(20px,calc((100vw - 1140px)/2)) 88px; }
+  .contact-layout { display:grid; grid-template-columns:.9fr 1.1fr; align-items:start; gap:64px; margin-top:36px; }
+  h1 { font-size:clamp(2.7rem,5.5vw,5rem); line-height:1.04; letter-spacing:-.05em; }
+  .contact-copy > p:not(.eyebrow) { margin-top:24px; color:#5f625c; line-height:1.8; }
+  .direct-links { display:grid; gap:12px; margin-top:32px; font-weight:700; overflow-wrap:anywhere; }
+  .direct-links a { text-decoration:underline; text-underline-offset:5px; }
+  .contact-copy .contact-note { font-size:.88rem; }
+  @media(max-width:900px) { .contact-layout { grid-template-columns:1fr; gap:36px; } }
+</style>

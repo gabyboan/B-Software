@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProjectContactForm from "../components/ProjectContactForm.astro";
 
 const services = [
   {
@@ -201,27 +202,25 @@ const structuredData = {
   <main class="home-page">
     <section class="home-hero" aria-labelledby="home-title">
       <div class="hero-copy">
-        <p class="eyebrow">Desarrollo de software para empresas · Argentina y remoto</p>
-        <h1 id="home-title">Sistemas y aplicaciones para operar mejor.</h1>
+        <p class="eyebrow">Gabriel Boan · Desarrollo de software</p>
+        <h1 id="home-title">Software a medida para <span>trabajar mejor.</span></h1>
         <p class="home-lead">
-          Desarrollo sistemas y aplicaciones que reducen tareas manuales, ordenan procesos y hacen que tu negocio pueda operar mejor.
+          Convierto planillas, tareas manuales y datos dispersos en sistemas, aplicaciones y portales para el trabajo de todos los días.
         </p>
-        <p class="hero-scope">Sistemas internos · Web y mobile · Automatización · Dashboards · MVPs · Modernización</p>
+        <p class="hero-scope">Sistemas de gestión · Aplicaciones Flutter · Web e integraciones</p>
         <div class="home-actions">
           <a class="button primary" href="#proyectos">Ver proyectos</a>
           <a class="button secondary" href="#contacto">Contar mi proyecto</a>
         </div>
+        <p class="hero-location">Paraná, Argentina · Proyectos locales y remotos</p>
       </div>
 
-      <div class="hero-system" aria-label="Proceso, datos y producto conectados">
-        <div class="system-top"><span>B-Software</span><span>Arquitectura operativa</span></div>
-        <div class="system-flow">
-          <article><small>01</small><strong>Proceso</strong><p>Personas, reglas y tareas reales.</p></article>
-          <span class="system-arrow" aria-hidden="true">→</span>
-          <article><small>02</small><strong>Datos</strong><p>Una fuente consistente y controlada.</p></article>
-          <span class="system-arrow" aria-hidden="true">→</span>
-          <article><small>03</small><strong>Producto</strong><p>La interfaz adecuada para operar.</p></article>
-        </div>
+      <div class="hero-system" aria-label="Proyecto destacado y tecnologías">
+        <div class="system-top"><span>En pantalla · Gestión RRHH</span><span class="demo-indicator">Demo</span></div>
+        <figure class="hero-project">
+          <a href="/proyectos/gestion-recursos-humanos/"><img src="/rrhh-panel.webp" alt="Panel de Gestión RRHH en una captura de demostración con datos ficticios" width="1200" height="750" fetchpriority="high" /></a>
+          <figcaption><span>Vista de demostración · Datos ficticios</span><a href="/proyectos/gestion-recursos-humanos/">Explorar el proyecto ↗</a></figcaption>
+        </figure>
         <div class="technology-explorer" data-tech-explorer style={`--tech-accent: ${technologies[0].accent}`}>
           <div class="technology-tabs" role="tablist" aria-label="Tecnologías utilizadas en los proyectos">
             {technologies.map((technology, index) => (
@@ -249,6 +248,13 @@ const structuredData = {
         </div>
       </div>
     </section>
+
+    <div class="home-section proof-strip" aria-label="El portfolio en números">
+      <div><strong>4</strong><span>productos conectados en RRHH</span></div>
+      <div><strong>3</strong><span>casos para explorar</span></div>
+      <div><strong>7</strong><span>servicios de desarrollo</span></div>
+      <div><strong>4</strong><span>etapas de trabajo</span></div>
+    </div>
 
     <section id="problemas" class="home-section problems-section" aria-labelledby="problems-title">
       <div class="home-heading">
@@ -279,12 +285,12 @@ const structuredData = {
             <p class="case-kicker">Sistema interno · Desarrollo activo</p>
             <h3>Un ecosistema para conectar legajos, horas, suplencias y consultas.</h3>
             <p>
-              Cuatro productos comparten un núcleo de datos y reglas de acceso. Cada canal resuelve un momento distinto sin duplicar identidad, permisos ni lógica operativa.
+              Cuatro productos conectan legajos, horas y suplencias. La aplicación Windows suma partes médicos con QR, Ficha y Licencias sobre un núcleo compartido de datos y permisos.
             </p>
             <div class="case-business">
               <p><strong>Problema</strong> Información administrativa sensible repartida entre módulos y canales con necesidades de acceso diferentes.</p>
               <p><strong>Solución</strong> Un núcleo compartido con autenticación, roles, RLS, RPCs y productos específicos para cada recorrido.</p>
-              <p><strong>Impacto verificable</strong> Legajos, horas, suplencias y consultas se modelan sobre una misma arquitectura documentada.</p>
+              <p><strong>Impacto verificable</strong> Siete módulos de escritorio, partes médicos con QR, informes y una demo con datos ficticios.</p>
             </div>
             <dl class="case-facts">
               <div><dt>Funciones</dt><dd>Roles · permisos · trazabilidad</dd></div>
@@ -312,10 +318,10 @@ const structuredData = {
             <span class="price-label label-date">Observación fechada</span>
           </div>
           <div class="case-copy">
-            <p class="case-kicker">Tiago Market · Prototipo 0.8</p>
+            <p class="case-kicker">Tiago Market · Demo web disponible</p>
             <h3>Comparar precios sin perder la fuente, la fecha ni el lugar.</h3>
             <p>
-              Un producto mobile-first que combina ubicación, sucursales y niveles de certeza para no presentar una referencia online como disponibilidad local confirmada.
+              Una aplicación Flutter para buscar productos, comparar precios y armar una lista de compras. Cada observación conserva fuente, fecha y alcance.
             </p>
             <div class="case-business light">
               <p><strong>Problema</strong> Un precio sin contexto puede confundir una referencia online con disponibilidad local en tiempo real.</p>
@@ -325,9 +331,10 @@ const structuredData = {
             <dl class="case-facts">
               <div><dt>Funciones</dt><dd>Búsqueda · cercanía · favoritos</dd></div>
               <div><dt>Stack</dt><dd>Flutter · API · Supabase</dd></div>
-              <div><dt>Estado</dt><dd>Prototipo · piloto pendiente</dd></div>
+              <div><dt>Estado</dt><dd>Prototipo · demo con datos ficticios</dd></div>
             </dl>
             <a class="case-link" href="/proyectos/comparador-geolocalizado-de-precios/">Ver decisiones del producto <span aria-hidden="true">↗</span></a>
+            <a class="case-demo-link" href="https://gabyboan.github.io/tiago-market/" target="_blank" rel="noopener noreferrer">Probar la demo web ↗</a>
           </div>
         </article>
 
@@ -466,43 +473,10 @@ const structuredData = {
           <a href="https://wa.me/5493434064408" target="_blank" rel="noreferrer">WhatsApp directo ↗</a>
         </div>
       </div>
-      <form id="project-contact-form" class="project-form" novalidate>
-        <div class="form-grid">
-          <label>Nombre <input type="text" name="name" autocomplete="name" required /></label>
-          <label>Empresa o actividad <input type="text" name="business" autocomplete="organization" required /></label>
-          <label class="form-wide">Email o WhatsApp <input type="text" name="contact" autocomplete="email" required aria-describedby="contact-help" /></label>
-          <small id="contact-help" class="form-help form-wide">Usaré este dato únicamente para responder tu consulta.</small>
-          <label class="form-wide">Qué necesitás resolver <textarea name="need" rows="5" minlength="20" required placeholder="Contame cómo trabajan hoy, qué se complica y qué resultado esperás."></textarea></label>
-          <label>Tipo de proyecto
-            <select name="type" required>
-              <option value="">Seleccionar</option>
-              <option>Sistema interno</option><option>Aplicación web</option><option>App móvil</option>
-              <option>Migración web</option><option>Automatización</option><option>MVP</option><option>Otro</option>
-            </select>
-          </label>
-          <label>Presupuesto estimado <span>(opcional)</span><input type="text" name="budget" placeholder="Rango o referencia" /></label>
-          <label class="form-wide">Plazo deseado <span>(opcional)</span><input type="text" name="timeline" placeholder="Por ejemplo: este trimestre" /></label>
-        </div>
-        <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-        <button class="button contact-submit" type="submit">Continuar en WhatsApp <span aria-hidden="true">↗</span></button>
-      </form>
+      <ProjectContactForm />
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <a class="footer-brand" href="/">
-        <span class="footer-logo"><img src="/brand/logo-b-96.webp" alt="" width="96" height="96" loading="lazy" /></span>
-        <span><strong>B Software</strong><small>Sistemas internos, Flutter e integraciones</small></span>
-      </a>
-      <nav class="footer-links" aria-label="Enlaces secundarios">
-        <a href="/sobre-b-software/">Sobre B-Software</a>
-        <a href="/#proyectos">Casos</a>
-        <a href="https://github.com/gabyboan" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="/#contacto">Contacto</a>
-      </nav>
-    </div>
-  </footer>
 
   <script>
     document.querySelectorAll<HTMLElement>("[data-tech-explorer]").forEach((explorer) => {
@@ -539,35 +513,6 @@ const structuredData = {
       });
     });
 
-    const contactForm = document.querySelector("#project-contact-form");
-    if (contactForm instanceof HTMLFormElement) {
-      contactForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const status = contactForm.querySelector("[data-form-status]");
-        if (!contactForm.checkValidity()) {
-          contactForm.reportValidity();
-          if (status) status.textContent = "Revisá los campos obligatorios antes de continuar.";
-          return;
-        }
-
-        const values = Object.fromEntries(new FormData(contactForm).entries());
-        const optional = (value: FormDataEntryValue | undefined) => typeof value === "string" && value.trim() ? value.trim() : "Sin definir";
-        const message = [
-          "Hola Gabriel, quiero conversar sobre un proyecto.",
-          "",
-          `Nombre: ${optional(values.name)}`,
-          `Empresa o actividad: ${optional(values.business)}`,
-          `Contacto: ${optional(values.contact)}`,
-          `Tipo de proyecto: ${optional(values.type)}`,
-          `Qué necesito resolver: ${optional(values.need)}`,
-          `Presupuesto estimado: ${optional(values.budget)}`,
-          `Plazo deseado: ${optional(values.timeline)}`,
-        ].join("\n");
-
-        if (status) status.textContent = "Abriendo WhatsApp para que revises y envíes el mensaje.";
-        window.open(`https://wa.me/5493434064408?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-      });
-    }
   </script>
 </Layout>
 
@@ -583,13 +528,6 @@ const structuredData = {
   .text-link:hover, .case-link:hover { text-decoration: underline; text-underline-offset: 5px; }
   .hero-system { min-height: 530px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #ceccc5; border-radius: 10px; padding: 22px; background: #fbfaf7; box-shadow: 0 24px 60px rgb(23 24 21 / .08); }
   .system-top { display: flex; justify-content: space-between; gap: 12px; color: #666963; font-size: .7rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
-  .system-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 8px; align-items: center; }
-  .system-flow article { min-width: 0; border-top: 2px solid #263fbd; padding-top: 12px; }
-  .system-flow small { color: #263fbd; font-weight: 900; }
-  .system-flow strong, .system-flow p { display: block; }
-  .system-flow strong { margin-top: 18px; font-size: 1.05rem; }
-  .system-flow p { margin-top: 8px; color: #666963; font-size: .76rem; line-height: 1.5; }
-  .system-arrow { color: #989a94; }
   .technology-explorer { border-top: 1px solid #d6d4cd; padding-top: 16px; }
   .technology-tabs { display: flex; flex-wrap: wrap; gap: 7px; }
   .technology-tabs button { border: 1px solid #d6d4cd; border-radius: 999px; padding: 6px 9px; color: #6d706a; background: #fff; font: inherit; font-size: .65rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; transition: border-color .16s ease, color .16s ease, background .16s ease; }
@@ -691,14 +629,6 @@ const structuredData = {
   .home-contact .section-index { color: #d1ccff; }.home-contact h2 { margin-top: 18px; max-width: 800px; }
   .contact-intro > p:not(.section-index) { margin-top: 22px; color: rgb(255 255 255 / .72); line-height: 1.75; }
   .contact-direct { margin-top: 28px; display: grid; gap: 8px; }.contact-direct a { width: fit-content; color: #fff; font-weight: 800; text-decoration: underline; text-decoration-color: rgb(255 255 255 / .35); text-underline-offset: 4px; }
-  .project-form { border-radius: 9px; padding: 26px; color: #171815; background: #fff; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
-  .project-form label { display: grid; gap: 7px; color: #353732; font-size: .8rem; font-weight: 850; }.project-form label > span { color: #777771; font-weight: 600; }
-  .project-form input, .project-form textarea, .project-form select { width: 100%; border: 1px solid #c9c7c0; border-radius: 7px; padding: 11px 12px; color: #171815; background: #fff; font: inherit; font-weight: 500; }
-  .project-form textarea { resize: vertical; }.project-form input:focus, .project-form textarea:focus, .project-form select:focus { border-color: #263fbd; outline: 3px solid rgb(38 63 189 / .14); }
-  .form-wide { grid-column: 1 / -1; }.form-help { margin-top: -12px; color: #777771; font-size: .72rem; }
-  .form-status { min-height: 22px; margin-top: 16px; color: #4d504a; font-size: .78rem; }
-  .contact-submit { width: 100%; margin-top: 8px; border: 0; color: #fff; background: #111214; cursor: pointer; font: inherit; }
 
   @media (max-width: 900px) {
     .home-hero, .home-heading, .featured-case, .development-case, .method-section, .trust-inner, .quote-section, .about-strip, .home-contact { grid-template-columns: 1fr; }
@@ -710,11 +640,42 @@ const structuredData = {
 
   @media (max-width: 560px) {
     .home-hero, .home-section, .trust-inner { padding-inline: 14px; }.home-hero h1 { font-size: clamp(3rem, 15vw, 4.2rem); }
-    .system-flow { grid-template-columns: 1fr; gap: 16px; }.system-arrow { display: none; }.hero-system { min-height: 690px; }.technology-detail { min-height: 98px; }
+
     .home-section { padding-top: 76px; padding-bottom: 76px; }.case-copy { padding: 24px; }.case-facts { grid-template-columns: 1fr; }.case-facts div { padding-bottom: 10px; }
     .case-map, .price-visual { min-height: 360px; margin: 0 14px 14px; }.price-visual { margin-top: 14px; }.nido-preview { min-height: 220px; margin: 0 14px 14px; }.orbit-two { width: 390px; height: 390px; }.orbit-one { width: 270px; height: 270px; }
-    .problem-grid, .services-list, .form-grid { grid-template-columns: 1fr; }.problem-grid article { min-height: 280px; }.services-list article, .services-list article:last-child { grid-column: auto; min-height: auto; }.services-list a { margin-top: 36px; }.form-wide { grid-column: auto; }.quote-grid article { grid-template-columns: 1fr; gap: 8px; }
+    .problem-grid, .services-list { grid-template-columns: 1fr; }.problem-grid article { min-height: 280px; }.services-list article, .services-list article:last-child { grid-column: auto; min-height: auto; }.services-list a { margin-top: 36px; }.quote-grid article { grid-template-columns: 1fr; gap: 8px; }
     .trust-list { grid-template-columns: 1fr; }.trust-list article:nth-child(odd) { border-right: 0; }.trust-list article { min-height: auto; padding-inline: 0; }
-    .faq-clean-list details p { padding-left: 0; }.home-contact { margin-bottom: 30px; padding: 42px 20px; }.project-form { padding: 20px; }
+    .faq-clean-list details p { padding-left: 0; }.home-contact { margin-bottom: 30px; padding: 42px 20px; }
   }
+
+  .home-hero { min-height:640px; grid-template-columns:1fr 1fr; gap:48px; padding-block:64px; }
+  .home-hero h1 { max-width:640px; font-size:clamp(3.1rem,5.1vw,4.8rem); font-weight:650; line-height:1.03; letter-spacing:-.055em; }
+  .home-hero h1 span { color:#263fbd; }
+  .home-lead { font-size:1.06rem; line-height:1.8; margin-top:24px; }
+  .hero-scope { font-size:.72rem; letter-spacing:.02em; font-weight:650; }
+  .hero-location { margin-top:20px; color:#60665e; font-size:.8rem; }
+  .hero-system { min-width:0; min-height:0; gap:20px; padding:20px; background:#fff; box-shadow:0 16px 45px #15202b0d; }
+  .system-top { align-items:center; font-size:.62rem; }
+  .demo-indicator { color:#13754f; background:#e9f5ef; border-radius:99px; padding:4px 8px; }
+  .hero-project { margin:0; }
+  .hero-project img { width:100%; height:auto; border:1px solid #ddd; border-radius:6px; }
+  .hero-project figcaption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:12px; color:#5f6c7b; font-size:.65rem; }
+  .hero-project figcaption a { color:#263fbd; font-weight:750; }
+  .technology-detail { min-height:94px; }
+  .technology-tabs button { min-height:36px; font-size:.62rem; }
+  .home-section.proof-strip { padding-block:30px; }
+  .home-section { padding-block:78px; }
+  .home-heading h2 { font-size:clamp(2rem,3.5vw,3.3rem); line-height:1.08; }
+  .problem-grid article { min-height:290px; }
+  .problem-grid h3 { margin-top:24px; }
+  .problem-grid article > div { margin-top:22px; }
+  .featured-case h3 { font-size:clamp(2rem,3vw,2.8rem); line-height:1.05; }
+  .rrhh-card .case-facts dt { color:#b4b7c0; }
+  .price-card .case-demo-link { color:#147843; }
+  .services-list article { min-height:0; }
+  .services-list article:last-child { min-height:0; }
+  .services-list h3 { margin-top:20px; }
+  .home-contact { min-width:0; padding:44px; gap:38px; }
+  @media(max-width:900px) { .home-hero { grid-template-columns:1fr; padding-top:42px; gap:36px; } .home-hero h1 { max-width:700px; font-size:clamp(3rem,8vw,4.5rem); } .hero-system { max-width:650px; } .home-contact { grid-template-columns:1fr; } }
+  @media(max-width:560px) { .home-hero h1 { font-size:clamp(2.7rem,11vw,3.4rem); } .home-actions { gap:12px; margin-top:26px; } .home-section { padding-block:56px; } .hero-system { padding:16px; } .home-contact { padding:32px 16px; } }
 </style>

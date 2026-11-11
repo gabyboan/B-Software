@@ -21,7 +21,7 @@ const systems = [
     title: "HESM Gestión RRHH",
     kind: "Operación de escritorio",
     description:
-      "Ordena la carga cotidiana de horas, francos y novedades, además de consultas y exportaciones.",
+      "Reúne Horas, Francos, Imprevistos, Médicos, Suplencias, Licencias y Ficha, con permisos por módulo, informes y exportaciones.",
     stack: "Flutter · Dart · Riverpod · Supabase",
     href: "https://github.com/gabyboan/hesm-gestion-rrhh",
   },
@@ -41,7 +41,7 @@ const systems = [
     description:
       "Registra propuestas y coberturas con autenticación, permisos, validación de períodos y control de duplicados.",
     stack: "Flutter · Dart · PostgreSQL · Supabase",
-    href: "https://github.com/gabyboan/app-suplencias-propuesta",
+    href: null,
   },
 ];
 
@@ -94,6 +94,14 @@ const caseStudyStructuredData = {
         </dl>
       </header>
 
+      <section class="project-evidence" aria-labelledby="rrhh-current-title">
+        <p class="section-number">Estado del proyecto · Noviembre de 2026</p>
+        <h2 id="rrhh-current-title">Siete módulos para la gestión cotidiana.</h2>
+        <p>Horas, Francos, Imprevistos, Médicos, Suplencias, Licencias y Ficha reúnen carga, consulta y seguimiento por roles. Los partes médicos incorporan QR y domicilio de emisión; Ficha y Licencias comparten el historial confirmado y permiten preparar planillas PDF.</p>
+        <p>La distribución operativa documentada es la 1.0.6.7, del 2 de noviembre de 2026. Ficha y Licencias forman parte del desarrollo posterior; el código publicado no implica que esos cambios ya estén instalados en los puestos de trabajo.</p>
+        <div class="evidence-actions"><a href="https://github.com/gabyboan/hesm-gestion-rrhh/blob/main/docs/mockups/README.md" target="_blank" rel="noopener noreferrer">Ver capturas con datos ficticios ↗</a><a href="https://github.com/gabyboan/hesm-gestion-rrhh#probar-la-demo" target="_blank" rel="noopener noreferrer">Cómo probar la demo Windows ↗</a><a href="https://github.com/gabyboan/hesm-gestion-rrhh/blob/main/docs/ESTADO_ACTUAL.md" target="_blank" rel="noopener noreferrer">Consultar el estado documentado ↗</a></div>
+      </section>
+
       <section class="flow-section" aria-labelledby="flow-title">
         <div class="flow-intro">
           <div>
@@ -141,7 +149,7 @@ const caseStudyStructuredData = {
 
               <article class="diagram-node" data-node="gestion" tabindex="0" style="left:58px; top:386px" aria-label="Gestión RRHH. Aplicación Windows.">
                 <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Gestión RRHH</span><span class="diagram-node-kind">windows</span></header>
-                <ul class="diagram-fields"><li>novedades administrativas</li><li>horas y permisos</li><li>consulta y exportación</li></ul>
+                <ul class="diagram-fields"><li>siete módulos por roles</li><li>partes médicos y QR</li><li>fichas, informes y PDF</li></ul>
               </article>
 
               <article class="diagram-node read-node" data-node="consulta" tabindex="0" style="left:905px; top:470px" aria-label="Consulta de Horas. Portal de lectura.">
@@ -149,24 +157,16 @@ const caseStudyStructuredData = {
                 <ul class="diagram-fields"><li>consulta individual</li><li>acceso acotado por RPC</li><li>sin escritura directa</li></ul>
               </article>
 
-              <article class="diagram-node module-node" data-node="licencias" tabindex="0" style="left:58px; top:655px" aria-label="Módulo de licencias médicas.">
-                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Licencias médicas</span><span class="diagram-node-kind">módulo</span></header>
-              </article>
-              <article class="diagram-node module-node" data-node="imprevistos" tabindex="0" style="left:270px; top:655px" aria-label="Módulo artículo 8, imprevistos.">
-                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Artículo 8 · imprevistos</span><span class="diagram-node-kind">módulo</span></header>
-              </article>
-              <article class="diagram-node module-node" data-node="compensatorias" tabindex="0" style="left:58px; top:728px" aria-label="Módulo horas compensatorias.">
-                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Horas compensatorias</span><span class="diagram-node-kind">módulo</span></header>
-              </article>
-              <article class="diagram-node module-node" data-node="permisos" tabindex="0" style="left:270px; top:728px" aria-label="Módulo permisos de salida.">
-                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Permisos de salida</span><span class="diagram-node-kind">módulo</span></header>
-              </article>
-              <article class="diagram-node module-node" data-node="capacitacion" tabindex="0" style="left:164px; top:801px" aria-label="Módulo capacitación.">
-                <header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Capacitación</span><span class="diagram-node-kind">módulo</span></header>
-              </article>
+              <article class="diagram-node module-node" data-node="horas" tabindex="0" style="left:58px; top:655px" aria-label="Módulo Horas."><header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Horas</span><span class="diagram-node-kind">módulo</span></header></article>
+              <article class="diagram-node module-node" data-node="francos" tabindex="0" style="left:270px; top:655px" aria-label="Módulo Francos."><header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Francos</span><span class="diagram-node-kind">módulo</span></header></article>
+              <article class="diagram-node module-node" data-node="imprevistos" tabindex="0" style="left:482px; top:655px" aria-label="Módulo Imprevistos."><header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Imprevistos</span><span class="diagram-node-kind">módulo</span></header></article>
+              <article class="diagram-node module-node" data-node="medicos" tabindex="0" style="left:58px; top:728px" aria-label="Módulo Médicos."><header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Médicos</span><span class="diagram-node-kind">módulo</span></header></article>
+              <article class="diagram-node module-node" data-node="licencias" tabindex="0" style="left:270px; top:728px" aria-label="Módulo Licencias."><header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Licencias</span><span class="diagram-node-kind">módulo</span></header></article>
+              <article class="diagram-node module-node" data-node="ficha" tabindex="0" style="left:482px; top:728px" aria-label="Módulo Ficha."><header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Ficha</span><span class="diagram-node-kind">módulo</span></header></article>
+              <article class="diagram-node module-node" data-node="suplencias_modulo" tabindex="0" style="left:270px; top:801px" aria-label="Módulo Suplencias."><header class="diagram-node-header"><span class="diagram-badge"></span><span class="diagram-node-title">Suplencias</span><span class="diagram-node-kind">módulo</span></header></article>
             </div>
           </section>
-          <p class="diagram-tip"><strong>Interacción:</strong> arrastrá nodos para reorganizar el mapa. Al pasar el cursor sobre una aplicación o módulo, se resaltan únicamente sus conexiones.</p>
+            <p class="diagram-tip"><strong>Interacción:</strong> <span>Arrastrá nodos para reorganizar el mapa. Al pasar el cursor o enfocar una tarjeta, se resaltan sus conexiones. Con el teclado, usá las flechas para moverla; Mayús amplía el paso.</span></p>
         </div>
       </section>
 
@@ -210,7 +210,7 @@ const caseStudyStructuredData = {
               <span>{system.index}</span>
               <div><p>{system.kind}</p><h3>{system.title}</h3></div>
               <p>{system.description}</p>
-              <div class="system-tech"><small>{system.stack}</small><a href={system.href} target="_blank" rel="noreferrer">Ver repositorio ↗</a></div>
+              <div class="system-tech"><small>{system.stack}</small>{system.href && <a href={system.href} target="_blank" rel="noopener noreferrer">Ver repositorio ↗</a>}</div>
             </article>
           ))}
         </div>
@@ -231,17 +231,6 @@ const caseStudyStructuredData = {
     </article>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <a class="footer-brand" href="/" aria-label="B-Software inicio">
-        <span class="footer-logo"><img src="/brand/logo-b.png" alt="" width="64" height="64" loading="lazy" /></span>
-        <span><strong>B Software</strong><small>Sistemas internos, Flutter e integraciones</small></span>
-      </a>
-      <nav class="footer-links" aria-label="Enlaces secundarios">
-        <a href="/#servicios">Servicios</a><a href="/#proyectos">Proyectos</a><a href="/#contacto">Contacto</a>
-      </nav>
-    </div>
-  </footer>
 
   <script>
     const workspace = document.querySelector<HTMLElement>("#workspace");
@@ -261,11 +250,13 @@ const caseStudyStructuredData = {
         { id: "gestion-sync", source: "gestion", target: "supabase", type: "sync", label: "registra · consulta" },
         { id: "suplencias-sync", source: "suplencias", target: "supabase", type: "sync", label: "registra · consulta" },
         { id: "consulta-read", source: "consulta", target: "supabase", type: "read", label: "consulta RPC" },
+        { id: "gestion-horas", source: "gestion", target: "horas", type: "module" },
+        { id: "gestion-francos", source: "gestion", target: "francos", type: "module" },
+        { id: "gestion-imprevistos", source: "gestion", target: "imprevistos", type: "module" },
+        { id: "gestion-medicos", source: "gestion", target: "medicos", type: "module" },
         { id: "gestion-licencias", source: "gestion", target: "licencias", type: "module" },
-        { id: "gestion-imprevistos", source: "gestion", target: "imprevistos", type: "module", label: "módulos" },
-        { id: "gestion-compensatorias", source: "gestion", target: "compensatorias", type: "module" },
-        { id: "gestion-permisos", source: "gestion", target: "permisos", type: "module" },
-        { id: "gestion-capacitacion", source: "gestion", target: "capacitacion", type: "module" },
+        { id: "gestion-ficha", source: "gestion", target: "ficha", type: "module" },
+        { id: "gestion-suplencias_modulo", source: "gestion", target: "suplencias_modulo", type: "module" },
       ];
       const ns = "http://www.w3.org/2000/svg";
       const createSvg = (name: string, attrs: Record<string, string | number> = {}) => {
@@ -359,6 +350,16 @@ const caseStudyStructuredData = {
         node.addEventListener("mouseleave", () => { if (!drag) clearFocus(); });
         node.addEventListener("focus", () => setFocus(node.dataset.node ?? ""));
         node.addEventListener("blur", clearFocus);
+        node.addEventListener("keydown", (event) => {
+          if (!["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) return;
+          event.preventDefault();
+          const step = event.shiftKey ? 40 : 10;
+          const dx = event.key === "ArrowRight" ? step : event.key === "ArrowLeft" ? -step : 0;
+          const dy = event.key === "ArrowDown" ? step : event.key === "ArrowUp" ? -step : 0;
+          node.style.left = `${Math.max(0, Math.min(workspace.clientWidth - node.offsetWidth, parseFloat(node.style.left) + dx))}px`;
+          node.style.top = `${Math.max(0, Math.min(workspace.clientHeight - node.offsetHeight, parseFloat(node.style.top) + dy))}px`;
+          renderEdges();
+        });
       });
       resetButton.addEventListener("click", () => {
         Object.entries(nodes).forEach(([id, node]) => {
@@ -397,7 +398,7 @@ const caseStudyStructuredData = {
   .rrhh-facts { margin: 58px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgb(255 255 255 / .16); border-bottom: 1px solid rgb(255 255 255 / .16); }
   .rrhh-facts div { padding: 18px 16px 18px 0; }
   .rrhh-facts div + div { border-left: 1px solid rgb(255 255 255 / .16); padding-left: 20px; }
-  .rrhh-facts dt { color: #777b86; font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .rrhh-facts dt { color: #aeb3c0; font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
   .rrhh-facts dd { margin: 6px 0 0; font-weight: 800; }
 
   .flow-section { max-width: 1300px; margin: 0 auto; padding: 48px 20px 88px; }
@@ -407,7 +408,7 @@ const caseStudyStructuredData = {
   .flow-label, .section-number { color: var(--signal); font-size: .75rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
   .rrhh-diagram {
     --diagram-page: #111214; --diagram-panel: #191b20; --diagram-text: #f4f4f6;
-    --diagram-muted: #9da1ad; --diagram-subtle: #666b77; --diagram-grid: rgb(255 255 255 / .035);
+    --diagram-muted: #9da1ad; --diagram-subtle: #aeb3c0; --diagram-grid: rgb(255 255 255 / .035);
     --sync: #a89bf7; --sync-soft: rgb(168 155 247 / .15); --read: #f0b36c;
     --read-soft: rgb(240 179 108 / .16); --module: #7bb5d6; --module-soft: rgb(123 181 214 / .15);
     overflow: hidden; border: 1px solid rgb(255 255 255 / .09); border-radius: 18px;
@@ -484,14 +485,14 @@ const caseStudyStructuredData = {
   .systems-list { margin-top: 54px; border-top: 1px solid rgb(255 255 255 / .16); }
   .system-row { display: grid; grid-template-columns: 48px 1fr 1.25fr .75fr; gap: 24px; align-items: start; border-bottom: 1px solid rgb(255 255 255 / .16); padding: 26px 0; }
   .system-row > span { color: var(--signal); font-size: .74rem; font-weight: 900; }
-  .system-row > div > p { color: #777b86; font-size: .68rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+  .system-row > div > p { color: #aeb3c0; font-size: .68rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
   .system-row h3 { margin-top: 7px; font-size: 1.22rem; }
   .system-row > p { color: #a9adb7; line-height: 1.65; }
   .system-tech { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; text-align: right; }
   .system-tech small { color: #858a96; line-height: 1.5; }
   .system-tech a { color: var(--signal); font-size: .82rem; font-weight: 900; }
-  .rrhh-outcome { padding: 100px max(20px, calc((100vw - 1140px) / 2)); color: #fff; background: var(--signal); }
-  .rrhh-outcome .section-number { color: #cbd1ff; }
+  .rrhh-outcome { padding: 100px max(20px, calc((100vw - 1140px) / 2)); color: #151724; background: var(--signal); }
+  .rrhh-outcome .section-number { color: #212549; }
   .rrhh-outcome blockquote { margin: 24px 0 0; max-width: 980px; font-size: clamp(2rem, 5vw, 4.8rem); font-weight: 750; letter-spacing: -.04em; line-height: 1.08; }
   .outcome-tags { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; }
   .outcome-tags span { border: 1px solid rgb(255 255 255 / .4); border-radius: 999px; padding: 7px 11px; font-size: .78rem; font-weight: 800; }
