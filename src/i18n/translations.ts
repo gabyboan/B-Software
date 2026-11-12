@@ -1,5 +1,16 @@
 // English copy includes the pages recovered from production on 2026-11-11.
 export const englishTranslations: Record<string, string> = {
+  "Decisiones técnicas explicadas.": "Technical decisions, explained.",
+  "Información del sitio": "Site information",
+  "Vista actual de Nido Inmobiliaria con buscador, filtros y fotos de propiedades de demostración": "Current Nido Inmobiliaria view with search, filters, and photos of demo properties",
+  "Cada decisión tiene un motivo y un alcance.": "Every decision has a reason and a scope.",
+  "Qué requiere": "What it requires",
+  "Compartir código reduce duplicación; navegación, rendimiento y accesibilidad se prueban en cada plataforma.": "Sharing code reduces duplication; navigation, performance, and accessibility are tested on each platform.",
+  "Centralizar datos simplifica la integración. Las políticas de acceso deben validarse antes de incorporar datos operativos.": "Centralizing data simplifies integration. Access policies must be validated before adding operational data.",
+  "El catálogo público se puede explorar sin cuenta. El acceso a funciones personales requiere validar el ciclo completo de sesión.": "The public catalog can be explored without an account. Personal features require validating the complete session lifecycle.",
+  "Un build correcto verifica el artefacto; los recorridos de búsqueda, favoritos y contacto también necesitan pruebas de uso.": "A successful build verifies the artifact; search, favorites, and contact journeys also need usage tests.",
+  "Capturas de la beta web pública tomadas el 11 de noviembre de 2026. Muestran la identidad actual, el buscador y las propiedades con fotos de demostración.": "Screenshots of the public web beta taken on November 11, 2026. They show the current identity, search, and properties with demo photos.",
+  "Captura del 11/11/2026 · Datos de demostración": "Captured November 11, 2026 · Demo data",
   "Consulta de Horas": "Hours Portal",
   "Horas": "Hours",
   "Licencias": "Leave records",
