@@ -25,3 +25,12 @@ Inter Variable se sirve desde el propio sitio. Se ajustaron la jerarquía tipogr
 - Lectura completa a 320 px, movimiento reducido y funcionamiento sin JavaScript.
 
 `npm run deploy:preview` utiliza la rama de Pages `professional-20261112`; `npm run deploy` publica en producción (`main`) del proyecto `bsoftware`.
+
+## Publicación verificada
+
+- Código de la versión: `d82ce6b8f29e018b1384811472efbb6099a0876a`.
+- Prueba pública: https://6ab36344.bsoftware.pages.dev/ (7 comprobaciones de navegador aprobadas; una omisión móvil intencional).
+- Producción: https://bsoftware.pages.dev/.
+- Despliegue inmutable: https://96901d68.bsoftware.pages.dev/.
+- El HTML de producción coincide byte por byte con el artefacto local aprobado: SHA-256 `23a8734e84150571a9f02ef99e5a23a1a55e52fab0968aa2bfaed5fb14f0fe4a`.
+- Código y cambios anteriores conservados en https://github.com/gabyboan/B-Software/pull/4 (borrador hacia `main`).
