@@ -28,9 +28,9 @@ Inter Variable se sirve desde el propio sitio. Se ajustaron la jerarquía tipogr
 
 ## Publicación verificada
 
-- Código de la versión: `d82ce6b8f29e018b1384811472efbb6099a0876a`.
-- Prueba pública: https://6ab36344.bsoftware.pages.dev/ (7 comprobaciones de navegador aprobadas; una omisión móvil intencional).
+- Código de la versión: `84ef8b1555712c69f15dd1bbbce3cf1bd10d3b77`.
+- Prueba pública final: https://9cd0865a.bsoftware.pages.dev/ (portada, giro y retroceso del calendario, foco estable y contadores aprobados).
 - Producción: https://bsoftware.pages.dev/.
-- Despliegue inmutable: https://96901d68.bsoftware.pages.dev/.
-- El HTML de producción coincide byte por byte con el artefacto local aprobado: SHA-256 `23a8734e84150571a9f02ef99e5a23a1a55e52fab0968aa2bfaed5fb14f0fe4a`.
+- Despliegue inmutable: https://f81c95b6.bsoftware.pages.dev/.
+- El HTML de producción coincide byte por byte con el artefacto local aprobado: SHA-256 `daacaebd0c1ea7fc5003ec4d1b7106b0c9074b1b260cdeee79d33bfab1663447`.
 - Código y cambios anteriores conservados en https://github.com/gabyboan/B-Software/pull/4 (borrador hacia `main`).
