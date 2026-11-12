@@ -6,7 +6,7 @@ Actualización realizada sobre `fix/react-case-animations` (`51bfa2c`), conserva
 
 `CaseMotion.tsx` mantiene los tres artículos generados por Astro. En escritorio, cuando todo el contenido entra en la ventana, las tarjetas forman un calendario con anillas y giran sobre el borde superior. El desplazamiento controla directamente el ángulo; al subir, las hojas vuelven. Las pestañas y las flechas permiten elegir un proyecto sin interceptar el scroll o la rueda del usuario.
 
-Las tarjetas inactivas quedan fuera de la navegación con teclado y del árbol de accesibilidad. En móvil, con zoom o ventanas pequeñas, y con movimiento reducido, los tres artículos conservan el orden de lectura normal. Sin JavaScript también se muestran completos y los controles que requieren JavaScript permanecen ocultos.
+Las tarjetas inactivas quedan fuera de la navegación con teclado y del árbol de accesibilidad. Los enlaces de una hoja que está girando esperan a que termine el desplazamiento antes de recuperar el foco: así se evita que el enfoque nativo mueva el calendario a otra tarjeta durante un retroceso. En móvil, con zoom o ventanas pequeñas, y con movimiento reducido, los tres artículos conservan el orden de lectura normal. Sin JavaScript también se muestran completos y los controles que requieren JavaScript permanecen ocultos.
 
 ## Contadores mecánicos
 

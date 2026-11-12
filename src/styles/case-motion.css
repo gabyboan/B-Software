@@ -14,8 +14,9 @@
 .case-motion .case-list > article { position:relative; }
 .case-motion.calendar-enabled { height:calc(var(--calendar-height) + var(--calendar-travel) + 66px); }
 .calendar-enabled .calendar-pin { position:sticky; top:96px; }
-.calendar-enabled .case-list { position:relative; height:var(--calendar-height); perspective:2000px; perspective-origin:50% 0; }
-.calendar-enabled .case-list > article { position:absolute; inset:0; height:var(--calendar-height); margin:0; transform-origin:50% 0; backface-visibility:hidden; will-change:transform; box-shadow:0 20px 45px -25px #0e142455; }
+.calendar-enabled .case-list { position:relative; height:var(--calendar-height); gap:0; perspective:2000px; perspective-origin:50% 0; }
+/* Overlap in one grid cell so native focus respects the visible sticky position. */
+.calendar-enabled .case-list > article { position:relative; grid-area:1 / 1; height:var(--calendar-height); margin:0; transform-origin:50% 0; backface-visibility:hidden; will-change:transform; box-shadow:0 20px 45px -25px #0e142455; }
 .calendar-enabled .calendar-binding { display:flex; position:absolute; top:54px; left:7%; right:7%; z-index:10; justify-content:space-between; pointer-events:none; }
 .calendar-binding i { width:9px; height:24px; border:1px solid #262b35; border-radius:5px; background:linear-gradient(90deg,#525865,#d2d6df 42%,#7b8391 65%,#3c414c); box-shadow:0 2px 4px #0004; }
 @media(prefers-reduced-motion:no-preference) {

@@ -30,10 +30,14 @@ test('calendar turns real project sheets, reverses, and keeps only the active pr
   expect(box!.y + box!.height).toBeLessThan(780);
   await turn(root, .4);
   await expect.poll(() => cards.nth(0).evaluate(card => Math.abs(new DOMMatrix(getComputedStyle(card).transform).m23))).toBeGreaterThan(.3);
+  await expect(cards.nth(0)).toHaveAttribute('inert', '');
   await turn(root, 1);
   await expect(root.getByRole('button', { name: '02 Tiago Market' })).toHaveAttribute('aria-pressed', 'true');
   await expect(cards.nth(0)).toHaveAttribute('aria-hidden', 'true');
   await expect(cards.nth(1)).not.toHaveAttribute('inert', '');
+  const beforeFocus = await page.evaluate(() => scrollY);
+  await cards.nth(1).locator('.case-link').focus();
+  expect(await page.evaluate(() => scrollY)).toBe(beforeFocus);
   const axe = await new AxeBuilder({ page }).include('.case-motion').withTags(['wcag2a', 'wcag2aa']).analyze();
   expect(axe.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => ({ target: n.target, reason: n.failureSummary })) }))).toEqual([]);
   await root.getByRole('button', { name: 'Proyecto siguiente' }).click();
@@ -41,7 +45,7 @@ test('calendar turns real project sheets, reverses, and keeps only the active pr
   await root.getByRole('button', { name: 'Proyecto anterior' }).focus();
   await page.keyboard.press('Enter');
   await expect(root.getByRole('button', { name: '02 Tiago Market' })).toHaveAttribute('aria-pressed', 'true');
-  await cards.nth(1).locator('.case-link').click();
+  await cards.nth(1).getByRole('link', { name: 'Ver decisiones del producto' }).click();
   await expect(page).toHaveURL(/comparador-geolocalizado-de-precios/);
 });
 
