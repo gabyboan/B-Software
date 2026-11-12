@@ -1,0 +1,15 @@
+.case-motion .case-list { isolation: isolate; }
+.case-motion .case-list > article { position: relative; z-index: calc(1 + var(--case-index, 0)); }
+.case-motion .case-list > .case-stacks { position: sticky; top: calc(104px + var(--case-index) * 16px); box-shadow: 0 -12px 40px #11121418; }
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready .case-list > article { transition: translate .7s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
+  .motion-ready .case-list > article:not(.case-in-view) { translate: 0 28px; }
+  .case-motion .case-in-view .map-node { animation: node-breathe 5s ease-in-out infinite; }
+  .case-motion .case-in-view .map-app { animation-delay: -1.6s; }
+  .case-motion .case-in-view .map-portal { animation-delay: -3.2s; }
+  .case-motion .case-in-view .map-line { background: linear-gradient(90deg, transparent, #a89bf7, #fff, transparent); background-size: 200% 100%; animation: data-flow 2.8s linear infinite; }
+  .rrhh-page .diagram-edge.sync, .rrhh-page .diagram-edge.read { stroke-dasharray: 7 6; animation: edge-flow 2s linear infinite; }
+  @keyframes node-breathe { 50% { translate: 0 -6px; box-shadow: 0 8px 28px #a89bf725; } }
+  @keyframes data-flow { to { background-position: -200% 0; } }
+  @keyframes edge-flow { to { stroke-dashoffset: -26; } }
+}

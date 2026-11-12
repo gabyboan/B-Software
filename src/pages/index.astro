@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectContactForm from "../components/ProjectContactForm.astro";
+import CaseMotion from "../components/CaseMotion";
+import ArchitectureMap from "../components/ArchitectureMap";
 
 const services = [
   {
@@ -279,6 +281,7 @@ const structuredData = {
         <h2 id="cases-title">Proyectos reales explicados desde el problema, no desde la lista de tecnologías.</h2>
       </div>
 
+      <CaseMotion client:visible={{ rootMargin: "200px" }}>
       <div class="case-list">
         <article class="featured-case rrhh-card">
           <div class="case-copy">
@@ -299,14 +302,7 @@ const structuredData = {
             </dl>
             <a class="case-link" href="/proyectos/gestion-recursos-humanos/">Explorar el caso completo <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="case-map" aria-hidden="true">
-            <span class="map-node map-legajo">Legajo Digital</span>
-            <span class="map-line line-a"></span>
-            <span class="map-node map-core">Supabase<small>datos · roles · RPC</small></span>
-            <span class="map-line line-b"></span>
-            <span class="map-node map-app">Gestión RRHH</span>
-            <span class="map-node map-portal">Consulta Horas</span>
-          </div>
+          <ArchitectureMap client:visible={{ rootMargin: "200px" }} />
         </article>
 
         <article class="featured-case price-card">
@@ -365,6 +361,7 @@ const structuredData = {
           </a>
         </article>
       </div>
+      </CaseMotion>
     </section>
 
     <section id="servicios" class="home-section services-section" aria-labelledby="services-title">
