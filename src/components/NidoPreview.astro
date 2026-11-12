@@ -1,0 +1,28 @@
+---
+interface Props {
+  variant?: "card" | "detail";
+}
+
+const { variant = "detail" } = Astro.props;
+---
+
+<picture class={variant}>
+  {variant === "detail" && (
+    <source media="(max-width: 560px)" srcset="/nido-inmobiliaria-2026-11-11-mobile.webp" width="390" height="844" />
+  )}
+  <img
+    src="/nido-inmobiliaria-2026-11-11.webp"
+    alt="Vista actual de Nido Inmobiliaria con buscador, filtros y fotos de propiedades de demostración"
+    width="1440"
+    height="1000"
+    loading="lazy"
+    decoding="async"
+  />
+</picture>
+
+<style>
+  picture { display:block; min-width:0; }
+  img { display:block; width:100%; height:auto; }
+  .card { height:100%; }
+  .card img { height:100%; object-fit:cover; object-position:left top; }
+</style>

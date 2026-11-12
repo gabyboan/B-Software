@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import NidoPreview from "../components/NidoPreview.astro";
 import ProjectContactForm from "../components/ProjectContactForm.astro";
+import CaseMotion from "../components/CaseMotion";
+import ArchitectureMap from "../components/ArchitectureMap";
+import PortfolioMetrics from "../components/PortfolioMetrics.astro";
 
 const services = [
   {
@@ -199,7 +203,7 @@ const structuredData = {
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <main class="home-page">
+  <main class="home-page professional-home">
     <section class="home-hero" aria-labelledby="home-title">
       <div class="hero-copy">
         <p class="eyebrow">Gabriel Boan · Desarrollo de software</p>
@@ -249,12 +253,7 @@ const structuredData = {
       </div>
     </section>
 
-    <div class="home-section proof-strip" aria-label="El portfolio en números">
-      <div><strong>4</strong><span>productos conectados en RRHH</span></div>
-      <div><strong>3</strong><span>casos para explorar</span></div>
-      <div><strong>7</strong><span>servicios de desarrollo</span></div>
-      <div><strong>4</strong><span>etapas de trabajo</span></div>
-    </div>
+    <PortfolioMetrics />
 
     <section id="problemas" class="home-section problems-section" aria-labelledby="problems-title">
       <div class="home-heading">
@@ -279,6 +278,7 @@ const structuredData = {
         <h2 id="cases-title">Proyectos reales explicados desde el problema, no desde la lista de tecnologías.</h2>
       </div>
 
+      <CaseMotion client:visible={{ rootMargin: "200px" }}>
       <div class="case-list">
         <article class="featured-case rrhh-card">
           <div class="case-copy">
@@ -299,14 +299,7 @@ const structuredData = {
             </dl>
             <a class="case-link" href="/proyectos/gestion-recursos-humanos/">Explorar el caso completo <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="case-map" aria-hidden="true">
-            <span class="map-node map-legajo">Legajo Digital</span>
-            <span class="map-line line-a"></span>
-            <span class="map-node map-core">Supabase<small>datos · roles · RPC</small></span>
-            <span class="map-line line-b"></span>
-            <span class="map-node map-app">Gestión RRHH</span>
-            <span class="map-node map-portal">Consulta Horas</span>
-          </div>
+          <ArchitectureMap client:visible={{ rootMargin: "200px" }} />
         </article>
 
         <article class="featured-case price-card">
@@ -353,18 +346,12 @@ const structuredData = {
             target="_blank"
             rel="noreferrer"
           >
-            <img
-              src="/nido-inmobiliaria-beta.png"
-              alt="Catálogo real de demostración de Nido Inmobiliaria con propiedades, precios y ubicaciones ficticias"
-              width="1440"
-              height="1000"
-              loading="lazy"
-              decoding="async"
-            />
+            <NidoPreview variant="card" />
             <span>Vista real · Beta web <b aria-hidden="true">↗</b></span>
           </a>
         </article>
       </div>
+      </CaseMotion>
     </section>
 
     <section id="servicios" class="home-section services-section" aria-labelledby="services-title">
@@ -583,7 +570,7 @@ const structuredData = {
   .price-label { position: absolute; border: 1px solid #c6daca; border-radius: 999px; padding: 8px 10px; color: #285c3b; background: rgb(255 255 255 / .9); font-size: .7rem; font-weight: 850; }.label-local { top: 13%; left: 12%; }.label-online { right: 8%; top: 34%; }.label-date { bottom: 12%; left: 18%; }
   .development-case { min-height: 310px; display: grid; grid-template-columns: 1.12fr .88fr; overflow: hidden; border: 1px solid #cbd0cb; border-radius: 10px; background: #eef1ee; }
   .development-copy { display: flex; flex-direction: column; padding: 34px; }.development-copy .case-kicker { color: #566a5d; }.development-copy h3 { margin-top: 14px; font-size: clamp(1.9rem, 3.2vw, 3rem); letter-spacing: -.04em; }.development-copy > p:not(.case-kicker) { max-width: 650px; margin-top: 11px; color: #62665f; line-height: 1.6; }.development-copy > p strong { color: #2e3c32; }.development-copy .case-link { margin-top: auto; color: #46594c; }
-  .nido-preview { position: relative; min-width: 0; margin: 18px; overflow: hidden; border: 1px solid #bdc5bf; border-radius: 8px; background: #f8f7f3; }.nido-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center; }.nido-preview > span { position: absolute; right: 12px; bottom: 12px; border: 1px solid rgb(27 36 30 / .16); border-radius: 999px; padding: 7px 10px; color: #1b241e; background: rgb(255 255 255 / .94); font-size: .66rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }.nido-preview:hover, .nido-preview:focus-visible { border-color: #566a5d; outline: none; }.nido-preview:focus-visible { box-shadow: 0 0 0 3px rgb(86 106 93 / .2); }
+  .nido-preview { position: relative; min-width: 0; margin: 18px; overflow: hidden; border: 1px solid #bdc5bf; border-radius: 8px; background: #f8f7f3; }.nido-preview > span { position: absolute; right: 12px; bottom: 12px; border: 1px solid rgb(27 36 30 / .16); border-radius: 999px; padding: 7px 10px; color: #1b241e; background: rgb(255 255 255 / .94); font-size: .66rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }.nido-preview:hover, .nido-preview:focus-visible { border-color: #566a5d; outline: none; }.nido-preview:focus-visible { box-shadow: 0 0 0 3px rgb(86 106 93 / .2); }
 
   .compact-heading { grid-template-columns: .35fr .65fr; }
   .services-list { margin-top: 52px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }

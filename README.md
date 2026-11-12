@@ -103,6 +103,10 @@ Los scripts de despliegue indican explicitamente la rama: revision para preview,
 
 ## Editar contenido comercial
 
+Las decisiones sobre las capturas de Nido, el favicon circular y el footer compacto
+están explicadas en [docs/DECISIONES-VISUALES.md](docs/DECISIONES-VISUALES.md), junto
+con los comandos para regenerar los recursos.
+
 - Servicios, problemas, proceso, cotizacion y FAQ: `src/pages/index.astro`.
 - Casos detallados: `src/pages/proyectos/`.
 - Textos en ingles: `src/i18n/translations.ts`.
