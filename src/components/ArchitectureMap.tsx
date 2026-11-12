@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSiteLanguage } from './useSiteLanguage';
 import '../styles/architecture-map.css';
 
 const products = [
@@ -10,7 +11,9 @@ const products = [
 
 export default function ArchitectureMap() {
   const [selected, setSelected] = useState(0);
-  return <div className="architecture-map" aria-label="Arquitectura del ecosistema RRHH">
+  const english=useSiteLanguage()==='en';
+  const englishDetails=['Centralized identity and employment records.','Replacements and supervisor views with specific permissions.','Hours, days off, medical reports, leave records, employee files, and reports.','Individual read-only queries through RPC.'];
+  return <div className="architecture-map" aria-label={english?'HR ecosystem architecture':'Arquitectura del ecosistema RRHH'} data-no-translate>
     <div className="architecture-canvas">
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         {products.map((product, index) => <path key={product.name} className={selected === index ? 'active' : ''} d={`M ${product.x} ${product.y} V 49 H 50`} />)}
@@ -20,6 +23,6 @@ export default function ArchitectureMap() {
         <small>{product.channel}</small><strong>{product.name}</strong>
       </button>)}
     </div>
-    <div className="architecture-detail" id="architecture-detail" role="status" aria-live="polite"><strong>{products[selected].name}</strong><p>{products[selected].detail}</p></div>
+    <div className="architecture-detail" id="architecture-detail" role="status" aria-live="polite"><strong>{products[selected].name}</strong><p>{english?englishDetails[selected]:products[selected].detail}</p></div>
   </div>;
 }

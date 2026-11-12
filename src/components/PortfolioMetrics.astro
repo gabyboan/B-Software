@@ -1,0 +1,48 @@
+---
+const metrics=[
+  {value:4,title:"productos conectados",description:"en el ecosistema de gestión de RRHH"},
+  {value:3,title:"casos de estudio",description:"con alcance y estado publicados"},
+  {value:7,title:"servicios definidos",description:"para necesidades concretas de negocio"},
+  {value:4,title:"etapas de trabajo",description:"desde el relevamiento hasta la entrega"},
+];
+---
+<section id="metricas" class="numbers-section" aria-labelledby="numbers-title" data-slot-section>
+  <div class="numbers-heading"><p class="section-index">El portfolio, en números</p><h2 id="numbers-title">Datos concretos.<br/>Sin métricas infladas.</h2><p>Estos números describen el trabajo y la oferta publicados hoy; no son promesas comerciales ni resultados inventados.</p></div>
+  <div class="numbers-grid">{metrics.map((metric,index)=><article>
+    <div class="flip-clock" data-flip-clock={metric.value} data-direction={index%2?'down':'up'} aria-hidden="true" data-no-translate>
+      <span class="flip-half flip-top" data-base-top><span>{metric.value}</span></span>
+      <span class="flip-half flip-bottom" data-base-bottom><span>{metric.value}</span></span>
+      <span class="flip-half flip-leaf flip-leaf-out"><span>{metric.value}</span></span>
+      <span class="flip-half flip-leaf flip-leaf-in"><span>{metric.value}</span></span>
+    </div>
+    <span class="metric-readable">{metric.value}</span><h3>{metric.title}</h3><p>{metric.description}</p>
+  </article>)}</div>
+</section>
+<script>import '../scripts/metric-flaps';</script>
+<style>
+  .numbers-section { max-width:1140px; margin:0 auto 48px; padding:44px; border:1px solid #262b37; border-radius:20px; color:#f1f2f7; background:#14171e; box-shadow:0 22px 55px -36px #11182788; }
+  .numbers-heading { display:grid; grid-template-columns:1.15fr .85fr; gap:16px 64px; align-items:end; }
+  .section-index { grid-column:1/-1; color:#adbaff; font-size:.68rem; font-weight:650; letter-spacing:.13em; text-transform:uppercase; }
+  h2 { margin:0; font-size:clamp(1.9rem,3.2vw,2.75rem); font-weight:550; letter-spacing:-.04em; line-height:1.14; }
+  .numbers-heading > p:last-child { max-width:390px; color:#b1b8c7; font-size:.9rem; line-height:1.8; }
+  .numbers-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; margin-top:38px; }
+  article { position:relative; min-width:0; padding-top:26px; border-top:1px solid #ffffff20; }
+  .flip-clock { --flap-height:132px; --flap-size:100px; position:relative; width:106px; height:var(--flap-height); border-radius:10px; perspective:650px; box-shadow:0 12px 20px #0005,0 1px 0 #fff2; }
+  .flip-half { position:absolute; left:0; width:100%; height:50%; overflow:hidden; border:1px solid #ffffff0d; background:linear-gradient(#2a2e37,#22252d); color:#f5f6f9; }
+  .flip-top { top:0; border-radius:9px 9px 0 0; border-bottom:1px solid #05070a; }
+  .flip-bottom { bottom:0; border-radius:0 0 9px 9px; background:linear-gradient(#1c1f27,#20232b); border-top:1px solid #07090c; }
+  .flip-half > span { position:absolute; top:0; left:0; display:flex; align-items:center; justify-content:center; width:100%; height:var(--flap-height); font-size:var(--flap-size); line-height:1; font-weight:550; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+  .flip-bottom > span { top:auto; bottom:0; }
+  .flip-clock::before,.flip-clock::after { content:""; position:absolute; z-index:8; top:calc(50% - 6px); width:5px; height:12px; border:1px solid #090b10; border-radius:2px; background:linear-gradient(90deg,#616775,#bbc1cb,#5e6572); }
+  .flip-clock::before { left:-2px; }.flip-clock::after { right:-2px; }
+  .flip-leaf { z-index:3; visibility:hidden; backface-visibility:hidden; }
+  .is-flipping .flip-leaf { visibility:visible; }
+  [data-direction=down] .flip-leaf-out,[data-direction=up] .flip-leaf-in { top:0; border-radius:9px 9px 0 0; transform-origin:50% 100%; }
+  [data-direction=down] .flip-leaf-in,[data-direction=up] .flip-leaf-out { bottom:0; border-radius:0 0 9px 9px; transform-origin:50% 0; background:#20232b; }
+  [data-direction=down] .flip-leaf-in > span,[data-direction=up] .flip-leaf-out > span { top:auto; bottom:0; }
+  .metric-readable { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  h3 { margin-top:24px; font-size:.96rem; font-weight:550; line-height:1.35; }
+  article p { margin-top:9px; max-width:190px; color:#abb4c7; font-size:.79rem; line-height:1.7; }
+  @media(max-width:900px) { .numbers-section { margin-inline:20px; padding:32px; }.numbers-heading { grid-template-columns:1fr;gap:16px; }.numbers-grid { gap:24px; }.flip-clock { --flap-height:116px;--flap-size:88px;width:92px; } }
+  @media(max-width:560px) { .numbers-section { margin-inline:14px; padding:28px 22px; }.numbers-grid { grid-template-columns:1fr 1fr;gap:28px 20px; }.numbers-heading > p:last-child { font-size:.85rem; }.flip-clock { --flap-height:112px;--flap-size:84px;width:90px; } }
+</style>

@@ -1,15 +1,30 @@
-.case-motion .case-list { isolation: isolate; }
-.case-motion .case-list > article { position: relative; z-index: calc(1 + var(--case-index, 0)); }
-.case-motion .case-list > .case-stacks { position: sticky; top: calc(104px + var(--case-index) * 16px); box-shadow: 0 -12px 40px #11121418; }
-@media (prefers-reduced-motion: no-preference) {
-  .motion-ready .case-list > article { transition: translate .7s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
-  .motion-ready .case-list > article:not(.case-in-view) { translate: 0 28px; }
-  .case-motion .case-in-view .map-node { animation: node-breathe 5s ease-in-out infinite; }
-  .case-motion .case-in-view .map-app { animation-delay: -1.6s; }
-  .case-motion .case-in-view .map-portal { animation-delay: -3.2s; }
-  .case-motion .case-in-view .map-line { background: linear-gradient(90deg, transparent, #a89bf7, #fff, transparent); background-size: 200% 100%; animation: data-flow 2.8s linear infinite; }
-  .rrhh-page .diagram-edge.sync, .rrhh-page .diagram-edge.read { stroke-dasharray: 7 6; animation: edge-flow 2s linear infinite; }
-  @keyframes node-breathe { 50% { translate: 0 -6px; box-shadow: 0 8px 28px #a89bf725; } }
-  @keyframes data-flow { to { background-position: -200% 0; } }
-  @keyframes edge-flow { to { stroke-dashoffset: -26; } }
+.case-motion { position:relative; margin-top:40px; }
+.case-motion .calendar-pin .case-list { isolation:isolate; margin-top:0; }
+.calendar-pin { position:relative; }
+.calendar-controls { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:24px; }
+.calendar-tabs,.calendar-arrows { display:flex; align-items:center; gap:8px; }
+.calendar-tabs button { display:flex; align-items:center; gap:9px; min-height:42px; border:1px solid transparent; border-radius:8px; padding:0 13px; background:transparent; color:#646873; font-size:.82rem; cursor:pointer; }
+.calendar-tabs button span { color:#626775; font-size:.67rem; font-variant-numeric:tabular-nums; }
+.calendar-tabs button[aria-pressed=true] { border-color:#d7d9e2; background:#fff; color:#20263b; box-shadow:0 3px 8px #17203905; }
+.calendar-tabs button[aria-pressed=true] span { color:#354cc0; }
+.calendar-arrows > span { margin-right:10px; color:#626775; font-size:.72rem; font-variant-numeric:tabular-nums; }
+.calendar-arrows button { width:40px; height:40px; border:1px solid #d7d9e2; border-radius:50%; color:#293243; background:#fff; cursor:pointer; }
+.calendar-arrows button:disabled { cursor:default; opacity:.4; }
+.calendar-binding { display:none; }
+.case-motion .case-list > article { position:relative; }
+.case-motion.calendar-enabled { height:calc(var(--calendar-height) + var(--calendar-travel) + 66px); }
+.calendar-enabled .calendar-pin { position:sticky; top:96px; }
+.calendar-enabled .case-list { position:relative; height:var(--calendar-height); perspective:2000px; perspective-origin:50% 0; }
+.calendar-enabled .case-list > article { position:absolute; inset:0; height:var(--calendar-height); margin:0; transform-origin:50% 0; backface-visibility:hidden; will-change:transform; box-shadow:0 20px 45px -25px #0e142455; }
+.calendar-enabled .calendar-binding { display:flex; position:absolute; top:54px; left:7%; right:7%; z-index:10; justify-content:space-between; pointer-events:none; }
+.calendar-binding i { width:9px; height:24px; border:1px solid #262b35; border-radius:5px; background:linear-gradient(90deg,#525865,#d2d6df 42%,#7b8391 65%,#3c414c); box-shadow:0 2px 4px #0004; }
+@media(prefers-reduced-motion:no-preference) {
+  .case-motion:not(.calendar-enabled).motion-ready .case-list > article { transition:translate .65s cubic-bezier(.2,.7,.2,1),box-shadow .4s; }
+  .case-motion:not(.calendar-enabled).motion-ready .case-list > article:not(.case-in-view) { translate:0 22px; }
+  .case-in-view .price-label { animation:case-label-float 4s ease-in-out infinite alternate; }
+  .case-in-view .label-online { animation-delay:-1.3s; }.case-in-view .label-date { animation-delay:-2.6s; }
+  .rrhh-page .diagram-edge.sync,.rrhh-page .diagram-edge.read { stroke-dasharray:7 6; animation:edge-flow 3s linear infinite; }
+  @keyframes case-label-float { to { translate:0 -6px; } }
+  @keyframes edge-flow { to { stroke-dashoffset:-26; } }
 }
+@media(max-width:650px) { .calendar-controls { align-items:flex-start; flex-direction:column; gap:14px; } .calendar-tabs { width:100%; gap:4px; } .calendar-tabs button { justify-content:center; flex:1; gap:5px; padding:0 7px; font-size:.7rem; } .calendar-tabs button span { font-size:.62rem; } .calendar-arrows { align-self:flex-end; } }

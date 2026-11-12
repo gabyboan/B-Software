@@ -1,5 +1,7 @@
 // English copy includes the pages recovered from production on 2026-11-11.
 export const englishTranslations: Record<string, string> = {
+  "Datos concretos.": "Concrete facts.",
+  "Sin métricas infladas.": "No inflated metrics.",
   "Decisiones técnicas explicadas.": "Technical decisions, explained.",
   "Información del sitio": "Site information",
   "Vista actual de Nido Inmobiliaria con buscador, filtros y fotos de propiedades de demostración": "Current Nido Inmobiliaria view with search, filters, and photos of demo properties",

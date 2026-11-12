@@ -4,8 +4,9 @@
 .architecture-canvas path { fill:none; stroke:#a89bf755; vector-effect:non-scaling-stroke; stroke-width:1.5; stroke-dasharray:6 5; }
 .architecture-canvas path.active { stroke:#c4baff; stroke-width:2; }
 .architecture-canvas button,.architecture-core { position:absolute; translate:-50% -50%; width:36%; border:1px solid #a89bf766; border-radius:8px; padding:14px 8px; color:inherit; background:#1b1d23; text-align:center; }
-.architecture-canvas button { cursor:pointer; min-height:70px; transition:border-color .2s, background .2s; }
+.architecture-canvas button { cursor:pointer; min-height:70px; transition:border-color .2s, background .2s,box-shadow .2s; }
 .architecture-canvas button[aria-pressed=true] { border-color:#c4baff; background:#302b49; }
+.architecture-canvas button:hover { border-color:#c4baff; box-shadow:0 0 0 3px #a89bf714; }
 .architecture-canvas small { display:block; color:#c1bacf; font-size:.65rem; margin-bottom:7px; }
 .architecture-canvas strong { font-size:.76rem; }
 .architecture-core { left:50%; top:49%; width:44%; border-color:#a89bf7; box-shadow:0 0 35px #a89bf715; }

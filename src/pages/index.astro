@@ -4,6 +4,7 @@ import NidoPreview from "../components/NidoPreview.astro";
 import ProjectContactForm from "../components/ProjectContactForm.astro";
 import CaseMotion from "../components/CaseMotion";
 import ArchitectureMap from "../components/ArchitectureMap";
+import PortfolioMetrics from "../components/PortfolioMetrics.astro";
 
 const services = [
   {
@@ -202,7 +203,7 @@ const structuredData = {
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <main class="home-page">
+  <main class="home-page professional-home">
     <section class="home-hero" aria-labelledby="home-title">
       <div class="hero-copy">
         <p class="eyebrow">Gabriel Boan · Desarrollo de software</p>
@@ -252,12 +253,7 @@ const structuredData = {
       </div>
     </section>
 
-    <div class="home-section proof-strip" aria-label="El portfolio en números">
-      <div><strong>4</strong><span>productos conectados en RRHH</span></div>
-      <div><strong>3</strong><span>casos para explorar</span></div>
-      <div><strong>7</strong><span>servicios de desarrollo</span></div>
-      <div><strong>4</strong><span>etapas de trabajo</span></div>
-    </div>
+    <PortfolioMetrics />
 
     <section id="problemas" class="home-section problems-section" aria-labelledby="problems-title">
       <div class="home-heading">
