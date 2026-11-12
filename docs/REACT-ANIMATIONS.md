@@ -1,4 +1,4 @@
-﻿# Recuperación de animaciones con React
+# Recuperación de animaciones con React
 
 - Isla React ArchitectureMap: cuatro productos, selección mediante botones y teclado, detalle anunciado con aria-live y conexiones SVG animadas.
 - Isla React CaseMotion: entrada vertical y apilado sticky cuando cada tarjeta cabe en pantalla. Los casos altos y las pantallas móviles conservan el flujo de lectura.
@@ -8,6 +8,6 @@
 
 Verificación: astro check sin errores ni advertencias; build estático de las diez páginas; pruebas Playwright en escritorio y móvil, incluida accesibilidad y enlaces internos. Captura local: .review/cases-desktop.png.
 
-Publicación pendiente: Wrangler tiene sesión de recursoshumanos.hesm@gmail.com, sin acceso a la cuenta 4bcd2f0373e615e04cb8cd9c21a63ccc del proyecto bsoftware (Cloudflare 10000). La integración GitHub rechazó create_tree con 403 Resource not accessible by integration.
+Publicado el 11/11/2026 en https://bsoftware.pages.dev/ con la cuenta correcta de Cloudflare. Despliegue inmutable: https://c67493f3.bsoftware.pages.dev/. Rama subida mediante Git; la integración GitHub rechaza la creación de PR con 403.
 
 Para publicar con la cuenta correcta: npm ci, npm run check, npm run build y npm run deploy. Requiere Node >=22.23.4.
