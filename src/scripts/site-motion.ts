@@ -41,15 +41,26 @@ setup();
 
 // One queued frame per scroll event; no perpetual JavaScript animation loop.
 const progress = document.querySelector<HTMLElement>('[data-reading-progress]');
+const header = document.querySelector('.site-header');
 let frame = 0;
+let maxScroll = 0;
+let documentHeight = 0;
 function paint() {
   frame = 0;
-  const max = document.documentElement.scrollHeight - innerHeight;
-  progress?.style.setProperty('--reading-progress', String(max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0));
-  document.querySelector('.site-header')?.classList.toggle('is-scrolled', scrollY > 24);
+  const position = scrollY;
+  progress?.style.setProperty('--reading-progress', String(maxScroll > 0 ? Math.min(1, Math.max(0, position / maxScroll)) : 0));
+  header?.classList.toggle('is-scrolled', position > 24);
 }
 function schedule() { if (!frame) frame = requestAnimationFrame(paint); }
 addEventListener('scroll', schedule, { passive: true });
-addEventListener('resize', schedule, { passive: true });
-new ResizeObserver(schedule).observe(document.body);
-paint();
+// ResizeObserver runs after layout. Cache the range here instead of forcing an
+// initial layout after entrance animations or rereading the height every scroll.
+new ResizeObserver(() => {
+  documentHeight = document.documentElement.scrollHeight;
+  maxScroll = Math.max(0, documentHeight - innerHeight);
+  schedule();
+}).observe(document.body);
+addEventListener('resize', () => {
+  maxScroll = Math.max(0, documentHeight - innerHeight);
+  schedule();
+}, { passive: true });

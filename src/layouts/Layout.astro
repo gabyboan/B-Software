@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/refresh.css";
 import "@fontsource-variable/inter";
+import interLatinUrl from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import "../styles/professional.css";
 import "../styles/case-motion.css";
 import "../styles/editorial-motion.css";
@@ -33,10 +34,11 @@ const breadcrumbs = {
 ---
 
 <!doctype html>
-<html lang="es-AR" data-language="es">
+<html lang="es-AR" data-language="es" data-home={Astro.url.pathname === "/" ? "" : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin="anonymous" />
     <meta name="description" content={description} />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
     <meta name="author" content="B-Software" />

@@ -45,6 +45,8 @@ test('calendar turns real project sheets, reverses, and keeps only the active pr
   await root.getByRole('button', { name: 'Proyecto anterior' }).focus();
   await page.keyboard.press('Enter');
   await expect(root.getByRole('button', { name: '02 Tiago Market' })).toHaveAttribute('aria-pressed', 'true');
+  // Selection changes during the turn; links become usable after it settles.
+  await expect(cards.nth(1)).not.toHaveAttribute('inert', '');
   await cards.nth(1).getByRole('link', { name: 'Ver decisiones del producto' }).click();
   await expect(page).toHaveURL(/comparador-geolocalizado-de-precios/);
 });

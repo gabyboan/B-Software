@@ -1,6 +1,6 @@
 .case-motion { position:relative; margin-top:40px; }
 /* The pinned gallery manages its height explicitly while changing language. */
-html:has(.professional-home) { overflow-anchor:none; }
+html[data-home] { overflow-anchor:none; }
 .case-motion .calendar-pin .case-list { isolation:isolate; margin-top:0; }
 .calendar-pin { position:relative; }
 .calendar-controls { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:24px; }
