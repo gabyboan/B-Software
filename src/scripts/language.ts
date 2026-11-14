@@ -4,6 +4,7 @@ type Language = "es" | "en";
 const texts = new WeakMap<Node, { source: string; translated: string }>();
 const attributes = new WeakMap<Element, Map<string, { source: string; translated: string }>>();
 const names = ["alt", "aria-label", "aria-description", "placeholder", "title"];
+const attributeSelector = names.map(name => `[${name}]`).join(',') + ',meta[name="description"],meta[property^="og:"],meta[name^="twitter:"]';
 const excluded = "script, style, noscript, code, pre, [data-no-translate]";
 const translate = (source: string, language: Language) => {
   const key = source.trim();
@@ -13,6 +14,7 @@ const translate = (source: string, language: Language) => {
 let language: Language = document.documentElement.dataset.language === "en" ? "en" : "es";
 
 function applyText(node: Node) {
+  if (language === "es" && !texts.has(node)) return;
   if (node.parentElement?.closest(excluded)) return;
   const current = node.nodeValue || "";
   const previous = texts.get(node);
@@ -43,13 +45,14 @@ function apply(root: Node) {
   if (root instanceof Element) {
     if (root.closest(excluded)) return;
     applyAttributes(root);
-    root.querySelectorAll("*").forEach(applyAttributes);
+    root.querySelectorAll(attributeSelector).forEach(applyAttributes);
   }
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   while (walker.nextNode()) applyText(walker.currentNode);
 }
 
 function setLanguage(next: Language, persist = true) {
+  const scrollPosition = scrollY;
   language = next;
   document.documentElement.lang = next === "en" ? "en" : "es-AR";
   document.documentElement.dataset.language = next;
@@ -63,6 +66,8 @@ function setLanguage(next: Language, persist = true) {
     button.classList.toggle("active", active);
   });
   document.dispatchEvent(new CustomEvent("bsoftware:language", { detail: next }));
+  // Translation and gallery measurement must not scroll the reader elsewhere.
+  if (persist) window.scrollTo({ top: scrollPosition, behavior: 'instant' });
 }
 
 document.addEventListener("click", (event) => {

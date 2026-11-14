@@ -41,7 +41,7 @@ devolvia 404 y se retiro del sitio.
 
 Tiago Market incluye una [demo web con datos ficticios](https://gabyboan.github.io/tiago-market/).
 El caso de RRHH documenta siete modulos y diferencia la distribucion operativa
-1.0.6.7 del desarrollo posterior de Ficha y Licencias.
+1.0.8.9 del 13 de noviembre de 2026, con Ficha y Licencias en la distribución.
 
 ## Tecnologias
 

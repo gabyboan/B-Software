@@ -29,6 +29,7 @@ export default function CaseMotion({children}:{children:ReactNode}) {
       frame=0;if(!enabled)return;
       const progress=Math.max(0,Math.min(cards.length-1,(top-element.getBoundingClientRect().top)/travel));
       const current=Math.min(cards.length-1,Math.floor(progress+.5));select(current);
+      element.style.setProperty('--case-progress',String(progress/(cards.length-1)));
       // A turning sheet must settle before its links can receive focus or clicks.
       // Focusing a tilted link can otherwise scroll the sticky deck to another sheet.
       const settled=!navigating&&Math.abs(progress-current)<.02;
@@ -40,7 +41,7 @@ export default function CaseMotion({children}:{children:ReactNode}) {
         card.style.transform=settled&&index===current?'none':`translateY(${Math.min(waiting,2)*10}px) rotateX(${-turned*96}deg) scale(${1-Math.min(waiting,2)*.012})`;
         card.style.willChange=settled&&index===current?'auto':'transform';
         card.style.opacity=String(turned>.84?Math.max(0,1-(turned-.84)/.16):1);
-        card.style.zIndex=String(cards.length-index);card.inert=index!==current||!settled;
+        card.style.zIndex=String(settled&&index===current?cards.length+1:cards.length-index);card.inert=index!==current||!settled;
         if(index!==current)card.setAttribute('aria-hidden','true');else card.removeAttribute('aria-hidden');
       });
     };
@@ -51,12 +52,13 @@ export default function CaseMotion({children}:{children:ReactNode}) {
       if(navigating){clearTimeout(endTimer);endTimer=window.setTimeout(finishNavigation,200);}
     };
     const measure=()=>{
+      const scrollPosition=scrollY;
       const wasEnabled=enabled;element.classList.remove('calendar-enabled');clear();
       const height=Math.max(...cards.map(card=>card.offsetHeight));
       const controls=(element.querySelector<HTMLElement>('.calendar-controls')!.offsetHeight||42)+24;
       enabled=innerWidth>=1100&&!preference.matches&&height+controls<=innerHeight-top-24;
       element.classList.toggle('calendar-enabled',enabled);
-      if(enabled){travel=Math.max(420,innerHeight*.65);element.style.setProperty('--calendar-height',`${height}px`);element.style.setProperty('--calendar-travel',`${travel*(cards.length-1)}px`);paint();}
+      if(enabled){travel=Math.max(420,innerHeight*.65);element.style.setProperty('--calendar-height',`${height}px`);element.style.setProperty('--calendar-travel',`${travel*(cards.length-1)}px`);if(wasEnabled)window.scrollTo({top:scrollPosition,behavior:'instant'});paint();}
       else {navigating=false;clearTimeout(endTimer);if(wasEnabled)select(0);}
     };
     navigate.current=(index:number)=>{
@@ -69,7 +71,7 @@ export default function CaseMotion({children}:{children:ReactNode}) {
     let observer:IntersectionObserver|undefined;
     if(typeof IntersectionObserver!=='undefined'){
       observer=new IntersectionObserver(entries=>{
-        entries.forEach(entry=>entry.target.classList.toggle('case-in-view',entry.isIntersecting));
+        entries.forEach(entry=>{entry.target.classList.toggle('case-in-view',entry.isIntersecting);if(entry.isIntersecting)entry.target.classList.add('case-entered');});
         if(!enabled){const closest=cards.map((card,index)=>({index,distance:Math.abs(card.getBoundingClientRect().top-top)})).sort((a,b)=>a.distance-b.distance)[0];if(entries.some(entry=>entry.isIntersecting)&&closest)select(closest.index);}
       },{threshold:.12});cards.forEach(card=>observer!.observe(card));
     }else cards.forEach(card=>card.classList.add('case-in-view'));

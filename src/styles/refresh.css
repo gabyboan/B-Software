@@ -1,5 +1,6 @@
 /* Shared interaction and layout details for every route. */
-html { scroll-padding-top:100px; }
+/* Offset actual destinations without making sticky header controls scroll away. */
+main [id], #main-content { scroll-margin-top:100px; }
 body { -webkit-font-smoothing:antialiased; }
 :focus-visible { outline:3px solid #3567d9; outline-offset:4px; }
 button, input, textarea, select { font:inherit; }

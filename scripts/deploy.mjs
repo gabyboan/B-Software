@@ -6,7 +6,7 @@ if (!['preview', 'production'].includes(target)) {
   console.error('Use npm run deploy:preview or npm run deploy.');
   process.exit(1);
 }
-const branch = target === 'production' ? 'main' : 'professional-20261112';
+const branch = target === 'production' ? 'main' : 'motion-seo-20261113';
 const wrangler = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
 const root = fileURLToPath(new URL('../', import.meta.url));
 const result = spawnSync(process.execPath, [wrangler, 'pages', 'deploy', 'dist', '--project-name', 'bsoftware', '--branch', branch, ...process.argv.slice(3)], {

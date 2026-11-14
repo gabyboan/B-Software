@@ -19,7 +19,7 @@
   <p class="form-privacy">Al continuar se abre WhatsApp para que revises el mensaje antes de enviarlo. Más información en <a href="/privacidad/">Privacidad</a>, <a href="/terminos/">Términos</a> y <a href="/cookies/">Cookies</a>.</p>
   <p class="form-status" data-form-status role="status" aria-live="polite"></p>
   <button class="button contact-submit" type="submit" disabled>Continuar en WhatsApp <span aria-hidden="true">↗</span></button>
-  <a data-whatsapp-fallback hidden target="_blank" rel="noopener noreferrer">Abrir el mensaje en WhatsApp ↗</a>
+  <a href="https://wa.me/5493434064408" data-whatsapp-fallback hidden target="_blank" rel="noopener noreferrer">Abrir el mensaje en WhatsApp ↗</a>
   <noscript><p>Para consultar sin JavaScript, escribí a <a href="mailto:gabrielboan14@gmail.com">gabrielboan14@gmail.com</a> o <a href="https://wa.me/5493434064408" rel="noopener noreferrer" target="_blank">abrí WhatsApp</a>.</p></noscript>
 </form>
 
@@ -43,7 +43,7 @@
     form.addEventListener("input", () => {
       validate();
       if (status) status.textContent = "";
-      if (fallback) { fallback.hidden = true; fallback.removeAttribute("href"); }
+      if (fallback) { fallback.hidden = true; fallback.href = "https://wa.me/5493434064408"; }
     });
     form.addEventListener("submit", (event) => {
       event.preventDefault();

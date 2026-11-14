@@ -12,7 +12,7 @@ const systems = [
     title: "Legajo Digital",
     kind: "Sistema interno",
     description:
-      "Centraliza situación de revista, carrera, asistencia y banco inicial de horas con acceso por roles.",
+      "Centraliza legajos, domicilios, familiares, asistencia y licencias. Incluye fichas imprimibles, historial de correcciones y control de novedades con permisos específicos.",
     stack: "Next.js · React · TypeScript · Supabase",
     href: "https://github.com/gabyboan/legajo-digital",
   },
@@ -30,7 +30,7 @@ const systems = [
     title: "Consulta Horas",
     kind: "Portal del agente",
     description:
-      "Separa la consulta pública del backoffice y expone únicamente la información necesaria de cada agente.",
+      "Permite consultar horas, francos e imprevistos mediante un Worker y un pase temporal de Turnstile. Es de solo lectura; el CAPTCHA no acredita la identidad del agente.",
     stack: "Cloudflare Pages · Workers · Turnstile",
     href: "https://github.com/gabyboan/consulta-horas",
   },
@@ -98,7 +98,11 @@ const caseStudyStructuredData = {
         <p class="section-number">Estado del proyecto · Noviembre de 2026</p>
         <h2 id="rrhh-current-title">Siete módulos para la gestión cotidiana.</h2>
         <p>Horas, Francos, Imprevistos, Médicos, Suplencias, Licencias y Ficha reúnen carga, consulta y seguimiento por roles. Los partes médicos incorporan QR y domicilio de emisión; Ficha y Licencias comparten el historial confirmado y permiten preparar planillas PDF.</p>
-        <p>La distribución operativa documentada es la 1.0.6.7, del 2 de noviembre de 2026. Ficha y Licencias forman parte del desarrollo posterior; el código publicado no implica que esos cambios ya estén instalados en los puestos de trabajo.</p>
+        <p>La versión 1.0.8.9 de Gestión RRHH fue publicada en el canal privado el 13 de noviembre de 2026. Ficha y Licencias ya forman parte de la distribución; la instalación en cada puesto se verifica desde su cliente.</p>
+        <div class="repository-updates">
+          <article><h3>Gestión RRHH · 1.0.8.9</h3><p>Horas Gremiales, protección contra reenvíos y caché por sesión. La actualización más reciente corrige la condición y el legajo en la impresión de partes médicos.</p><a href="https://github.com/gabyboan/hesm-gestion-rrhh/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Ver cambios de Gestión RRHH ↗</a></article>
+          <article><h3>Legajo Digital · Licencias y novedades</h3><p>Fichas por año con impresión y PDF, últimas cargas con autoría y correcciones con motivo e historial. Control de novedades incorpora confirmación administrativa, cruces y avisos de feriados; requiere migración y permisos explícitos.</p><a href="https://github.com/gabyboan/legajo-digital" target="_blank" rel="noopener noreferrer">Ver el alcance de Legajo Digital ↗</a></article>
+        </div>
         <div class="evidence-actions"><a href="https://github.com/gabyboan/hesm-gestion-rrhh/blob/main/docs/mockups/README.md" target="_blank" rel="noopener noreferrer">Ver capturas con datos ficticios ↗</a><a href="https://github.com/gabyboan/hesm-gestion-rrhh#probar-la-demo" target="_blank" rel="noopener noreferrer">Cómo probar la demo Windows ↗</a><a href="https://github.com/gabyboan/hesm-gestion-rrhh/blob/main/docs/ESTADO_ACTUAL.md" target="_blank" rel="noopener noreferrer">Consultar el estado documentado ↗</a></div>
       </section>
 

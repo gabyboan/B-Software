@@ -24,7 +24,7 @@ for (const route of routes) {
 
 test("language switch restores source text after dynamic tabs and navigation", async ({ page }) => {
   await page.goto("/?lang=es");
-  await page.getByRole("button", { name:"View site in English", exact:true }).click();
+  await page.getByRole("button", { name:"EN — View site in English", exact:true }).click();
   await expect(page.locator("h1")).toHaveText("Custom software to work better.");
   await page.getByRole("tab", { name:"Cloudflare", exact:true }).click();
   await expect(page.locator("[data-tech-output-role]")).toHaveText("Delivery and services");

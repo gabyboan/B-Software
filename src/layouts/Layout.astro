@@ -6,6 +6,7 @@ import "../styles/refresh.css";
 import "@fontsource-variable/inter";
 import "../styles/professional.css";
 import "../styles/case-motion.css";
+import "../styles/editorial-motion.css";
 
 const {
   title = "B-Software | Sistemas internos, Flutter y automatizaciones",
@@ -20,6 +21,14 @@ const {
   navVariant = "compact",
   noindex = false,
 } = Astro.props;
+const breadcrumbs = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "B-Software", item: "https://bsoftware.pages.dev/" },
+    ...(Astro.url.pathname === "/" ? [] : [{ "@type": "ListItem", position: 2, name: title.split("|")[0].trim(), item: canonical }]),
+  ],
+};
 ---
 
 <!doctype html>
@@ -61,6 +70,7 @@ const {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=brand-b-1" />
     <link rel="sitemap" href="/sitemap.xml" />
     <title>{title}</title>
+    {!noindex && <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />}
     <script is:inline>
       (() => {
         const requested = new URLSearchParams(location.search).get("lang");
@@ -79,12 +89,14 @@ const {
     </script>
   </head>
   <body class={bodyClass}>
+    <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
     <a class="skip-link" href="#main-content">Saltar al contenido</a>
     <NavBar variant={navVariant} />
     <div id="main-content" tabindex="-1"><slot /></div>
     <Footer />
     <script>
       import "../scripts/language";
+      import "../scripts/site-motion";
     </script>
   </body>
 </html>

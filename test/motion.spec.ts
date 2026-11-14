@@ -60,10 +60,12 @@ test('RRHH diagram keeps mouse, keyboard and language changes working', async ({
   await map.getByRole('button', { name: 'Portal Consulta Horas' }).focus();
   await page.keyboard.press('Enter');
   await expect(map.getByRole('status')).toContainText('solo lectura');
+  const readingPosition = await page.evaluate(() => scrollY);
   await page.locator('[data-language-option="en"]').click();
   await expect(map.getByRole('status')).toContainText('read-only');
   await page.locator('[data-language-option="es"]').click();
   await expect(map.getByRole('status')).toContainText('solo lectura');
+  await expect.poll(() => page.evaluate(() => scrollY)).toBe(readingPosition);
   await page.locator('.rrhh-card .case-link').click();
   await expect(page).toHaveURL(/gestion-recursos-humanos/);
   expect(errors).toEqual([]);
