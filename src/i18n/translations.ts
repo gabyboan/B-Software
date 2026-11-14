@@ -1,5 +1,6 @@
 // English copy includes the pages recovered from production on 2026-11-11.
 export const englishTranslations: Record<string, string> = {
+  "Software a medida, sistemas de gestión, aplicaciones móviles y automatización para empresas. Desde Paraná, Argentina.": "Custom software, management systems, mobile apps and business automation. Based in Paraná, Argentina.",
   "Datos concretos.": "Concrete facts.",
   "Sin métricas infladas.": "No inflated metrics.",
   "Decisiones técnicas explicadas.": "Technical decisions, explained.",

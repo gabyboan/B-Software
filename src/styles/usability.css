@@ -1,0 +1,37 @@
+/* Readable annotations and comfortable controls at every viewport size. */
+.site-header .language-option { min-width:44px; min-height:44px; font-size:.8125rem; }
+.site-header .brand { min-height:44px; }
+.site-header .nav-links a,.site-header .nav-cta { min-height:44px; }
+body .professional-home.home-page .technology-tabs button { min-height:44px; font-size:.75rem; }
+body .professional-home.home-page .hero-project figcaption { align-items:center; font-size:.75rem; }
+body .professional-home.home-page .hero-project figcaption a { display:inline-flex; align-items:center; min-height:44px; }
+body .professional-home.home-page .case-link { min-height:44px; }
+body .professional-home.home-page .contact-direct a,body .contact-page .direct-links a { display:inline-flex; align-items:center; min-height:44px; }
+body .professional-home.home-page .about-strip a { display:inline-flex; align-items:center; min-height:44px; }
+body .project-form .form-privacy a { display:inline-flex; align-items:center; min-height:44px; }
+.calendar-controls .calendar-tabs button { min-height:44px; }
+.calendar-controls .calendar-arrows button { width:44px; height:44px; }
+
+@media(max-width:900px) {
+  body .professional-home.home-page :is(.eyebrow,.hero-scope,.system-top,.technology-detail small,.section-index,.case-kicker,.case-facts dt,.services-list dt) { font-size:.75rem; }
+  body .professional-home.home-page .technology-detail p { font-size:.875rem; line-height:1.65; }
+  body .professional-home.home-page :is(.case-business p,.case-facts dd) { font-size:.875rem; }
+  body .professional-home.home-page :is(.problem-grid small,.service-number,.method-list > li > span,.trust-list span,.faq-clean-list summary span,.price-label,.nido-preview > span) { font-size:.75rem; }
+  body .professional-home.home-page :is(.problem-grid article > span,.case-facts dd) { font-size:.875rem; }
+  body .professional-home.home-page .case-copy > p:not(.case-kicker) { font-size:1rem; }
+  body .professional-home.home-page .services-list dd { font-size:1rem; }
+  body .professional-home.home-page .home-lead { font-size:1.0625rem; }
+  body .site-header .brand small { font-size:.75rem; }
+  body .site-footer :is(.footer-contact a,.footer-legal a,.footer-statement,.footer-bottom) { font-size:.875rem; }
+  body .architecture-map .architecture-canvas small { font-size:.75rem; }
+  body .architecture-map .architecture-canvas strong { font-size:.8125rem; }
+  body .case-motion .calendar-tabs button { font-size:.8125rem; }
+  body .case-motion .calendar-tabs button span { font-size:.75rem; }
+  body .case-motion .calendar-arrows > span { font-size:.75rem; }
+}
+@media(max-width:350px) {
+  .site-header .nav-shell { gap:6px; padding-inline:10px; }
+  .site-header .brand { gap:6px; min-width:0; }
+  .site-header .brand small { display:none; }
+  .site-header .mobile-nav summary { padding-inline:8px; }
+}

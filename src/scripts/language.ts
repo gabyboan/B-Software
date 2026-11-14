@@ -12,6 +12,7 @@ const translate = (source: string, language: Language) => {
     ? source.replace(key, englishTranslations[key]) : source;
 };
 let language: Language = document.documentElement.dataset.language === "en" ? "en" : "es";
+let hasTranslated = false;
 
 function applyText(node: Node) {
   if (language === "es" && !texts.has(node)) return;
@@ -52,14 +53,15 @@ function apply(root: Node) {
 }
 
 function setLanguage(next: Language, persist = true) {
-  const scrollPosition = scrollY;
+  const scrollPosition = persist ? scrollY : 0;
   language = next;
   document.documentElement.lang = next === "en" ? "en" : "es-AR";
   document.documentElement.dataset.language = next;
   if (persist) {
     try { localStorage.setItem("bsoftware-language", next); } catch { /* Browsing remains usable when storage is blocked. */ }
   }
-  apply(document.documentElement);
+  if (language === "en" || hasTranslated) apply(document.documentElement);
+  if (language === "en") hasTranslated = true;
   document.querySelectorAll<HTMLButtonElement>("[data-language-option]").forEach((button) => {
     const active = button.dataset.languageOption === next;
     button.setAttribute("aria-pressed", String(active));

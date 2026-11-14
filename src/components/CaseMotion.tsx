@@ -52,6 +52,12 @@ export default function CaseMotion({children}:{children:ReactNode}) {
       if(navigating){clearTimeout(endTimer);endTimer=window.setTimeout(finishNavigation,200);}
     };
     const measure=()=>{
+      // Narrow screens keep the cards in normal flow; measuring every card here
+      // would force layout again on every resize and language change.
+      if(innerWidth<1100||preference.matches){
+        if(enabled){element.classList.remove('calendar-enabled');clear();select(0);}
+        enabled=false;navigating=false;clearTimeout(endTimer);return;
+      }
       const scrollPosition=scrollY;
       const wasEnabled=enabled;element.classList.remove('calendar-enabled');clear();
       const height=Math.max(...cards.map(card=>card.offsetHeight));
